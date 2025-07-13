@@ -1,15 +1,83 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Instagram, Facebook, Youtube } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Instagram, Facebook, Youtube, CheckCircle } from 'lucide-react'
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    projectType: '',
+    date: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('https://formspree.io/f/xdkkqjrl', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          message: `
+Nouvelle demande de devis JRV Production
+
+Prénom: ${formData.firstName}
+Nom: ${formData.lastName}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+Type de projet: ${formData.projectType}
+Date souhaitée: ${formData.date}
+
+Message:
+${formData.message}
+          `.trim()
+        }),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          projectType: '',
+          date: '',
+          message: ''
+        })
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   const contactInfo = [
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      details: 'contact@jrvproduction.fr',
-      link: 'mailto:contact@jrvproduction.fr'
+      details: 'jrv.production85@gmail.com',
+      link: 'mailto:jrv.production85@gmail.com'
     },
     {
       icon: <Phone size={24} />,
@@ -78,98 +146,147 @@ const Contact = () => {
               Demande de devis
             </h3>
             
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
-                    Prénom *
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Votre prénom"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
-                    Nom *
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Votre nom"
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="votre@email.com"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">
-                  Téléphone
-                </label>
-                <input
-                  type="tel"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="06 XX XX XX XX"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">
-                  Type de projet *
-                </label>
-                <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                  <option value="">Sélectionnez un type</option>
-                  <option value="wedding">Mariage</option>
-                  <option value="event">Événement</option>
-                  <option value="corporate">Corporate</option>
-                  <option value="portrait">Portrait</option>
-                  <option value="drone">Drone FPV</option>
-                  <option value="other">Autre</option>
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">
-                  Date souhaitée
-                </label>
-                <input
-                  type="date"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  rows={4}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                  placeholder="Décrivez votre projet..."
-                ></textarea>
-              </div>
-              
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="submit"
-                className="w-full btn-primary flex items-center justify-center space-x-2"
+            {isSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-12"
               >
-                <Send size={20} />
-                <span>Envoyer la demande</span>
-              </motion.button>
-            </form>
+                <CheckCircle size={64} className="mx-auto text-green-500 mb-4" />
+                <h3 className="text-2xl font-bold text-white mb-2">Message envoyé !</h3>
+                <p className="text-white/70 mb-6">
+                  Merci pour votre demande. Nous vous répondrons dans les plus brefs délais à l&apos;adresse {formData.email || 'indiquée'}.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="btn-secondary"
+                >
+                  Envoyer un autre message
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-white/70 mb-2">
+                      Prénom *
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Votre prénom"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-white/70 mb-2">
+                      Nom *
+                    </label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Votre nom"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="votre@email.com"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">
+                    Téléphone
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="06 XX XX XX XX"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">
+                    Type de projet *
+                  </label>
+                  <select 
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  >
+                    <option value="">Sélectionnez un type</option>
+                    <option value="wedding">Mariage</option>
+                    <option value="event">Événement</option>
+                    <option value="corporate">Corporate</option>
+                    <option value="portrait">Portrait</option>
+                    <option value="drone">Drone FPV</option>
+                    <option value="other">Autre</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">
+                    Date souhaitée
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    placeholder="Décrivez votre projet..."
+                  />
+                </div>
+                
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Send size={20} />
+                  <span>{isSubmitting ? 'Envoi en cours...' : 'Envoyer la demande'}</span>
+                </motion.button>
+              </form>
+            )}
           </motion.div>
 
           {/* Informations de contact */}

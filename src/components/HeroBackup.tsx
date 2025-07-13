@@ -3,28 +3,37 @@
 import { motion } from 'framer-motion'
 import { Play, MapPin, Camera } from 'lucide-react'
 
-const Hero = () => {
+const HeroBackup = () => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Vidéo YouTube de fond */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <iframe
-          src="https://www.youtube.com/embed/kcfs1-ryKWE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&playlist=kcfs1-ryKWE&start=1&enablejsapi=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&end=999999"
-          className="absolute inset-0"
-          style={{
-            width: '300%',
-            height: '300%',
-            left: '-100%',
-            top: '-100%',
-            border: 'none',
-            outline: 'none',
-            pointerEvents: 'none'
-          }}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
+      {/* Fond dégradé animé */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-blue-900 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-transparent to-blue-900/20"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        {/* Particules flottantes */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Contenu principal */}
@@ -115,4 +124,4 @@ const Hero = () => {
   )
 }
 
-export default Hero 
+export default HeroBackup 

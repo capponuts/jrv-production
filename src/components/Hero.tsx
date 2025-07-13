@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Play, MapPin, Camera } from 'lucide-react'
+import { Play, MapPin, Camera, Instagram, Youtube, Music } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -89,6 +89,45 @@ const Hero = () => {
               <span>Demander un Devis</span>
             </button>
           </motion.div>
+
+          {/* Réseaux sociaux */}
+          <motion.div
+            className="flex items-center justify-center space-x-6 mt-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.8 }}
+          >
+            <motion.a
+              href="https://www.instagram.com/jrv.production/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300"
+            >
+              <Instagram size={20} />
+            </motion.a>
+            <motion.a
+              href="https://www.youtube.com/@JRV.production"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300"
+            >
+              <Youtube size={20} />
+            </motion.a>
+            <motion.a
+              href="https://www.tiktok.com/@jvrprode"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300"
+            >
+              <Music size={20} />
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -97,7 +136,7 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 2 }}
+        transition={{ duration: 1, delay: 2.2 }}
       >
         <div className="flex flex-col items-center space-y-2">
           <span className="text-sm text-white/60">Découvrez nos services</span>

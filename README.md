@@ -1,36 +1,161 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JRV Production - Site Vitrine
 
-## Getting Started
+Site vitrine professionnel pour JRV Production, photographe et vidéaste spécialisé dans les drones FPV en Vendée.
 
-First, run the development server:
+## 🚀 Fonctionnalités
 
+- **Design moderne** avec fond noir et animations fluides
+- **Responsive** adapté à tous les écrans
+- **Animations** avec Framer Motion
+- **SEO optimisé** pour un bon référencement
+- **Portfolio interactif** avec filtres par catégories
+- **Formulaire de contact** complet
+- **Performance optimisée** pour Vercel
+
+## 🛠️ Technologies utilisées
+
+- **Next.js 14** avec App Router
+- **TypeScript** pour la robustesse du code
+- **Tailwind CSS** pour le styling
+- **Framer Motion** pour les animations
+- **Lucide React** pour les icônes
+
+## 🎨 Sections du site
+
+1. **Header** - Navigation fixe avec logo JRV Production
+2. **Hero** - Section d'accueil avec vidéo de fond
+3. **Services** - Présentation des prestations
+4. **Portfolio** - Galerie de réalisations avec filtres
+5. **About** - Présentation de JRV Production
+6. **Contact** - Formulaire de contact et informations
+7. **Footer** - Informations légales et liens
+
+## 📸 Images et contenus à personnaliser
+
+### Images actuelles (placeholders SVG)
+Les images actuelles sont des placeholders. Remplacez-les par de vraies photos :
+
+#### Vidéo Hero
+- `public/hero-video.mp4` - Vidéo de drone FPV en action
+
+#### Portfolio
+- `public/portfolio/wedding-drone.jpg` - Mariage avec drone
+- `public/portfolio/festival-fpv.jpg` - Festival avec drone FPV
+- `public/portfolio/portrait-studio.jpg` - Portrait studio
+- `public/portfolio/corporate-event.jpg` - Événement corporate
+- `public/portfolio/drone-cinematic.jpg` - Vidéo drone cinématique
+- `public/portfolio/wedding-vendee.jpg` - Mariage en Vendée
+- `public/portfolio/concert-live.jpg` - Concert live
+- `public/portfolio/portrait-outdoor.jpg` - Portrait extérieur
+- `public/portfolio/real-estate-drone.jpg` - Immobilier drone
+
+#### Section About
+- `public/about-image.jpg` - Photo de JRV Production en action
+
+### 🆓 Sources d'images gratuites
+
+#### Vidéos de drone
+- **Pexels** : https://www.pexels.com/videos/
+- **Pixabay** : https://pixabay.com/videos/
+- **Unsplash** : https://unsplash.com/
+
+#### Photos professionnelles
+- **Unsplash** : https://unsplash.com/
+- **Pexels** : https://www.pexels.com/
+- **Pixabay** : https://pixabay.com/
+
+#### Mots-clés de recherche
+- "drone fpv", "aerial view", "wedding photography"
+- "professional photographer", "event photography"
+- "portrait photography", "cinematography"
+
+## 🔧 Installation et développement
+
+### Prérequis
+- Node.js 18+ 
+- npm ou yarn
+
+### Installation
 ```bash
+# Installation des dépendances
+npm install
+
+# Lancement du serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Commandes disponibles
+```bash
+npm run dev      # Serveur de développement
+npm run build    # Build de production
+npm run start    # Serveur de production
+npm run lint     # Vérification du code
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Déploiement sur Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Push vers GitHub** (déjà fait)
+2. **Connecter à Vercel** :
+   - Aller sur [vercel.com](https://vercel.com)
+   - Connecter votre compte GitHub
+   - Importer le repository `jrv-production`
+   - Déployer automatiquement
 
-## Learn More
+## 📝 Personnalisation
 
-To learn more about Next.js, take a look at the following resources:
+### Informations de contact
+Modifier dans `src/components/Contact.tsx` :
+- Email de contact
+- Numéro de téléphone
+- Adresse précise
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Réseaux sociaux
+Modifier dans `src/components/Footer.tsx` et `src/components/Contact.tsx` :
+- Links Instagram, Facebook, YouTube
+- Ajouter d'autres réseaux si nécessaire
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Contenu
+- **Services** : Modifier dans `src/components/Services.tsx`
+- **Portfolio** : Ajouter/modifier les projets dans `src/components/Portfolio.tsx`
+- **About** : Personnaliser le texte dans `src/components/About.tsx`
 
-## Deploy on Vercel
+## 🎯 SEO et référencement
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Métadonnées optimisées
+- Titre : "JRV Production - Photographe & Vidéaste Drone en Vendée"
+- Description optimisée pour les moteurs de recherche
+- Mots-clés ciblés : photographe vendée, drone FPV, etc.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Améliorations SEO supplémentaires
+- Ajouter un sitemap.xml
+- Optimiser les images (format WebP)
+- Implémenter les données structurées (JSON-LD)
+
+## 📱 Responsive Design
+
+Le site est entièrement responsive et optimisé pour :
+- **Mobile** : 320px et plus
+- **Tablet** : 768px et plus
+- **Desktop** : 1024px et plus
+
+## 🔧 Maintenance
+
+### Mise à jour des dépendances
+```bash
+npm update
+```
+
+### Ajout de nouvelles fonctionnalités
+- Animations supplémentaires avec Framer Motion
+- Galerie lightbox pour le portfolio
+- Blog/actualités
+- Système de réservation en ligne
+
+## 📞 Support
+
+Pour toute question ou personnalisation supplémentaire, contactez le développeur.
+
+---
+
+**JRV Production** - Photographe & Vidéaste Drone en Vendée
+Site développé avec ❤️ en Next.js

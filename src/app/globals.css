@@ -79,4 +79,21 @@
   #home {
     z-index: 1;
   }
+  
+  /* Fix pour les options de select visibles */
+  select option {
+    background-color: #1f2937 !important;
+    color: #ffffff !important;
+    padding: 8px 12px;
+  }
+  
+  select option:hover {
+    background-color: #374151 !important;
+  }
+  
+  /* Pour WebKit browsers (Chrome, Safari) */
+  select {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+  }
 }

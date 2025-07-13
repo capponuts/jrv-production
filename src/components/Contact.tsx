@@ -236,14 +236,32 @@ ${formData.message}
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      color: '#ffffff'
+                    }}
                   >
-                    <option value="">Sélectionnez un type</option>
-                    <option value="wedding">Mariage</option>
-                    <option value="event">Événement</option>
-                    <option value="corporate">Corporate</option>
-                    <option value="portrait">Portrait</option>
-                    <option value="drone">Drone FPV</option>
-                    <option value="other">Autre</option>
+                    <option value="" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
+                      Sélectionnez un type
+                    </option>
+                    <option value="wedding" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
+                      Mariage
+                    </option>
+                    <option value="event" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
+                      Événement
+                    </option>
+                    <option value="corporate" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
+                      Corporate
+                    </option>
+                    <option value="portrait" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
+                      Portrait
+                    </option>
+                    <option value="drone" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
+                      Drone FPV
+                    </option>
+                    <option value="other" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
+                      Autre
+                    </option>
                   </select>
                 </div>
                 

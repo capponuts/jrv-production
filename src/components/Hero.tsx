@@ -6,17 +6,9 @@ import { Play, MapPin, Camera } from 'lucide-react'
 const Hero = () => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Vidéo de fond */}
+      {/* Fond dégradé temporaire */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
+        <div className="w-full h-full bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
 

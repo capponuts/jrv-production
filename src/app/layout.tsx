@@ -29,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
-      <body className={`${inter.className} bg-black text-white overflow-x-hidden`}>
+    <html lang="fr" className="bg-black">
+      <body className={`${inter.className} bg-black text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#000000', color: '#ffffff'}}>
         {children}
       </body>
     </html>

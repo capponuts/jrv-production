@@ -51,7 +51,7 @@ const About = () => {
             </h2>
             
             <p className="text-lg text-white/80 mb-6 leading-relaxed">
-              Passionné par l'image et les nouvelles technologies, JRV Production vous accompagne 
+              Passionné par l&apos;image et les nouvelles technologies, JRV Production vous accompagne 
               dans vos projets audiovisuels avec une expertise particulière dans les drones FPV.
             </p>
             

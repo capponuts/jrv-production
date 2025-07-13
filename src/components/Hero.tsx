@@ -64,7 +64,7 @@ const Hero = () => {
           >
             Spécialisé dans les <span className="text-blue-400 font-semibold">drones FPV</span> pour sublimer vos événements
             <br />
-            Capturer l'émotion sous tous les angles
+            Capturer l&apos;émotion sous tous les angles
           </motion.p>
 
           <motion.div

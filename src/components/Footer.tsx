@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Instagram, Facebook, Youtube, Music, Mail, Phone, MapPin } from 'lucide-react'
+import { Instagram, Youtube, Music, Mail, Phone, MapPin } from 'lucide-react'
 import Image from 'next/image'
 
 const Footer = () => {
@@ -9,7 +9,6 @@ const Footer = () => {
   
   const socialLinks = [
     { icon: <Instagram size={20} />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
-    { icon: <Facebook size={20} />, url: 'https://facebook.com/jrvproduction', name: 'Facebook' },
     { icon: <Youtube size={20} />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' },
     { icon: <Music size={20} />, url: 'https://www.tiktok.com/@jvrprode', name: 'TikTok' }
   ]

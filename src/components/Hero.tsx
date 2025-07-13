@@ -6,10 +6,27 @@ import { Play, MapPin, Camera } from 'lucide-react'
 const Hero = () => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Fond dégradé temporaire */}
+      {/* Vidéo YouTube de fond */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
-        <div className="absolute inset-0 bg-black/40"></div>
+        <iframe
+          src="https://www.youtube.com/embed/kcfs1-ryKWE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&playlist=kcfs1-ryKWE"
+          className="w-full h-full object-cover"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100vw',
+            height: '100vh',
+            transform: 'translate(-50%, -50%)',
+            minWidth: '100%',
+            minHeight: '100%',
+            zIndex: -1
+          }}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
       </div>
 
       {/* Contenu principal */}

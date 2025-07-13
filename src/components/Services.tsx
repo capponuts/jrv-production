@@ -44,7 +44,7 @@ const Services = () => {
   ]
 
   return (
-    <section id="services" className="section-padding bg-gray-900">
+    <section id="services" className="section-padding bg-gray-900 relative z-10">
       <div className="container-custom">
         {/* Titre de section */}
         <motion.div

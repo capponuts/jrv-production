@@ -36,7 +36,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-gray-900">
+    <section id="about" className="section-padding bg-gray-900 relative z-10">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Contenu textuel */}

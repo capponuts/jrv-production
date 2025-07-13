@@ -47,7 +47,7 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="section-padding bg-black">
+    <section id="contact" className="section-padding bg-black relative z-10">
       <div className="container-custom">
         {/* Titre de section */}
         <motion.div

@@ -97,7 +97,7 @@ const Portfolio = () => {
     : portfolioItems.filter(item => item.category === activeCategory)
 
   return (
-    <section id="portfolio" className="section-padding bg-black">
+    <section id="portfolio" className="section-padding bg-black relative z-10">
       <div className="container-custom">
         {/* Titre de section */}
         <motion.div

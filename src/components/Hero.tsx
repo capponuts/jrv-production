@@ -7,30 +7,26 @@ const Hero = () => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Vidéo YouTube de fond */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <iframe
           src="https://www.youtube.com/embed/kcfs1-ryKWE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&playlist=kcfs1-ryKWE"
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full"
           style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            width: '100vw',
-            height: '100vh',
-            transform: 'translate(-50%, -50%)',
-            minWidth: '100%',
-            minHeight: '100%',
-            zIndex: -1
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            border: 'none',
+            outline: 'none'
           }}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
-        <div className="absolute inset-0 bg-black/40 z-10"></div>
+        <div className="absolute inset-0 bg-black/50 z-10"></div>
       </div>
 
       {/* Contenu principal */}
-      <div className="relative z-10 text-center px-4">
+      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}

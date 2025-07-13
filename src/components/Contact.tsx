@@ -97,7 +97,7 @@ ${formData.message}
     {
       icon: <Instagram size={24} />,
       name: 'Instagram',
-      url: 'https://instagram.com/jrvproduction',
+      url: 'https://www.instagram.com/jrv.production/',
       color: 'from-pink-500 to-purple-500'
     },
     {
@@ -109,7 +109,7 @@ ${formData.message}
     {
       icon: <Youtube size={24} />,
       name: 'YouTube',
-      url: 'https://youtube.com/jrvproduction',
+      url: 'https://www.youtube.com/@JRV.production',
       color: 'from-red-500 to-red-600'
     }
   ]

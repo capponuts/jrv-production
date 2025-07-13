@@ -8,9 +8,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
   
   const socialLinks = [
-    { icon: <Instagram size={20} />, url: 'https://instagram.com/jrvproduction', name: 'Instagram' },
+    { icon: <Instagram size={20} />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
     { icon: <Facebook size={20} />, url: 'https://facebook.com/jrvproduction', name: 'Facebook' },
-    { icon: <Youtube size={20} />, url: 'https://youtube.com/jrvproduction', name: 'YouTube' }
+    { icon: <Youtube size={20} />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
   ]
 
   const quickLinks = [

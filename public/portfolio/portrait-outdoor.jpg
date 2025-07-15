@@ -1,1 +1,12 @@
- 
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#74b9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b894;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad8)"/>
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">Portrait</text>
+  <text x="200" y="150" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Extérieur</text>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Nature</text>
+</svg> 

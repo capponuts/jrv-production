@@ -44,17 +44,17 @@ const About = () => {
             </h2>
             
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Passionné par la vidéo et basé en Vendée, au cœur des Pays de la Loire, j'ai créé JRV Production pour mettre en image ce qui mérite d'être vu, ressenti, retenu.
+              Passionné par la vidéo et basé en Vendée, au cœur des Pays de la Loire, j&apos;ai créé JRV Production pour mettre en image ce qui mérite d&apos;être vu, ressenti, retenu.
             </p>
             
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Je réalise des vidéos sur mesure : mariages, événements, concerts, clips, portraits d'artisans, contenus de marque…
-              Chaque projet a son énergie. Mon rôle, c'est de la capter avec justesse.
+              Je réalise des vidéos sur mesure : mariages, événements, concerts, clips, portraits d&apos;artisans, contenus de marque…
+              Chaque projet a son énergie. Mon rôle, c&apos;est de la capter avec justesse.
             </p>
             
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              J'apporte un regard précis, une écoute réelle et un montage soigné.
-              Je m'adapte à chaque univers pour créer des vidéos naturelles, sincères et vivantes.
+              J&apos;apporte un regard précis, une écoute réelle et un montage soigné.
+              Je m&apos;adapte à chaque univers pour créer des vidéos naturelles, sincères et vivantes.
             </p>
             
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">

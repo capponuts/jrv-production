@@ -49,7 +49,7 @@ const Footer = () => {
               </div>
               <p className="text-gray-600 text-sm leading-relaxed mb-6">
                 Vidéaste passionné basé en Vendée, spécialisé dans la capture 
-                d'émotions authentiques et de moments précieux.
+                d&apos;émotions authentiques et de moments précieux.
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (

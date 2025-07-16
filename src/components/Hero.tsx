@@ -69,7 +69,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.4 }}
           >
-            Vous vivez le moment, je m'occupe du souvenir !
+            Vous vivez le moment, je m&apos;occupe du souvenir !
           </motion.p>
 
           {/* Réseaux sociaux */}

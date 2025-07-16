@@ -15,7 +15,7 @@ const Services = () => {
       icon: '🧱',
       title: 'Architecture & Espaces',
       description: 'Airbnb, bâtiments, commerces, monuments',
-      subtext: 'Des images qui subliment vos lieux, captées avec soin pour donner envie d\'y être.'
+      subtext: 'Des images qui subliment vos lieux, captées avec soin pour donner envie d&apos;y être.'
     },
     {
       icon: '🐾',
@@ -150,7 +150,7 @@ const Services = () => {
           className="text-center mt-16"
         >
           <p className="text-lg text-gray-700 mb-8">
-            Vous vivez le moment, je m'occupe du souvenir !
+            Vous vivez le moment, je m&apos;occupe du souvenir !
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}

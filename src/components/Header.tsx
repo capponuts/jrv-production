@@ -51,8 +51,8 @@ const Header = () => {
               className="h-12 w-auto"
             />
             <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-bold text-orange-500">JRV</span>
-              <span className="text-sm font-semibold text-gray-700">Production</span>
+              <span className="text-2xl font-bold text-orange-500 font-['DM_Sans']">JRV</span>
+              <span className="text-sm font-semibold text-gray-700 font-['DM_Sans']">Production</span>
             </div>
           </motion.div>
 

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MapPin } from 'lucide-react'
+import Image from 'next/image'
 
 const Hero = () => {
   return (
@@ -34,14 +35,20 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="max-w-4xl mx-auto"
         >
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6"
+          <motion.div
+            className="mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
           >
-            <span className="text-orange-500">JRV Production</span>
-          </motion.h1>
+            <Image
+              src="/logo-jrv-production.svg"
+              alt="JRV Production Logo"
+              width={400}
+              height={120}
+              className="mx-auto h-24 md:h-32 w-auto"
+            />
+          </motion.div>
           
           <motion.p
             className="text-xl md:text-2xl mb-4 text-white/90"

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MapPin, Music } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -68,49 +68,29 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.4 }}
           >
-            Vous vivez le moment, je m&apos;occupe du souvenir !
+            Vivez le moment, je m&apos;occupe du souvenir !
           </motion.p>
 
-          {/* Réseaux sociaux */}
           <motion.div
-            className="flex items-center justify-center mt-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.8 }}
+            transition={{ duration: 1, delay: 1.6 }}
+            className="flex justify-center"
           >
-            <motion.a
-              href="https://www.tiktok.com/@jvrprode"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300"
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary text-lg px-8 py-4"
             >
-              <Music size={20} />
-            </motion.a>
+              Découvrir mes services
+            </motion.button>
           </motion.div>
+
+
         </motion.div>
       </div>
 
-      {/* Indicateur de scroll */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 2.2 }}
-      >
-        <div className="flex flex-col items-center space-y-2">
-          <span className="text-sm text-white/60">Explorez mon univers créatif</span>
-          <div className="w-px h-8 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-6 border-2 border-white/50 rounded-full flex items-center justify-center"
-          >
-            <div className="w-2 h-2 bg-white/50 rounded-full"></div>
-          </motion.div>
-        </div>
-      </motion.div>
+
     </section>
   )
 }

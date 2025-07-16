@@ -15,10 +15,9 @@ const Hero = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           style={{
-            width: '300%',
-            height: '300%',
-            left: '-100%',
-            top: '-100%'
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
           }}
         >
           <source src="/Videohero.mp4" type="video/mp4" />

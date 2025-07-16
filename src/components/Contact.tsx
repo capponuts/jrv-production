@@ -115,7 +115,7 @@ ${formData.message}
   ]
 
   return (
-    <section id="contact" className="section-padding bg-black relative z-10">
+    <section id="contact" className="section-padding bg-white relative z-10">
       <div className="container-custom">
         {/* Titre de section */}
         <motion.div
@@ -125,11 +125,11 @@ ${formData.message}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Contactez <span className="gradient-text">JRV Production</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+            Contactez <span className="text-orange-500">JRV Production</span>
           </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Parlons de votre projet ! Nous sommes là pour concrétiser vos idées
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Parlons de votre projet ! Je suis là pour concrétiser vos idées
           </p>
         </motion.div>
 
@@ -142,7 +142,7 @@ ${formData.message}
             viewport={{ once: true }}
             className="glass-effect p-8 rounded-lg"
           >
-            <h3 className="text-2xl font-bold mb-6 text-white">
+            <h3 className="text-2xl font-bold mb-6 text-black">
               Demande de devis
             </h3>
             
@@ -153,8 +153,8 @@ ${formData.message}
                 className="text-center py-12"
               >
                 <CheckCircle size={64} className="mx-auto text-green-500 mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">Message envoyé !</h3>
-                <p className="text-white/70 mb-6">
+                <h3 className="text-2xl font-bold text-black mb-2">Message envoyé !</h3>
+                <p className="text-gray-600 mb-6">
                   Merci pour votre demande. Nous vous répondrons dans les plus brefs délais à l&apos;adresse {formData.email || 'indiquée'}.
                 </p>
                 <button
@@ -168,7 +168,7 @@ ${formData.message}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-white/70 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Prénom *
                     </label>
                     <input
@@ -177,12 +177,12 @@ ${formData.message}
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                       placeholder="Votre prénom"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-white/70 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Nom *
                     </label>
                     <input
@@ -191,14 +191,14 @@ ${formData.message}
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                       placeholder="Votre nom"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Email *
                   </label>
                   <input
@@ -207,13 +207,13 @@ ${formData.message}
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="votre@email.com"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Téléphone
                   </label>
                   <input
@@ -221,7 +221,7 @@ ${formData.message}
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="06 XX XX XX XX"
                   />
                 </div>
@@ -316,7 +316,7 @@ ${formData.message}
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-white">
+              <h3 className="text-2xl font-bold mb-6 text-black">
                 Informations de contact
               </h3>
               
@@ -334,19 +334,19 @@ ${formData.message}
                       {info.icon}
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-white">
-                        {info.title}
-                      </h4>
-                      {info.link ? (
-                        <a
-                          href={info.link}
-                          className="text-white/70 hover:text-blue-400 transition-colors duration-300"
-                        >
-                          {info.details}
-                        </a>
-                      ) : (
-                        <span className="text-white/70">{info.details}</span>
-                      )}
+                                      <h4 className="text-lg font-semibold text-black">
+                  {info.title}
+                </h4>
+                {info.link ? (
+                  <a 
+                    href={info.link} 
+                    className="text-gray-600 hover:text-orange-500 transition-colors duration-300"
+                  >
+                    {info.details}
+                  </a>
+                ) : (
+                  <span className="text-gray-600">{info.details}</span>
+                )}
                     </div>
                   </motion.div>
                 ))}
@@ -355,7 +355,7 @@ ${formData.message}
 
             {/* Réseaux sociaux */}
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-white">
+              <h3 className="text-2xl font-bold mb-6 text-black">
                 Suivez-nous
               </h3>
               
@@ -382,10 +382,10 @@ ${formData.message}
 
             {/* Horaires */}
             <div className="glass-effect p-6 rounded-lg">
-              <h4 className="text-xl font-bold mb-4 text-white">
+              <h4 className="text-xl font-bold mb-4 text-black">
                 Horaires de contact
               </h4>
-              <div className="space-y-2 text-white/70">
+              <div className="space-y-2 text-gray-600">
                 <p>Lundi - Vendredi : 9h00 - 18h00</p>
                 <p>Samedi : 9h00 - 12h00</p>
                 <p>Dimanche : Sur rendez-vous</p>

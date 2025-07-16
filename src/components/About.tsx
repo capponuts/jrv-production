@@ -2,15 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { Award, Users, Camera, MapPin } from 'lucide-react'
-import Image from 'next/image'
 
 const About = () => {
-  const stats = [
-    { number: '200+', label: 'Projets réalisés' },
-    { number: '50+', label: 'Mariages capturés' },
-    { number: '5+', label: 'Années d\'expérience' },
-    { number: '100%', label: 'Clients satisfaits' }
-  ]
 
   const expertise = [
     {
@@ -36,9 +29,9 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-gray-900 relative z-10">
+    <section id="about" className="section-padding bg-white relative z-10">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Contenu textuel */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -46,73 +39,32 @@ const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              À propos de <span className="gradient-text">JRV Production</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+              Qui je suis et pourquoi <span className="text-orange-500">je fais ça</span>
             </h2>
             
-            <p className="text-lg text-white/80 mb-6 leading-relaxed">
-              Passionné par l&apos;image et les nouvelles technologies, JRV Production vous accompagne 
-              dans vos projets audiovisuels avec une expertise particulière dans les drones FPV.
+            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              Passionné par la vidéo et basé en Vendée, au cœur des Pays de la Loire, j'ai créé JRV Production pour mettre en image ce qui mérite d'être vu, ressenti, retenu.
             </p>
             
-            <p className="text-lg text-white/80 mb-6 leading-relaxed">
-              Basé en Vendée, au cœur des Pays de la Loire, nous sublisons vos événements 
-              les plus précieux grâce à des prises de vue aériennes spectaculaires et immersives.
+            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              Je réalise des vidéos sur mesure : mariages, événements, concerts, clips, portraits d'artisans, contenus de marque…
+              Chaque projet a son énergie. Mon rôle, c'est de la capter avec justesse.
             </p>
             
-            <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              Notre approche combine créativité, technicité et sens du service pour vous offrir 
-              des souvenirs inoubliables et des contenus de qualité professionnelle.
+            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              J'apporte un regard précis, une écoute réelle et un montage soigné.
+              Je m'adapte à chaque univers pour créer des vidéos naturelles, sincères et vivantes.
             </p>
             
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary"
-            >
-              Découvrir notre approche
-            </motion.button>
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              Si ma manière de faire vous parle, je suis prêt à raconter votre histoire.
+            </p>
+            
+
           </motion.div>
 
-          {/* Image et statistiques */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image
-                src="/about-image.jpg"
-                alt="JRV Production - Photographe drone en action"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
-            
-            {/* Statistiques */}
-            <div className="grid grid-cols-2 gap-4 mt-8">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="glass-effect p-6 text-center"
-                >
-                  <div className="text-3xl font-bold gradient-text mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-white/70 text-sm">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+
         </div>
 
         {/* Section expertise */}
@@ -123,8 +75,8 @@ const About = () => {
           viewport={{ once: true }}
           className="mt-20"
         >
-          <h3 className="text-3xl font-bold text-center mb-12">
-            Notre <span className="gradient-text">Expertise</span>
+          <h3 className="text-3xl font-bold text-center mb-12 text-black">
+            Mon <span className="text-orange-500">Expertise</span>
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -137,13 +89,13 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="text-blue-400 mb-4 flex justify-center">
+                <div className="text-orange-500 mb-4 flex justify-center">
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-bold text-white mb-3">
+                <h4 className="text-xl font-bold text-black mb-3">
                   {item.title}
                 </h4>
-                <p className="text-white/70 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>

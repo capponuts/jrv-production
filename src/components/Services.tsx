@@ -1,50 +1,98 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Camera, Video, Plane, Heart, MapPin, Star } from 'lucide-react'
+
 
 const Services = () => {
   const services = [
     {
-      icon: <Camera size={40} />,
+      icon: '📸',
       title: 'Photographie',
-      description: 'Portraits, événements, mariages, et séances photo professionnelles avec un regard artistique unique.',
-      features: ['Portraits professionnels', 'Photographie d\'événements', 'Séances couple', 'Photographie corporate']
+      description: 'Des photos qui racontent vos passions, vos espaces, vos liens.',
+      subtext: 'Pour chaque projet, une approche naturelle et artistique, fidèle à votre univers.'
     },
     {
-      icon: <Video size={40} />,
+      icon: '🧱',
+      title: 'Architecture & Espaces',
+      description: 'Airbnb, bâtiments, commerces, monuments',
+      subtext: 'Des images qui subliment vos lieux, captées avec soin pour donner envie d\'y être.'
+    },
+    {
+      icon: '🐾',
+      title: 'Compagnons fidèles',
+      description: 'Chiens, chats, chevaux, animaux de compagnie',
+      subtext: 'Parce qu\'ils font partie de la famille, je capture leur énergie, leur regard, leur complicité.'
+    },
+    {
+      icon: '🌿',
+      title: 'Vie & Passions',
+      description: 'Pêche, chasse, artisanat, nature…',
+      subtext: 'Des photos simples et sincères qui racontent ce que vous vivez, sans mise en scène.'
+    },
+    {
+      icon: '💼',
+      title: 'Image de marque',
+      description: 'Pour les pros, créateurs, entrepreneurs',
+      subtext: 'Une image qui reflète votre univers — pas juste un portrait figé.'
+    },
+    {
+      icon: '🎬',
       title: 'Vidéographie',
-      description: 'Réalisation de films d\'entreprise, aftermovies, et vidéos promotionnelles de haute qualité.',
-      features: ['Films d\'entreprise', 'Aftermovies', 'Vidéos promotionnelles', 'Montage professionnel']
+      description: 'Films immersifs et authentiques autour d\'événements, de passions, d\'artisans et de lieux.',
+      subtext: 'Des vidéos pensées pour créer de l\'émotion, marquer les esprits et raconter une vraie histoire.'
     },
     {
-      icon: <Plane size={40} />,
+      icon: '🎧',
+      title: 'Aftermovies',
+      description: 'Mariages, festivals, concerts, soirées, événements pro…',
+      subtext: 'Des images intenses et rythmées pour faire revivre l\'ambiance.'
+    },
+    {
+      icon: '🔥',
+      title: 'Clips & contenus créatifs',
+      description: 'Artistes, musiciens, performeurs, créateurs…',
+      subtext: 'Pour mettre en valeur ton univers avec style, force et originalité.'
+    },
+    {
+      icon: '📍',
+      title: 'Mise en valeur de lieux & projets',
+      description: 'Airbnb, restaurants, ateliers, artisans, marques locales…',
+      subtext: 'Des vidéos qui racontent ton lieu ou ton savoir-faire avec une vraie âme.'
+    },
+    {
+      icon: '✂️',
+      title: 'Montage personnalisé',
+      description: 'Une approche artistique, adaptée à chaque projet.',
+      subtext: 'Avec sens du rythme, de la musique et de la narration.'
+    },
+    {
+      icon: '🚁',
       title: 'Drones FPV',
-      description: 'Spécialiste des drones FPV pour des prises de vue aériennes spectaculaires et immersives.',
-      features: ['Prises de vue aériennes', 'Survol d\'événements', 'Vidéos immersives', 'Perspectives uniques']
+      description: 'Des prises de vue aériennes immersives et dynamiques, pour un rendu unique et impactant.',
+      subtext: 'Spécialisé dans le pilotage de drones FPV, je capture des images spectaculaires qui mettent en valeur vos lieux, vos événements ou vos projets de manière originale.'
     },
     {
-      icon: <Heart size={40} />,
-      title: 'Mariages',
-      description: 'Capturer les moments les plus précieux de votre jour J avec sensibilité et créativité.',
-      features: ['Reportage complet', 'Drone pour cérémonie', 'Montage cinématographique', 'Livraison rapide']
-    },
-    {
-      icon: <MapPin size={40} />,
-      title: 'Événements',
-      description: 'Couverture complète de vos événements d\'entreprise, festivals, et manifestations.',
-      features: ['Événements corporate', 'Festivals', 'Concerts', 'Manifestations sportives']
-    },
-    {
-      icon: <Star size={40} />,
+      icon: '⭐',
       title: 'Prestations Premium',
-      description: 'Services haut de gamme avec équipement professionnel et post-production soignée.',
-      features: ['Étalonnage professionnel', 'Équipement haut de gamme', 'Délais respectés', 'Suivi personnalisé']
+      description: 'Une approche haut de gamme pour ceux qui veulent plus qu\'une simple vidéo.',
+      subtext: 'Ici, tout est pensé pour vous offrir un rendu cinématographique, avec un vrai soin du détail, du tournage à la post-prod.'
+    },
+    {
+      icon: '🎉',
+      title: 'Événements',
+      description: 'Captation vidéo professionnelle de vos événements culturels, sportifs ou d\'entreprise.',
+      subtext: 'Mon objectif : raconter l\'histoire de votre événement avec un œil créatif et une technique irréprochable.'
+    },
+    {
+      icon: '💍',
+      title: 'Mariages',
+      description: 'Un film sincère, élégant, et fidèle à votre histoire.',
+      subtext: 'Je vous accompagne tout au long de la journée avec discrétion et sensibilité, pour capter les émotions vraies, sans mise en scène forcée.'
     }
   ]
 
   return (
-    <section id="services" className="section-padding bg-gray-900 relative z-10">
+    <section id="services" className="section-padding bg-white relative z-10">
       <div className="container-custom">
         {/* Titre de section */}
         <motion.div
@@ -54,12 +102,11 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nos <span className="gradient-text">Services</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+            Mes <span className="text-orange-500">Services</span>
           </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Des prestations professionnelles adaptées à vos besoins, 
-            avec une expertise particulière dans les drones FPV
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Des prestations sur mesure pour capturer l'essentiel de vos moments et projets
           </p>
         </motion.div>
 
@@ -73,28 +120,23 @@ const Services = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className="glass-effect p-8 hover:bg-white/15 transition-all duration-300 group"
+              className="glass-effect p-8 hover:bg-orange-50 transition-all duration-300 group border border-gray-200"
             >
-              <div className="text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h3 className="text-2xl font-bold mb-4 text-black">
                 {service.title}
               </h3>
               
-              <p className="text-white/70 mb-6 leading-relaxed">
+              <p className="text-gray-700 mb-4 leading-relaxed font-medium">
                 {service.description}
               </p>
               
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                    <span className="text-white/80 text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {service.subtext}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -107,8 +149,8 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-lg text-white/80 mb-8">
-            Prêt à donner vie à votre projet ?
+          <p className="text-lg text-gray-700 mb-8">
+            Vous vivez le moment, je m'occupe du souvenir !
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Play, MapPin, Camera, Instagram, Youtube, Music } from 'lucide-react'
+import { MapPin, Music } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -24,7 +24,7 @@ const Hero = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
       </div>
 
       {/* Contenu principal */}
@@ -41,7 +41,7 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
           >
-            <span className="gradient-text">JRV Production</span>
+            <span className="text-orange-500">JRV Production</span>
           </motion.h1>
           
           <motion.p
@@ -59,7 +59,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
           >
-            <MapPin size={20} className="text-blue-400" />
+            <MapPin size={20} className="text-orange-500" />
             <span className="text-lg text-white/80">Vendée, Pays de la Loire</span>
           </motion.div>
 
@@ -69,54 +69,16 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.4 }}
           >
-            Spécialisé dans les <span className="text-blue-400 font-semibold">drones FPV</span> pour sublimer vos événements
-            <br />
-            Capturer l&apos;émotion sous tous les angles
+            Vous vivez le moment, je m'occupe du souvenir !
           </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.6 }}
-          >
-            <button className="btn-primary flex items-center space-x-2">
-              <Play size={20} />
-              <span>Voir le Portfolio</span>
-            </button>
-            <button className="btn-secondary flex items-center space-x-2">
-              <Camera size={20} />
-              <span>Demander un Devis</span>
-            </button>
-          </motion.div>
 
           {/* Réseaux sociaux */}
           <motion.div
-            className="flex items-center justify-center space-x-6 mt-8"
+            className="flex items-center justify-center mt-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.8 }}
           >
-            <motion.a
-              href="https://www.instagram.com/jrv.production/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300"
-            >
-              <Instagram size={20} />
-            </motion.a>
-            <motion.a
-              href="https://www.youtube.com/@JRV.production"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300"
-            >
-              <Youtube size={20} />
-            </motion.a>
             <motion.a
               href="https://www.tiktok.com/@jvrprode"
               target="_blank"
@@ -139,7 +101,7 @@ const Hero = () => {
         transition={{ duration: 1, delay: 2.2 }}
       >
         <div className="flex flex-col items-center space-y-2">
-          <span className="text-sm text-white/60">Découvrez nos services</span>
+          <span className="text-sm text-white/60">Explorez mon univers créatif</span>
           <div className="w-px h-8 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
           <motion.div
             animate={{ y: [0, 10, 0] }}

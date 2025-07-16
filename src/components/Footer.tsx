@@ -15,14 +15,15 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'Accueil', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'À propos', href: '#about' },
+    { name: 'Mes services', href: '#services' },
+    { name: 'Vidéo', href: '#video' },
+    { name: 'Photo', href: '#photo' },
+    { name: 'Qui je suis', href: '#about' },
     { name: 'Contact', href: '#contact' }
   ]
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800 relative z-10">
+    <footer className="bg-gray-100 border-t border-gray-300 relative z-10">
       <div className="container-custom">
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -41,11 +42,14 @@ const Footer = () => {
                   height={40}
                   className="h-10 w-auto"
                 />
-                <span className="text-xl font-bold gradient-text">JRV Production</span>
+                <div className="flex flex-col leading-tight">
+                  <span className="text-xl font-bold text-orange-500">JRV</span>
+                  <span className="text-sm font-semibold text-gray-700">Production</span>
+                </div>
               </div>
-              <p className="text-white/70 text-sm leading-relaxed mb-6">
-                Photographe et vidéaste professionnel spécialisé dans les drones FPV 
-                en Vendée, Pays de la Loire.
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                Vidéaste passionné basé en Vendée, spécialisé dans la capture 
+                d'émotions authentiques et de moments précieux.
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
@@ -93,8 +97,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
-              <ul className="space-y-2 text-sm text-white/70">
+              <h3 className="text-lg font-semibold text-black mb-4">Services</h3>
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>Photographie professionnelle</li>
                 <li>Vidéographie événementielle</li>
                 <li>Drone FPV spécialisé</li>
@@ -111,8 +115,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
-              <div className="space-y-3 text-sm text-white/70">
+              <h3 className="text-lg font-semibold text-black mb-4">Contact</h3>
+              <div className="space-y-3 text-sm text-gray-600">
                 <div className="flex items-center space-x-3">
                   <Mail size={16} />
                   <a href="mailto:jrv.production85@gmail.com" className="hover:text-white transition-colors">
@@ -135,14 +139,14 @@ const Footer = () => {
         </div>
 
         {/* Barre de copyright */}
-        <div className="border-t border-gray-800 py-6">
+        <div className="border-t border-gray-300 py-6">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-white/60 text-sm"
+              className="text-gray-500 text-sm"
             >
               © {currentYear} JRV Production. Tous droits réservés.
             </motion.div>

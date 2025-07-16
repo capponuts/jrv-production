@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #000000;
 }
 
 @layer base {
@@ -25,7 +25,7 @@
   }
   
   body {
-    @apply bg-black text-white antialiased;
+    @apply bg-white text-black antialiased;
   }
 }
 
@@ -51,15 +51,15 @@
   }
   
   .glass-effect {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-lg;
+    @apply bg-gray-100/80 backdrop-blur-md border border-gray-300 rounded-lg;
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105;
+    @apply bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105;
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-white/30 hover:border-white/60 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-white/10;
+    @apply bg-transparent border-2 border-orange-500 hover:border-orange-600 text-orange-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-orange-500;
   }
   
   .section-padding {
@@ -82,18 +82,19 @@
   
   /* Fix pour les options de select visibles */
   select option {
-    background-color: #1f2937 !important;
-    color: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
     padding: 8px 12px;
   }
   
   select option:hover {
-    background-color: #374151 !important;
+    background-color: #f3f4f6 !important;
   }
   
   /* Pour WebKit browsers (Chrome, Safari) */
   select {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    color: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db;
   }
 }

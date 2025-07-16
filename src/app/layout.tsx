@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { DM_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const dmSans = DM_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
@@ -34,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className="bg-black">
-      <body className={`${inter.className} bg-black text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#000000', color: '#ffffff'}}>
+    <html lang="fr" className="bg-white">
+      <body className={`${dmSans.className} bg-white text-black overflow-x-hidden min-h-screen`} style={{backgroundColor: '#ffffff', color: '#000000'}}>
         {children}
         <Analytics />
       </body>

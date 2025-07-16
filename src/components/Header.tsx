@@ -19,9 +19,11 @@ const Header = () => {
 
   const navItems = [
     { name: 'Accueil', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'À propos', href: '#about' },
+    { name: 'Mes services', href: '#services' },
+    { name: 'Vidéo', href: '#video' },
+    { name: 'Photo', href: '#photo' },
+    { name: 'Tarif', href: '#tarif' },
+    { name: 'Qui je suis et pourquoi je fais ça', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ]
 
@@ -31,7 +33,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'
+        scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-white/80 backdrop-blur-sm'
       }`}
     >
       <div className="container-custom">
@@ -39,7 +41,7 @@ const Header = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-3"
           >
             <Image
               src="/logo-jrv-production.png"
@@ -48,7 +50,10 @@ const Header = () => {
               height={50}
               className="h-12 w-auto"
             />
-            <span className="text-xl font-bold gradient-text">JRV Production</span>
+            <div className="flex flex-col leading-tight">
+              <span className="text-2xl font-bold text-orange-500">JRV</span>
+              <span className="text-sm font-semibold text-gray-700">Production</span>
+            </div>
           </motion.div>
 
           {/* Navigation Desktop */}
@@ -58,10 +63,10 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 whileHover={{ y: -2 }}
-                className="text-white/80 hover:text-white transition-colors duration-300 relative group"
+                className="text-gray-700 hover:text-orange-500 transition-colors duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
           </nav>
@@ -69,7 +74,7 @@ const Header = () => {
           {/* Menu Mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-gray-700 hover:text-orange-500 p-2"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -89,7 +94,7 @@ const Header = () => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-white/80 hover:text-white transition-colors duration-300 py-2"
+                  className="text-gray-700 hover:text-orange-500 transition-colors duration-300 py-2"
                 >
                   {item.name}
                 </a>

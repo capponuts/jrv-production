@@ -41,7 +41,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.7 }}
           >
             <Image
-              src="/logo-jrv-production.svg"
+              src="/logo-jrv-production.png"
               alt="JRV Production Logo"
               width={600}
               height={180}

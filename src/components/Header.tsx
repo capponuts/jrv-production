@@ -44,7 +44,7 @@ const Header = () => {
             className="flex items-center"
           >
             <Image
-              src="/logo-jrv-production.svg"
+              src="/logo-jrv-production.png"
               alt="JRV Production Logo"
               width={80}
               height={80}

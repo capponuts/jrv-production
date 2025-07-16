@@ -49,7 +49,7 @@ const Footer = () => {
             >
               <div className="flex items-center space-x-3 mb-4">
                 <Image
-                  src="/logo-jrv-production.svg"
+                  src="/logo-jrv-production.png"
                   alt="JRV Production Logo"
                   width={40}
                   height={40}

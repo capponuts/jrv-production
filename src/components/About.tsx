@@ -40,7 +40,7 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-              Qui je suis et pourquoi <span className="text-orange-500">je fais ça</span>
+              Qui <span className="text-orange-500">Suis-je</span> ?
             </h2>
             
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">

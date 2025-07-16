@@ -41,19 +41,15 @@ const Header = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3"
+            className="flex items-center"
           >
             <Image
-              src="/logo-jrv-production.png"
+              src="/logo-jrv-production.svg"
               alt="JRV Production Logo"
-              width={50}
-              height={50}
-              className="h-12 w-auto"
+              width={80}
+              height={80}
+              className="h-16 w-auto"
             />
-            <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-bold text-[#f17e22] font-['DM_Sans']">JRV</span>
-              <span className="text-sm font-semibold text-gray-300 font-['DM_Sans']">Production</span>
-            </div>
           </motion.div>
 
           {/* Navigation Desktop */}

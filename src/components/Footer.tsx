@@ -17,7 +17,7 @@ const Footer = () => {
           alt="TikTok"
           width={20}
           height={20}
-          className="w-5 h-5"
+          className="w-5 h-5 object-contain"
         />
       ), 
       url: 'https://www.tiktok.com/@jvrprode', 

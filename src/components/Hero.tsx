@@ -6,24 +6,24 @@ import { MapPin, Music } from 'lucide-react'
 const Hero = () => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Vidéo YouTube de fond */}
+      {/* Vidéo de fond locale */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <iframe
-          src="https://www.youtube.com/embed/kcfs1-ryKWE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&playlist=kcfs1-ryKWE&start=1&enablejsapi=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&end=999999"
-          className="absolute inset-0"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
             width: '300%',
             height: '300%',
             left: '-100%',
-            top: '-100%',
-            border: 'none',
-            outline: 'none',
-            pointerEvents: 'none'
+            top: '-100%'
           }}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        >
+          <source src="/Videohero.mp4" type="video/mp4" />
+          Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
         <div className="absolute inset-0 bg-black/40 z-10"></div>
       </div>
 

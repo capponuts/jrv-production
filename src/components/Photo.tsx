@@ -52,7 +52,7 @@ const Photo = () => {
             <span className="text-orange-500">Photographie</span> & Image
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Capturer l\'essentiel avec un regard artistique et authentique
+            Capturer l&apos;essentiel avec un regard artistique et authentique
           </p>
         </motion.div>
 

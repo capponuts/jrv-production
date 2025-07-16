@@ -33,7 +33,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-white/80 backdrop-blur-sm'
+        scrolled ? 'bg-gray-900/95 backdrop-blur-md shadow-2xl border-b border-gray-800' : 'bg-gray-900/80 backdrop-blur-sm'
       }`}
     >
       <div className="container-custom">
@@ -51,8 +51,8 @@ const Header = () => {
               className="h-12 w-auto"
             />
             <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-bold text-orange-500 font-['DM_Sans']">JRV</span>
-              <span className="text-sm font-semibold text-gray-700 font-['DM_Sans']">Production</span>
+              <span className="text-2xl font-bold text-[#f17e22] font-['DM_Sans']">JRV</span>
+              <span className="text-sm font-semibold text-gray-300 font-['DM_Sans']">Production</span>
             </div>
           </motion.div>
 
@@ -63,10 +63,10 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 whileHover={{ y: -2 }}
-                className="text-gray-700 hover:text-orange-500 transition-colors duration-300 relative group"
+                className="text-gray-300 hover:text-[#f17e22] transition-colors duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f17e22] transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
           </nav>
@@ -74,7 +74,7 @@ const Header = () => {
           {/* Menu Mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-700 hover:text-orange-500 p-2"
+            className="md:hidden text-gray-300 hover:text-[#f17e22] p-2"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -94,7 +94,7 @@ const Header = () => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 hover:text-orange-500 transition-colors duration-300 py-2"
+                  className="text-gray-300 hover:text-[#f17e22] transition-colors duration-300 py-2"
                 >
                   {item.name}
                 </a>

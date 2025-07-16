@@ -34,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className="bg-white">
-      <body className={`${dmSans.className} bg-white text-black overflow-x-hidden min-h-screen`} style={{backgroundColor: '#ffffff', color: '#000000'}}>
+    <html lang="fr" className="bg-gray-900">
+      <body className={`${dmSans.className} bg-gray-900 text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#111827', color: '#ffffff'}}>
         {children}
         <Analytics />
       </body>

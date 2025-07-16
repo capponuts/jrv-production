@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: #111827;
+  --foreground: #ffffff;
+  --primary: #f17e22;
+  --secondary: #004193;
 }
 
 @layer base {
@@ -25,7 +27,7 @@
   }
   
   body {
-    @apply bg-white text-black antialiased;
+    @apply bg-gray-900 text-white antialiased;
   }
 }
 
@@ -47,19 +49,19 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#f17e22] via-[#e65a1a] to-[#004193] bg-clip-text text-transparent;
   }
   
   .glass-effect {
-    @apply bg-gray-100/80 backdrop-blur-md border border-gray-300 rounded-lg;
+    @apply bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-lg shadow-xl;
   }
   
   .btn-primary {
-    @apply bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105;
+    @apply bg-gradient-to-r from-[#f17e22] to-[#e65a1a] hover:from-[#e65a1a] hover:to-[#d44a0a] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-orange-500 hover:border-orange-600 text-orange-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-orange-500;
+    @apply bg-transparent border-2 border-[#004193] hover:border-[#0056b3] text-[#004193] hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#004193] shadow-lg hover:shadow-xl;
   }
   
   .section-padding {

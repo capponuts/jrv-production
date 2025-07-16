@@ -21,7 +21,7 @@ const Services = () => {
       icon: '🐾',
       title: 'Compagnons fidèles',
       description: 'Chiens, chats, chevaux, animaux de compagnie',
-      subtext: 'Parce qu\'ils font partie de la famille, je capture leur énergie, leur regard, leur complicité.'
+      subtext: 'Parce qu&apos;ils font partie de la famille, je capture leur énergie, leur regard, leur complicité.'
     },
     {
       icon: '🌿',
@@ -38,14 +38,14 @@ const Services = () => {
     {
       icon: '🎬',
       title: 'Vidéographie',
-      description: 'Films immersifs et authentiques autour d\'événements, de passions, d\'artisans et de lieux.',
-      subtext: 'Des vidéos pensées pour créer de l\'émotion, marquer les esprits et raconter une vraie histoire.'
+      description: 'Films immersifs et authentiques autour d&apos;événements, de passions, d&apos;artisans et de lieux.',
+      subtext: 'Des vidéos pensées pour créer de l&apos;émotion, marquer les esprits et raconter une vraie histoire.'
     },
     {
       icon: '🎧',
       title: 'Aftermovies',
       description: 'Mariages, festivals, concerts, soirées, événements pro…',
-      subtext: 'Des images intenses et rythmées pour faire revivre l\'ambiance.'
+      subtext: 'Des images intenses et rythmées pour faire revivre l&apos;ambiance.'
     },
     {
       icon: '🔥',
@@ -74,14 +74,14 @@ const Services = () => {
     {
       icon: '⭐',
       title: 'Prestations Premium',
-      description: 'Une approche haut de gamme pour ceux qui veulent plus qu\'une simple vidéo.',
+      description: 'Une approche haut de gamme pour ceux qui veulent plus qu&apos;une simple vidéo.',
       subtext: 'Ici, tout est pensé pour vous offrir un rendu cinématographique, avec un vrai soin du détail, du tournage à la post-prod.'
     },
     {
       icon: '🎉',
       title: 'Événements',
-      description: 'Captation vidéo professionnelle de vos événements culturels, sportifs ou d\'entreprise.',
-      subtext: 'Mon objectif : raconter l\'histoire de votre événement avec un œil créatif et une technique irréprochable.'
+      description: 'Captation vidéo professionnelle de vos événements culturels, sportifs ou d&apos;entreprise.',
+      subtext: 'Mon objectif : raconter l&apos;histoire de votre événement avec un œil créatif et une technique irréprochable.'
     },
     {
       icon: '💍',
@@ -106,7 +106,7 @@ const Services = () => {
             Mes <span className="text-orange-500">Services</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Des prestations sur mesure pour capturer l'essentiel de vos moments et projets
+            Des prestations sur mesure pour capturer l&apos;essentiel de vos moments et projets
           </p>
         </motion.div>
 

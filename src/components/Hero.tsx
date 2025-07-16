@@ -35,7 +35,7 @@ const Hero = () => {
           className="max-w-4xl mx-auto"
         >
           <motion.div
-            className="mb-6"
+            className="mb-8"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
@@ -43,10 +43,25 @@ const Hero = () => {
             <Image
               src="/logo-jrv-production.png"
               alt="JRV Production Logo"
-              width={600}
-              height={180}
-              className="mx-auto h-40 md:h-56 w-auto"
+              width={700}
+              height={210}
+              className="mx-auto h-48 md:h-64 w-auto drop-shadow-2xl"
             />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="flex justify-center"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary text-lg px-10 py-4 shadow-2xl hover:shadow-orange-500/25"
+            >
+              Découvrir mes services
+            </motion.button>
           </motion.div>
 
 

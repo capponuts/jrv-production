@@ -36,7 +36,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-gray-100 border-t border-gray-300 relative z-10">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-black border-t border-gray-700/50 relative z-10">
       <div className="container-custom">
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -56,7 +56,7 @@ const Footer = () => {
                   className="h-10 w-auto"
                 />
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
                 Vidéaste passionné basé en Vendée, spécialisé dans la capture 
                 d&apos;émotions authentiques et de moments précieux.
               </p>
@@ -69,7 +69,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-gray-700 hover:text-orange-500 transition-all duration-300"
+                    className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-800 hover:from-orange-500 hover:to-orange-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
                   >
                     {social.icon}
                   </motion.a>
@@ -106,8 +106,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-lg font-semibold text-black mb-4">Services</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
+              <ul className="space-y-2 text-sm text-gray-300">
                 <li>Photographie professionnelle</li>
                 <li>Vidéographie événementielle</li>
                 <li>Drone FPV spécialisé</li>
@@ -124,14 +124,14 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-lg font-semibold text-black mb-4">Contact</h3>
-              <div className="space-y-3 text-sm text-gray-600">
+              <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
+              <div className="space-y-3 text-sm text-gray-300">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
                     <Mail size={16} className="text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-black">EMAIL</div>
+                    <div className="font-semibold text-white">EMAIL</div>
                     <a href="mailto:jrv.production85@gmail.com" className="hover:text-orange-500 transition-colors">
                       jrv.production85@gmail.com
                     </a>
@@ -142,7 +142,7 @@ const Footer = () => {
                     <Phone size={16} className="text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-black">Téléphone</div>
+                    <div className="font-semibold text-white">Téléphone</div>
                     <a href="tel:+33600000000" className="hover:text-orange-500 transition-colors">
                       +33 6 XX XX XX XX
                     </a>
@@ -153,7 +153,7 @@ const Footer = () => {
                     <MapPin size={16} className="text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-black">Localisation</div>
+                    <div className="font-semibold text-white">Localisation</div>
                     <span>Vendée, Pays de la Loire</span>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ const Footer = () => {
         </div>
 
         {/* Barre de copyright */}
-        <div className="border-t border-gray-300 py-6">
+        <div className="border-t border-gray-700/50 py-6">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
             <motion.div
               initial={{ opacity: 0 }}

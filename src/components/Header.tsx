@@ -32,8 +32,8 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-gray-900/95 backdrop-blur-md shadow-2xl border-b border-gray-800' : 'bg-gray-900/80 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-black/90 backdrop-blur-xl shadow-2xl border-b border-orange-500/20' : 'bg-black/60 backdrop-blur-lg'
       }`}
     >
       <div className="container-custom">
@@ -46,9 +46,9 @@ const Header = () => {
             <Image
               src="/logo-jrv-production.png"
               alt="JRV Production Logo"
-              width={80}
-              height={80}
-              className="h-16 w-auto"
+              width={100}
+              height={100}
+              className="h-20 w-auto transition-transform duration-300 hover:scale-110"
             />
           </motion.div>
 
@@ -59,10 +59,10 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 whileHover={{ y: -2 }}
-                className="text-gray-300 hover:text-[#f17e22] transition-colors duration-300 relative group"
+                className="text-gray-300 hover:text-[#f17e22] transition-all duration-300 relative group font-medium"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f17e22] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#f17e22] to-[#ff6b35] transition-all duration-300 group-hover:w-full rounded-full"></span>
               </motion.a>
             ))}
           </nav>

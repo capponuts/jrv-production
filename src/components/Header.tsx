@@ -18,13 +18,13 @@ const Header = () => {
   }, [])
 
   const navItems = [
-    { name: 'Accueil', href: '#home' },
-    { name: 'Mes services', href: '#services' },
-    { name: 'Vidéo', href: '#video' },
-    { name: 'Photo', href: '#photo' },
-    { name: 'Tarif', href: '#tarif' },
-    { name: 'Qui Suis-je ?', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Accueil', href: '/' },
+    { name: 'Mes services', href: '/#services' },
+    { name: 'Vidéo', href: '/video' },
+    { name: 'Photo', href: '/photo' },
+    { name: 'Tarif', href: '/tarif' },
+    { name: 'Qui Suis-je ?', href: '/#about' },
+    { name: 'Contact', href: '/#contact' },
   ]
 
   return (

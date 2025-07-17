@@ -187,7 +187,7 @@ export default function ContactPage() {
                   
                   {submitStatus === 'error' && (
                     <div className="bg-red-500/20 border border-red-500/50 rounded-xl p-4 text-red-400">
-                      ❌ Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement.
+                      ❌ Erreur lors de l&apos;envoi. Veuillez réessayer ou me contacter directement.
                     </div>
                   )}
 

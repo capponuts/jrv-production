@@ -1,0 +1,35 @@
+{
+  "name": "JRV Production - Photographe & Vidéaste Drone",
+  "short_name": "JRV Production",
+  "description": "Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#f17e22",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "categories": ["photography", "business", "lifestyle"],
+  "icons": [
+    {
+      "src": "/logo-jrv-production.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-jrv-production.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+} 

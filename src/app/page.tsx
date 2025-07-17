@@ -1,6 +1,38 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
+  description: 'Découvrez JRV Production, photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée. Mariages, événements, portraits et vidéos aériennes.',
+  keywords: 'photographe vendée, vidéaste drone, drone FPV, mariage vendée, événementiel vendée, portrait vendée, vidéographie vendée',
+  openGraph: {
+    title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
+    description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée. Mariages, événements, portraits et vidéos aériennes.',
+    url: 'https://jrv-production.vercel.app',
+    siteName: 'JRV Production',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
+    description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée',
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: '/',
+  },
+}
 
 export default function Home() {
   return (
@@ -31,6 +63,7 @@ export default function Home() {
               width={700}
               height={210}
               className="mx-auto h-48 md:h-64 w-auto drop-shadow-2xl"
+              priority
             />
           </div>
 
@@ -50,6 +83,7 @@ export default function Home() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90"
+                aria-label="Suivez-nous sur Instagram"
               >
                 <Image
                   src="/instagram.svg"
@@ -65,6 +99,7 @@ export default function Home() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90"
+                aria-label="Regardez nos vidéos sur YouTube"
               >
                 <Image
                   src="/youtube.svg"
@@ -80,6 +115,7 @@ export default function Home() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90"
+                aria-label="Suivez-nous sur TikTok"
               >
                 <Image
                   src="/tiktok.webp"

@@ -37,17 +37,17 @@ export default function VideoPage() {
 
   const videoExamples = [
     {
-      title: 'Film événementiel - Mariage',
-      description: 'Captures d\'émotions et moments précieux',
+      title: 'Film événementiel - Mariage en Vendée',
+      description: 'Captures d\'émotions et moments précieux d\'un mariage',
       videoId: '6gZ-PhBmEVw',
-      thumbnail: 'https://img.youtube.com/vi/6gZ-PhBmEVw/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/6gZ-PhBmEVw/hqdefault.jpg',
       category: 'Événementiel'
     },
     {
-      title: 'Drone FPV - Aventure',
-      description: 'Vues aériennes immersives et dynamiques',
+      title: 'Drone FPV - Aventure aérienne',
+      description: 'Vues aériennes immersives et dynamiques avec drone FPV',
       videoId: 'xAzRwo7EJEc',
-      thumbnail: 'https://img.youtube.com/vi/xAzRwo7EJEc/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/xAzRwo7EJEc/hqdefault.jpg',
       category: 'Drone FPV'
     }
   ]

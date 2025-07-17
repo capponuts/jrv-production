@@ -5,13 +5,76 @@ import Link from 'next/link'
 import { ArrowLeft, Mail, Phone, MapPin, Send } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
+import { useState } from 'react'
+import emailjs from '@emailjs/browser'
+import { EMAILJS_CONFIG } from '../../lib/emailjs-config'
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const socialLinks = [
     { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
     { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' },
     { icon: <Image src="/tiktok.webp" alt="TikTok" width={24} height={24} className="w-6 h-6 object-contain" />, url: 'https://www.tiktok.com/@jvrprode', name: 'TikTok' }
   ]
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // Configuration EmailJS
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        from_phone: formData.phone,
+        service_type: formData.service,
+        message: formData.message,
+        to_email: 'jrv.production85@gmail.com'
+      }
+
+      // Envoi de l'email via EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      )
+
+      setSubmitStatus('success')
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      })
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
@@ -137,16 +200,32 @@ export default function ContactPage() {
               <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
                 <h2 className="text-2xl font-semibold mb-6">Envoyez-moi un message</h2>
                 
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Messages de statut */}
+                  {submitStatus === 'success' && (
+                    <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-4 text-green-400">
+                      ✅ Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
+                    </div>
+                  )}
+                  
+                  {submitStatus === 'error' && (
+                    <div className="bg-red-500/20 border border-red-500/50 rounded-xl p-4 text-red-400">
+                      ❌ Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement.
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
-                        Prénom
+                        Prénom *
                       </label>
                       <input
                         type="text"
                         id="firstName"
                         name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
                         className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                         placeholder="Votre prénom"
                       />
@@ -154,12 +233,15 @@ export default function ContactPage() {
                     
                     <div>
                       <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
-                        Nom
+                        Nom *
                       </label>
                       <input
                         type="text"
                         id="lastName"
                         name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
                         className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                         placeholder="Votre nom"
                       />
@@ -168,12 +250,15 @@ export default function ContactPage() {
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email
+                      Email *
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                       placeholder="votre@email.com"
                     />
@@ -187,18 +272,23 @@ export default function ContactPage() {
                       type="tel"
                       id="phone"
                       name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
-                      placeholder="+33 6 XX XX XX XX"
+                      placeholder="06 72 75 19 54"
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
-                      Type de service
+                      Type de service *
                     </label>
                     <select
                       id="service"
                       name="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                     >
                       <option value="">Sélectionnez un service</option>
@@ -212,11 +302,14 @@ export default function ContactPage() {
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                      Message
+                      Message *
                     </label>
                     <textarea
                       id="message"
                       name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
                       rows={5}
                       className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none"
                       placeholder="Décrivez votre projet..."
@@ -225,12 +318,26 @@ export default function ContactPage() {
                   
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${
+                      isSubmitting 
+                        ? 'bg-gray-600 cursor-not-allowed' 
+                        : 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700'
+                    } text-white`}
                   >
-                    <Send className="w-5 h-5" />
-                    <span>Envoyer le message</span>
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Envoi en cours...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        <span>Envoyer le message</span>
+                      </>
+                    )}
                   </motion.button>
                 </form>
               </div>

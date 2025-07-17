@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -25,11 +26,30 @@ const Footer = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="flex flex-wrap justify-center gap-6 text-gray-400 text-sm"
+              className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6"
             >
-              <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-              <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
-              <a href="#" className="hover:text-white transition-colors">CGV</a>
+              <div className="flex space-x-6 text-white/60 text-sm">
+                <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
+                <a href="#" className="hover:text-white transition-colors">CGV</a>
+              </div>
+              
+              {/* Site créé par Kapinfo */}
+              <motion.a
+                href="https://kapinfo.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center space-x-2 text-white/60 hover:text-white transition-all duration-300 text-sm"
+              >
+                <span>Site web créé par</span>
+                <Image
+                  src="/logo-kapinfo.svg"
+                  alt="Kapinfo Logo"
+                  width={60}
+                  height={20}
+                  className="h-5 w-auto"
+                />
+              </motion.a>
             </motion.div>
           </div>
         </div>

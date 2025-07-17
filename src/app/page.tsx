@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDown, Camera, Video, DollarSign } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -43,25 +43,52 @@ export default function Home() {
               </button>
             </Link>
 
-            {/* Menu rapide avec icônes */}
+            {/* Réseaux sociaux */}
             <div className="flex flex-wrap justify-center gap-4 mt-8 animate-fade-in-delay-2">
-              <Link href="/photo">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90">
-                  <Camera className="w-8 h-8 text-white" />
-                </div>
-              </Link>
+              <a 
+                href="https://www.instagram.com/jrv.production/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90"
+              >
+                <Image
+                  src="/instagram.svg"
+                  alt="Instagram"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 text-white"
+                />
+              </a>
               
-              <Link href="/video">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90">
-                  <Video className="w-8 h-8 text-white" />
-                </div>
-              </Link>
+              <a 
+                href="https://www.youtube.com/@JRV.production" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90"
+              >
+                <Image
+                  src="/youtube.svg"
+                  alt="YouTube"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 text-white"
+                />
+              </a>
               
-              <Link href="/tarif">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90">
-                  <DollarSign className="w-8 h-8 text-white" />
-                </div>
-              </Link>
+              <a 
+                href="https://www.tiktok.com/@jvrprode" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110 active:scale-90"
+              >
+                <Image
+                  src="/tiktok.webp"
+                  alt="TikTok"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+              </a>
             </div>
           </div>
         </div>

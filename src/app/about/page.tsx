@@ -78,8 +78,14 @@ export default function AboutPage() {
               </div>
               
               <div className="flex justify-center">
-                <div className="w-64 h-64 bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl flex items-center justify-center">
-                  <Camera className="w-16 h-16 text-white" />
+                <div className="w-64 h-64 rounded-3xl overflow-hidden">
+                  <Image
+                    src="/Jeremy-rondeau-jrvproduction.png"
+                    alt="Jérémy Rondeau - JRV Production"
+                    width={256}
+                    height={256}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

@@ -37,17 +37,17 @@ export default function VideoPage() {
 
   const videoExamples = [
     {
-      title: 'Film événementiel - Mariage en Vendée',
+      title: 'Drone FPV - Le lac Gué Gorand - Vue aerienne',
       description: 'Captures d\'émotions et moments précieux d\'un mariage',
       videoId: '6gZ-PhBmEVw',
-      thumbnail: 'https://img.youtube.com/vi/6gZ-PhBmEVw/hqdefault.jpg',
+      thumbnail: '/guegorand.png',
       category: 'Événementiel'
     },
     {
-      title: 'Drone FPV - Aventure aérienne',
+      title: 'Drone FPV - Vieux Château féodal de Commequiers - Vue aerienne',
       description: 'Vues aériennes immersives et dynamiques avec drone FPV',
       videoId: 'xAzRwo7EJEc',
-      thumbnail: 'https://img.youtube.com/vi/xAzRwo7EJEc/hqdefault.jpg',
+      thumbnail: '/commequiers.png',
       category: 'Drone FPV'
     }
   ]

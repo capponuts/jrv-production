@@ -6,8 +6,6 @@ import { ArrowLeft, Mail, Phone, MapPin, Send } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 import { useState } from 'react'
-import emailjs from '@emailjs/browser'
-import { EMAILJS_CONFIG } from '../../lib/emailjs-config'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -40,25 +38,8 @@ export default function ContactPage() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    try {
-      // Configuration EmailJS
-      const templateParams = {
-        from_name: `${formData.firstName} ${formData.lastName}`,
-        from_email: formData.email,
-        from_phone: formData.phone,
-        service_type: formData.service,
-        message: formData.message,
-        to_email: 'jrv.production85@gmail.com'
-      }
-
-      // Envoi de l'email via EmailJS
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      )
-
+    // Simulation d'envoi pour l'instant
+    setTimeout(() => {
       setSubmitStatus('success')
       setFormData({
         firstName: '',
@@ -68,12 +49,8 @@ export default function ContactPage() {
         service: '',
         message: ''
       })
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error)
-      setSubmitStatus('error')
-    } finally {
       setIsSubmitting(false)
-    }
+    }, 2000)
   }
 
   return (

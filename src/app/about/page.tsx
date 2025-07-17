@@ -127,11 +127,75 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Section contact */}
+        {/* Section réseaux sociaux */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
+          className="max-w-4xl mx-auto mb-12"
+        >
+          <h2 className="text-2xl font-semibold text-center mb-8">Suivez mon travail</h2>
+          <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
+            <div className="flex justify-center space-x-8">
+              <motion.a
+                href="https://www.instagram.com/jrv.production/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
+              >
+                <Image
+                  src="/instagram.svg"
+                  alt="Instagram"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                />
+              </motion.a>
+              
+              <motion.a
+                href="https://www.youtube.com/@JRV.production"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
+              >
+                <Image
+                  src="/youtube.svg"
+                  alt="YouTube"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                />
+              </motion.a>
+              
+              <motion.a
+                href="https://www.tiktok.com/@jvrprode"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
+              >
+                <Image
+                  src="/tiktok.webp"
+                  alt="TikTok"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+              </motion.a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Section contact */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           className="max-w-4xl mx-auto"
         >
           <h2 className="text-2xl font-semibold text-center mb-8">Me contacter</h2>
@@ -155,8 +219,8 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Téléphone</p>
-                  <a href="tel:+33600000000" className="text-white hover:text-orange-400 transition-colors">
-                    +33 6 XX XX XX XX
+                  <a href="tel:+33672751954" className="text-white hover:text-orange-400 transition-colors">
+                    06 72 75 19 54
                   </a>
                 </div>
               </div>

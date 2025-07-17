@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Mail, Phone, MapPin, Send, Instagram, Youtube } from 'lucide-react'
+import { ArrowLeft, Mail, Phone, MapPin, Send } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 
 export default function ContactPage() {
   const socialLinks = [
-    { icon: <Instagram className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
-    { icon: <Youtube className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
+    { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
+    { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
   ]
 
   return (

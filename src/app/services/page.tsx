@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Camera, Video, DollarSign, User, Mail, Instagram, Youtube } from 'lucide-react'
+import { ArrowLeft, Camera, Video, DollarSign, User, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 
@@ -46,8 +46,8 @@ export default function ServicesPage() {
   ]
 
   const socialLinks = [
-    { icon: <Instagram className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
-    { icon: <Youtube className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
+    { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
+    { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
   ]
 
   return (
@@ -97,7 +97,7 @@ export default function ServicesPage() {
         </motion.div>
 
         {/* Grille des services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
           {services.map((service, index) => (
             <motion.div
               key={index}

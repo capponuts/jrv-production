@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Camera, Instagram, Youtube } from 'lucide-react'
+import { ArrowLeft, Camera } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 
 export default function PhotoPage() {
   const socialLinks = [
-    { icon: <Instagram className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
-    { icon: <Youtube className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
+    { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
+    { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
   ]
 
   const photoServices = [
@@ -36,6 +36,33 @@ export default function PhotoPage() {
       description: 'Photographie d\'entreprise et événements professionnels',
       image: '/placeholder-corporate.jpg',
       color: 'from-green-500 to-green-600'
+    }
+  ]
+
+  const photoExamples = [
+    {
+      title: 'Mariage en Vendée',
+      description: 'Captures d\'émotions authentiques',
+      image: '/examples/wedding-1.jpg',
+      category: 'Mariage'
+    },
+    {
+      title: 'Événement corporate',
+      description: 'Photographie professionnelle',
+      image: '/examples/event-1.jpg',
+      category: 'Corporate'
+    },
+    {
+      title: 'Portrait artistique',
+      description: 'Séance photo créative',
+      image: '/examples/portrait-1.jpg',
+      category: 'Portrait'
+    },
+    {
+      title: 'Cérémonie de mariage',
+      description: 'Moments précieux immortalisés',
+      image: '/examples/wedding-2.jpg',
+      category: 'Mariage'
     }
   ]
 
@@ -115,14 +142,56 @@ export default function PhotoPage() {
           ))}
         </div>
 
+        {/* Exemples de photos */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-6xl mx-auto mb-12"
+        >
+          <h2 className="text-2xl font-semibold text-center mb-8">Découvrez mon travail</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {photoExamples.map((example, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                className="group"
+              >
+                <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden hover:border-orange-500/50 transition-all duration-300">
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={example.image}
+                      alt={example.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4">
+                      <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {example.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-white mb-2">{example.title}</h3>
+                    <p className="text-gray-300 text-sm">{example.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Section réseaux sociaux */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl font-semibold mb-6">Découvrez mon travail</h2>
+          <h2 className="text-2xl font-semibold mb-6">Suivez mon travail</h2>
           <div className="flex justify-center space-x-6">
             {socialLinks.map((social, index) => (
               <motion.a
@@ -144,7 +213,7 @@ export default function PhotoPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
           className="text-center"
         >
           <Link href="/contact">

@@ -67,13 +67,13 @@ export default function AboutPage() {
                   JRV Production
                 </h2>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Vidéaste passionné basé en Vendée, je me spécialise dans la capture d'émotions authentiques 
+                  Vidéaste passionné basé en Vendée, je me spécialise dans la capture d&apos;émotions authentiques 
                   et de moments précieux. Mon expertise en drones FPV me permet de créer des perspectives 
                   uniques et des récits visuels immersifs.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
                   Que ce soit pour un mariage, un événement corporate ou une séance photo, 
-                  je m'engage à sublimer vos moments les plus importants avec créativité et professionnalisme.
+                  je m&apos;engage à sublimer vos moments les plus importants avec créativité et professionnalisme.
                 </p>
               </div>
               
@@ -102,9 +102,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-semibold">Photographie</h3>
               </div>
-              <p className="text-gray-300 text-sm">
-                Captures d'instants uniques, portraits professionnels et photographie événementielle
-              </p>
+                              <p className="text-gray-300 text-sm">
+                  Captures d&apos;instants uniques, portraits professionnels et photographie événementielle
+                </p>
             </div>
             
             <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">

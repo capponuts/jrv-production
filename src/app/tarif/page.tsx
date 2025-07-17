@@ -208,7 +208,7 @@ export default function TarifPage() {
           className="text-center"
         >
           <div className="bg-gradient-to-r from-orange-500/10 to-orange-600/10 border border-orange-500/20 rounded-3xl p-8 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-semibold mb-4">Besoin d'un devis personnalisé ?</h2>
+            <h2 className="text-2xl font-semibold mb-4">Besoin d&apos;un devis personnalisé ?</h2>
             <p className="text-gray-300 mb-6">
               Chaque projet est unique. Contactez-moi pour discuter de vos besoins spécifiques.
             </p>

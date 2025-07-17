@@ -107,4 +107,43 @@
     color: #000000 !important;
     border: 1px solid #d1d5db;
   }
+  
+  /* Animations personnalisées */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out 0.5s both;
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeIn 1s ease-out 1.2s both;
+  }
+  
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 1s ease-out 1.5s both;
+  }
+  
+  .animate-fade-in-scale {
+    animation: fadeInScale 1s ease-out 0.7s both;
+  }
 }

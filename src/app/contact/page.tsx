@@ -54,7 +54,7 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Parlons de votre projet et créons ensemble quelque chose d'extraordinaire
+            Parlons de votre projet et créons ensemble quelque chose d&apos;extraordinaire
           </p>
         </motion.div>
 

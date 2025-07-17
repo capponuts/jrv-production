@@ -81,7 +81,7 @@ export default function PhotoPage() {
             Photographie
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Captures d'instants uniques et de moments précieux avec créativité et professionnalisme
+            Captures d&apos;instants uniques et de moments précieux avec créativité et professionnalisme
           </p>
         </motion.div>
 

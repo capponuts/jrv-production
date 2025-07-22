@@ -10,47 +10,47 @@ export default function CorporatePage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // Images générées pour la galerie corporate
+  // Images générées par IA pour corporate
   const images = [
     {
-      src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=800&fit=crop',
-      alt: 'Équipe en réunion collaborative',
-      description: 'Dynamique d\'équipe et collaboration créative'
+      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop',
+      alt: 'Équipe corporate moderne',
+      description: 'Portraits d\'équipe professionnels et dynamiques'
     },
     {
-      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop',
-      alt: 'Innovation et brainstorming',
-      description: 'L\'innovation naît de l\'échange et du partage d\'idées'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=800&fit=crop',
-      alt: 'Valeurs d\'entreprise et leadership',
-      description: 'Leadership bienveillant et valeurs humaines'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=800&fit=crop',
-      alt: 'Esprit d\'équipe et confiance',
-      description: 'La confiance mutuelle, fondation du succès collectif'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=800&fit=crop',
-      alt: 'Formation et développement',
-      description: 'Investissement dans le développement humain'
+      src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=800&fit=crop',
+      alt: 'Réunion d\'entreprise',
+      description: 'Captation de réunions et événements d\'entreprise'
     },
     {
       src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop',
-      alt: 'Diversité et inclusion',
-      description: 'La richesse de la diversité au service de l\'innovation'
+      alt: 'Portrait professionnel',
+      description: 'Portraits individuels pour image de marque'
     },
     {
-      src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&h=800&fit=crop',
-      alt: 'Célébration des succès',
-      description: 'Reconnaissance et célébration des accomplissements'
+      src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop',
+      alt: 'Espace de travail moderne',
+      description: 'Photographie d\'espaces de travail et bureaux'
     },
     {
-      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop',
-      alt: 'Environnement de travail inspirant',
-      description: 'Espaces de travail favorisant créativité et bien-être'
+      src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop',
+      alt: 'Événement corporate',
+      description: 'Conférences et événements professionnels'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&h=800&fit=crop',
+      alt: 'Présentation en entreprise',
+      description: 'Captation de présentations et formations'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
+      alt: 'Networking professionnel',
+      description: 'Événements de networking et rencontres business'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop',
+      alt: 'Innovation et créativité',
+      description: 'Sessions de brainstorming et créativité en entreprise'
     }
   ]
 
@@ -120,7 +120,7 @@ export default function CorporatePage() {
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="parallax absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&h=1080&fit=crop"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop"
             alt="Hero Corporate"
             fill
             className="object-cover"
@@ -139,11 +139,11 @@ export default function CorporatePage() {
               <span className="text-2xl">🏢</span>
             </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-indigo-600 bg-clip-text text-transparent">
             Corporate
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Les dynamiques humaines au service de l&apos;innovation
+            Les dynamiques humaines au service de l\'innovation
           </p>
         </motion.div>
       </div>

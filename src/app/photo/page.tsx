@@ -2,11 +2,15 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
+import { useState, useEffect } from 'react'
 
 export default function PhotoPage() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
   const socialLinks = [
     { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
     { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
@@ -47,50 +51,99 @@ export default function PhotoPage() {
     }
   ]
 
-  const photoExamples = [
+  // Galerie d'images pour la navigation horizontale
+  const galleryImages = [
     {
-      title: 'Mariage en Vendée',
-      description: 'Captures d\'émotions authentiques',
-      image: '/examples/wedding-1.jpg',
-      category: 'Mariage'
+      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
+      alt: 'Mariage romantique',
+      category: 'Événements & Mariages'
     },
     {
-      title: 'Événement corporate',
-      description: 'Photographie professionnelle',
-      image: '/examples/event-1.jpg',
+      src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop',
+      alt: 'Portrait artistique',
+      category: 'Portraits'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop',
+      alt: 'Architecture moderne',
+      category: 'Architecture & Espaces'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop',
+      alt: 'Équipe corporate',
       category: 'Corporate'
     },
     {
-      title: 'Portrait artistique',
-      description: 'Séance photo créative',
-      image: '/examples/portrait-1.jpg',
-      category: 'Portrait'
+      src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&h=800&fit=crop',
+      alt: 'Passions et loisirs',
+      category: 'Liens & Passions'
     },
     {
-      title: 'Cérémonie de mariage',
-      description: 'Moments précieux immortalisés',
-      image: '/examples/wedding-2.jpg',
-      category: 'Mariage'
+      src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop',
+      alt: 'Événement festif',
+      category: 'Événements'
     }
   ]
 
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+  }
+
+  // Navigation par molette
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      if (e.deltaY > 0) {
+        nextImage()
+      } else {
+        prevImage()
+      }
+    }
+
+    const galleryElement = document.getElementById('photo-gallery')
+    if (galleryElement) {
+      galleryElement.addEventListener('wheel', handleWheel, { passive: false })
+    }
+
+    return () => {
+      if (galleryElement) {
+        galleryElement.removeEventListener('wheel', handleWheel)
+      }
+    }
+  }, [])
+
+  // Auto-play
+  useEffect(() => {
+    if (!isAutoPlaying) return
+
+    const interval = setInterval(() => {
+      nextImage()
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying, currentImageIndex])
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
-      {/* Header mobile */}
-      <div className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50">
+      {/* Header */}
+      <div className="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/50">
         <div className="flex items-center justify-between p-4">
-          <Link href="/services">
+          <Link href="/">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm">Retour</span>
+              <span className="text-sm">Retour à l'accueil</span>
             </motion.button>
           </Link>
           
-          <div className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <Image
               src="/logo-jrv-production.png"
               alt="JRV Production"
@@ -98,9 +151,9 @@ export default function PhotoPage() {
               height={36}
               className="h-8 w-auto"
             />
-          </div>
+          </Link>
           
-          <div className="w-20"></div>
+          <div className="w-32"></div>
         </div>
       </div>
 
@@ -121,6 +174,93 @@ export default function PhotoPage() {
           <p className="text-gray-300 text-base max-w-2xl mx-auto">
             Pour chaque projet, une approche naturelle et artistique, fidèle à votre univers.
           </p>
+        </motion.div>
+
+        {/* Galerie horizontale principale */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-16"
+        >
+          <div 
+            id="photo-gallery"
+            className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden bg-gray-800"
+          >
+            {/* Image principale */}
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={galleryImages[currentImageIndex].src}
+                alt={galleryImages[currentImageIndex].alt}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </motion.div>
+
+            {/* Contrôles de navigation */}
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+
+            {/* Informations de l'image */}
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {galleryImages[currentImageIndex].alt}
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  {galleryImages[currentImageIndex].category}
+                </p>
+                <div className="flex items-center justify-between mt-3">
+                  <span className="text-gray-400 text-sm">
+                    {currentImageIndex + 1} / {galleryImages.length}
+                  </span>
+                  <button
+                    onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                      isAutoPlaying 
+                        ? 'bg-orange-500 text-white' 
+                        : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                    }`}
+                  >
+                    {isAutoPlaying ? 'Pause' : 'Lecture'}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Indicateurs de navigation */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+              {galleryImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex 
+                      ? 'bg-orange-500 scale-125' 
+                      : 'bg-white/50 hover:bg-white/70'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* Services photo */}
@@ -177,89 +317,29 @@ export default function PhotoPage() {
           ))}
         </div>
 
-        {/* Exemples de photos */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-6xl mx-auto mb-12"
-        >
-          <h2 className="text-2xl font-semibold text-center mb-8">Découvrez mon travail</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {photoExamples.map((example, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="group"
-              >
-                <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden hover:border-orange-500/50 transition-all duration-300">
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={example.image}
-                      alt={example.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4">
-                      <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {example.category}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-white mb-2">{example.title}</h3>
-                    <p className="text-gray-300 text-sm">{example.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Section réseaux sociaux */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
         >
-          <h2 className="text-2xl font-semibold mb-6">Suivez mon travail</h2>
+          <h3 className="text-xl font-semibold mb-6">Suivez mon travail</h3>
           <div className="flex justify-center space-x-6">
-            {socialLinks.map((social, index) => (
+            {socialLinks.map((link, index) => (
               <motion.a
                 key={index}
-                href={social.url}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
+                className="w-12 h-12 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300"
               >
-                {social.icon}
+                {link.icon}
               </motion.a>
             ))}
           </div>
-        </motion.div>
-
-        {/* CTA Contact */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-          className="text-center"
-        >
-          <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
-            >
-              Discutons de votre projet photo
-            </motion.button>
-          </Link>
         </motion.div>
       </div>
 

@@ -54,49 +54,44 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* Animation d'intro du logo */}
-      <AnimatePresence>
-        {!isIntroComplete && (
-          <motion.div
-            className="absolute inset-0 z-30 flex items-center justify-center"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.div
-              initial={{ 
-                scale: 0.1,
-                opacity: 0,
-                y: 0
-              }}
-              animate={{ 
-                scale: [0.1, 1.5, 1],
-                opacity: [0, 1, 1],
-                y: [0, -100, 0]
-              }}
-              transition={{ 
-                duration: 3,
-                times: [0, 0.5, 1],
-                ease: "easeOut"
-              }}
-              className="relative"
-            >
-              <Image
-                src="/logo-jrv-production.png"
-                alt="JRV Production Logo"
-                width={700}
-                height={210}
-                className="h-48 md:h-64 w-auto drop-shadow-2xl"
-                priority
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Contenu principal */}
+      {/* Logo principal - reste visible en permanence */}
       <motion.div 
-        className="relative z-20 text-center px-4 max-w-6xl mx-auto"
+        className="absolute inset-0 z-20 flex items-center justify-center"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+      >
+        <motion.div
+          initial={{ 
+            scale: 0.1,
+            opacity: 0,
+            y: 0
+          }}
+          animate={{ 
+            scale: isIntroComplete ? 1 : [0.1, 1.5, 1],
+            opacity: [0, 1, 1],
+            y: isIntroComplete ? -100 : [0, -100, 0]
+          }}
+          transition={{ 
+            duration: 3,
+            times: [0, 0.5, 1],
+            ease: "easeOut"
+          }}
+          className="relative"
+        >
+          <Image
+            src="/logo-jrv-production.png"
+            alt="JRV Production Logo"
+            width={700}
+            height={210}
+            className="h-48 md:h-64 w-auto drop-shadow-2xl"
+            priority
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Contenu principal avec réseaux sociaux */}
+      <motion.div 
+        className="relative z-30 text-center px-4 max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 50 }}
         animate={{ 
           opacity: isIntroComplete ? 1 : 0,
@@ -105,26 +100,6 @@ export default function Home() {
         transition={{ duration: 0.8, delay: 0.5 }}
       >
         <div className="max-w-4xl mx-auto">
-          {/* Logo final */}
-          <motion.div 
-            className="mb-12"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ 
-              scale: isIntroComplete ? 1 : 0.8,
-              opacity: isIntroComplete ? 1 : 0
-            }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <Image
-              src="/logo-jrv-production.png"
-              alt="JRV Production Logo"
-              width={700}
-              height={210}
-              className="mx-auto h-48 md:h-64 w-auto drop-shadow-2xl"
-              priority
-            />
-          </motion.div>
-
           {/* CTA Principal et Réseaux sociaux - apparaissent ensemble */}
           <motion.div 
             className="flex flex-col items-center space-y-6"

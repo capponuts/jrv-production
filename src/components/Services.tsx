@@ -128,8 +128,8 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Dépliants des services */}
-        <div className="max-w-4xl mx-auto space-y-4">
+        {/* Dépliants des services harmonisés */}
+        <div className="max-w-4xl mx-auto space-y-6">
           {serviceCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
@@ -137,22 +137,25 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               viewport={{ once: true }}
-              className="border border-gray-200 rounded-lg overflow-hidden"
+              className="glass-effect border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              {/* En-tête du dépliant */}
+              {/* En-tête du dépliant harmonisé */}
               <button
                 onClick={() => setOpenService(openService === categoryIndex ? null : categoryIndex)}
-                className="w-full p-6 bg-white hover:bg-gray-50 transition-colors duration-300 flex items-center justify-between text-left"
+                className="w-full p-8 bg-gradient-to-r from-gray-50 to-white hover:from-gray-100 hover:to-gray-50 transition-all duration-300 flex items-center justify-between text-left border-b border-gray-200"
               >
-                <h3 className="text-xl font-bold text-black">{category.title}</h3>
+                <h3 className="text-2xl font-bold text-black flex items-center space-x-3">
+                  <span className="text-3xl">{category.title.split(' ')[0]}</span>
+                  <span>{category.title.split(' ').slice(1).join(' ')}</span>
+                </h3>
                 {openService === categoryIndex ? (
-                  <ChevronUp size={24} className="text-orange-500" />
+                  <ChevronUp size={28} className="text-orange-500" />
                 ) : (
-                  <ChevronDown size={24} className="text-orange-500" />
+                  <ChevronDown size={28} className="text-orange-500" />
                 )}
               </button>
 
-              {/* Contenu du dépliant */}
+              {/* Contenu du dépliant harmonisé */}
               <motion.div
                 initial={false}
                 animate={{
@@ -162,22 +165,22 @@ const Services = () => {
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="overflow-hidden"
               >
-                <div className="p-6 bg-gray-50 border-t border-gray-200">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-8 bg-gradient-to-br from-gray-50 to-white">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {category.services.map((service, serviceIndex) => (
                       <motion.div
                         key={serviceIndex}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: serviceIndex * 0.1 }}
-                        className="bg-white p-4 rounded-lg border border-gray-200 hover:border-orange-300 transition-colors duration-300"
+                        className="bg-white p-6 rounded-xl border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group"
                       >
-                        <div className="flex items-start space-x-3">
-                          <div className="text-2xl">{service.icon}</div>
+                        <div className="flex items-start space-x-4">
+                          <div className="text-3xl group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
                           <div className="flex-1">
-                            <h4 className="font-bold text-black mb-2">{service.title}</h4>
-                            <p className="text-gray-700 text-sm font-medium mb-2">{service.description}</p>
-                            <p className="text-gray-600 text-xs leading-relaxed">{service.subtext}</p>
+                            <h4 className="font-bold text-black mb-3 text-lg">{service.title}</h4>
+                            <p className="text-gray-700 text-sm font-medium mb-3 leading-relaxed">{service.description}</p>
+                            <p className="text-gray-600 text-sm leading-relaxed">{service.subtext}</p>
                           </div>
                         </div>
                       </motion.div>

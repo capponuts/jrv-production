@@ -10,47 +10,47 @@ export default function LiensPassionsPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // Images générées pour la galerie liens et passions
+  // Images générées par IA pour liens et passions
   const images = [
     {
-      src: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1200&h=800&fit=crop',
-      alt: 'Complicité entre un homme et son chien',
-      description: 'La complicité unique entre l\'homme et son fidèle compagnon'
+      src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&h=800&fit=crop',
+      alt: 'Pêche en rivière',
+      description: 'Passion de la pêche dans les rivières de Vendée'
     },
     {
-      src: 'https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?w=1200&h=800&fit=crop',
-      alt: 'Passion pour la musique',
-      description: 'L\'art musical, expression de l\'âme et des émotions'
+      src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop',
+      alt: 'Chasse traditionnelle',
+      description: 'Art de la chasse et respect de la nature'
     },
     {
-      src: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=800&fit=crop',
-      alt: 'Passion équestre',
-      description: 'L\'harmonie parfaite entre cavalier et monture'
+      src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop',
+      alt: 'Artisanat local',
+      description: 'Savoir-faire traditionnel et artisanat local'
     },
     {
-      src: 'https://images.unsplash.com/photo-1415369629372-26f2fe60c467?w=1200&h=800&fit=crop',
-      alt: 'Moment de tendresse avec un chat',
-      description: 'Instants de douceur partagés avec nos compagnons félins'
+      src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop',
+      alt: 'Nature et randonnée',
+      description: 'Exploration de la nature et randonnées en pleine air'
     },
     {
-      src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop',
-      alt: 'Passion pour la photographie',
-      description: 'Capturer le monde à travers l\'objectif'
+      src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=800&fit=crop',
+      alt: 'Compagnons fidèles',
+      description: 'Chiens, chats et animaux de compagnie'
     },
     {
-      src: 'https://images.unsplash.com/photo-1422565096762-bdb997a56a84?w=1200&h=800&fit=crop',
-      alt: 'Passion pour la nature et la randonnée',
-      description: 'Se ressourcer au cœur de la nature sauvage'
+      src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&h=800&fit=crop',
+      alt: 'Sports et loisirs',
+      description: 'Activités sportives et loisirs en plein air'
     },
     {
-      src: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1200&h=800&fit=crop',
-      alt: 'Complicité avec les animaux de ferme',
-      description: 'Moments authentiques avec les animaux de la ferme'
+      src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop',
+      alt: 'Jardinage et botanique',
+      description: 'Passion du jardinage et découverte botanique'
     },
     {
-      src: 'https://images.unsplash.com/photo-1515878305511-1473e1425e78?w=1200&h=800&fit=crop',
-      alt: 'Passion pour la cuisine',
-      description: 'L\'art culinaire, créativité et partage autour des saveurs'
+      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
+      alt: 'Photographie de nature',
+      description: 'Capturer la beauté de la nature et des paysages'
     }
   ]
 
@@ -120,7 +120,7 @@ export default function LiensPassionsPage() {
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="parallax absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1920&h=1080&fit=crop"
+            src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1920&h=1080&fit=crop"
             alt="Hero Liens & Passions"
             fill
             className="object-cover"
@@ -139,7 +139,7 @@ export default function LiensPassionsPage() {
               <span className="text-2xl">🤝</span>
             </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-amber-400 to-orange-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-amber-400 to-yellow-600 bg-clip-text text-transparent">
             Liens & Passions
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">

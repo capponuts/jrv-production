@@ -10,47 +10,47 @@ export default function EvenementsMariagesPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // Images générées pour la galerie d'événements et mariages
+  // Images générées par IA pour événements et mariages
   const images = [
     {
       src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
-      alt: 'Cérémonie de mariage intime dans un jardin',
-      description: 'Cérémonie de mariage intime dans un jardin fleuri'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=800&fit=crop',
-      alt: 'Première danse des mariés',
-      description: 'Premier danse romantique sous les étoiles'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=800&fit=crop',
-      alt: 'Émotion et joie lors d\'un événement festif',
-      description: 'Moments de joie partagée lors d\'une célébration'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=1200&h=800&fit=crop',
-      alt: 'Détails floraux pour un mariage',
-      description: 'Compositions florales délicates et raffinées'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=800&fit=crop',
-      alt: 'Ambiance chaleureuse d\'un cocktail de mariage',
-      description: 'Ambiance conviviale lors du cocktail'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&h=800&fit=crop',
-      alt: 'Festivités et danse à un mariage',
-      description: 'L\'énergie de la piste de danse'
+      alt: 'Mariage romantique en extérieur',
+      description: 'Cérémonie de mariage dans un cadre naturel idyllique'
     },
     {
       src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&h=800&fit=crop',
-      alt: 'Portrait des mariés au coucher du soleil',
-      description: 'Portrait des mariés dans la lumière dorée'
+      alt: 'Réception de mariage élégante',
+      description: 'Ambiance festive et chaleureuse lors de la réception'
     },
     {
-      src: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1200&h=800&fit=crop',
-      alt: 'Échange des alliances',
-      description: 'L\'émotion de l\'échange des vœux'
+      src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop',
+      alt: 'Premier pas de danse des mariés',
+      description: 'Moment magique du premier pas de danse en tant que couple marié'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=800&fit=crop',
+      alt: 'Événement corporate professionnel',
+      description: 'Captation d\'événements d\'entreprise et conférences'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop',
+      alt: 'Festival de musique en plein air',
+      description: 'Énergie et ambiance des festivals et concerts'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1200&h=800&fit=crop',
+      alt: 'Anniversaire festif',
+      description: 'Célébrations d\'anniversaires et événements privés'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=800&fit=crop',
+      alt: 'Cérémonie religieuse',
+      description: 'Mariages traditionnels et cérémonies religieuses'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
+      alt: 'Séance photo de couple',
+      description: 'Séances photo romantiques pour couples et fiançailles'
     }
   ]
 

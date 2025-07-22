@@ -39,7 +39,7 @@ const Header = () => {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
-          {/* Logo */}
+          {/* Logo - toujours vers l'accueil */}
           <Link href="/" className="flex items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}

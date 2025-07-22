@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -39,18 +40,20 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center"
-          >
-            <Image
-              src="/logo-jrv-production.png"
-              alt="JRV Production Logo"
-              width={100}
-              height={100}
-              className="h-20 w-auto transition-transform duration-300 hover:scale-110"
-            />
-          </motion.div>
+          <Link href="/" className="flex items-center">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center"
+            >
+              <Image
+                src="/logo-jrv-production.png"
+                alt="JRV Production Logo"
+                width={100}
+                height={100}
+                className="h-20 w-auto transition-transform duration-300 hover:scale-110"
+              />
+            </motion.div>
+          </Link>
 
           {/* Navigation Desktop */}
           <nav className="hidden md:flex space-x-8">

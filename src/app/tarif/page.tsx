@@ -9,12 +9,12 @@ import Footer from '../../components/Footer'
 export default function TarifPage() {
   const pricingPlans = [
     {
-      title: 'Pack Découverte',
-      price: 'À partir de 150€',
-      description: 'Pour les petits événements et séances courtes',
+      title: 'Pack Essentiel',
+      price: 'À partir de 80€',
+      description: 'Parfait pour découvrir mes services photo',
       features: [
-        '2h de shooting',
-        '50 photos retouchées',
+        '1h30 de shooting',
+        '30 photos retouchées',
         'Livraison numérique',
         'Délai 1 semaine'
       ],
@@ -23,27 +23,27 @@ export default function TarifPage() {
     },
     {
       title: 'Pack Événement',
-      price: 'À partir de 350€',
-      description: 'Idéal pour les mariages et événements importants',
+      price: 'À partir de 200€',
+      description: 'Idéal pour vos événements spéciaux',
       features: [
-        '6h de shooting',
-        '200 photos retouchées',
-        'Vidéo highlight (2-3 min)',
+        '4h de shooting',
+        '100 photos retouchées',
+        'Mini-vidéo souvenir (1-2 min)',
         'Livraison numérique + USB',
-        'Délai 2 semaines',
+        'Délai 10 jours',
         'Consultation préalable'
       ],
       color: 'from-orange-500 to-orange-600',
       popular: true
     },
     {
-      title: 'Pack Premium',
-      price: 'Sur devis',
-      description: 'Services personnalisés et projets complexes',
+      title: 'Pack Complet',
+      price: 'À partir de 350€',
+      description: 'Solution complète pour projets ambitieux',
       features: [
-        'Durée personnalisée',
+        'Journée complète',
         'Photos illimitées',
-        'Vidéo complète',
+        'Vidéo complète (3-5 min)',
         'Drone FPV inclus',
         'Livraison premium',
         'Support prioritaire'
@@ -190,10 +190,10 @@ export default function TarifPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-3 text-orange-400">Options supplémentaires</h3>
                 <ul className="space-y-2 text-sm text-gray-300">
-                  <li>• Album photo physique (+50€)</li>
-                  <li>• Vidéo complète (+200€)</li>
-                  <li>• Drone FPV (+150€)</li>
-                  <li>• Rush express (+100€)</li>
+                  <li>• Album photo physique (+30€)</li>
+                  <li>• Vidéo complète (+120€)</li>
+                  <li>• Drone FPV (+80€)</li>
+                  <li>• Livraison express (+50€)</li>
                 </ul>
               </div>
             </div>

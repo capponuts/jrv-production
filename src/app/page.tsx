@@ -125,7 +125,7 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* CTA Principal */}
+          {/* CTA Principal et Réseaux sociaux - apparaissent ensemble */}
           <motion.div 
             className="flex flex-col items-center space-y-6"
             initial={{ opacity: 0, y: 30 }}
@@ -141,20 +141,14 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Découvrir mes services</span>
+                <span>Mes offres</span>
                 <ChevronDown className="w-6 h-6 group-hover:translate-y-1 transition-transform duration-300" />
               </motion.button>
             </Link>
 
             {/* Réseaux sociaux */}
-            <motion.div 
+            <div 
               className="flex flex-wrap justify-center gap-4 mt-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: isIntroComplete ? 1 : 0,
-                y: isIntroComplete ? 0 : 20
-              }}
-              transition={{ duration: 0.6, delay: 1.5 }}
             >
               <motion.a 
                 href="https://www.instagram.com/jrv.production/" 
@@ -209,7 +203,7 @@ export default function Home() {
                   className="w-8 h-8 object-contain"
                 />
               </motion.a>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </motion.div>

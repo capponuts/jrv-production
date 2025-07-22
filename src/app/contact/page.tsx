@@ -38,19 +38,37 @@ export default function ContactPage() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    // Simulation d'envoi pour l'instant
-    setTimeout(() => {
-      setSubmitStatus('success')
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        })
+      } else {
+        setSubmitStatus('error')
+        console.error('Erreur:', result.error)
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi:', error)
+      setSubmitStatus('error')
+    } finally {
       setIsSubmitting(false)
-    }, 2000)
+    }
   }
 
   return (
@@ -181,7 +199,7 @@ export default function ContactPage() {
                   {/* Messages de statut */}
                   {submitStatus === 'success' && (
                     <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-4 text-green-400">
-                      ✅ Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
+                      ✅ Message envoyé avec succès ! Un email de confirmation vous a été envoyé. Je vous répondrai dans les plus brefs délais (généralement sous 24h).
                     </div>
                   )}
                   

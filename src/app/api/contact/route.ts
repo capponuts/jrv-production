@@ -8,6 +8,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { firstName, lastName, email, phone, service, message } = body
 
+    // Log pour débugger
+    console.log('📧 Tentative d\'envoi email:', { firstName, lastName, email, service })
+
     // Validation des champs requis
     if (!firstName || !lastName || !email || !service || !message) {
       return NextResponse.json(
@@ -36,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     // Envoi de l'email avec Resend
     const { data, error } = await resend.emails.send({
-      from: 'JRV Production <contact@jrv-production.fr>', // Remplacez par votre domaine vérifié
+      from: 'JRV Production <onboarding@resend.dev>', // Email de test Resend
       to: ['jrv.production85@gmail.com'], // Votre email de réception
       subject: `Nouveau message de ${firstName} ${lastName} - ${serviceLabels[service] || service}`,
       html: `
@@ -100,17 +103,19 @@ Envoyé le ${new Date().toLocaleString('fr-FR')}
     })
 
     if (error) {
-      console.error('Erreur Resend:', error)
+      console.error('❌ Erreur Resend:', error)
       return NextResponse.json(
         { error: 'Erreur lors de l\'envoi de l\'email' },
         { status: 500 }
       )
     }
 
+    console.log('✅ Email envoyé avec succès:', data?.id)
+
     // Email de confirmation automatique au client
     try {
       await resend.emails.send({
-        from: 'JRV Production <contact@jrv-production.fr>',
+        from: 'JRV Production <onboarding@resend.dev>',
         to: [email],
         subject: 'Confirmation de réception - JRV Production',
         html: `

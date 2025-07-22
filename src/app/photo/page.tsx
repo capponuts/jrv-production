@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 export default function PhotoPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -85,13 +85,13 @@ export default function PhotoPage() {
     }
   ]
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
-  }
+  }, [galleryImages.length])
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
-  }
+  }, [galleryImages.length])
 
   // Navigation par molette
   useEffect(() => {
@@ -114,7 +114,7 @@ export default function PhotoPage() {
         galleryElement.removeEventListener('wheel', handleWheel)
       }
     }
-  }, [])
+  }, [nextImage, prevImage])
 
   // Auto-play
   useEffect(() => {
@@ -125,7 +125,7 @@ export default function PhotoPage() {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [isAutoPlaying, currentImageIndex])
+  }, [isAutoPlaying, currentImageIndex, nextImage])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
@@ -139,7 +139,7 @@ export default function PhotoPage() {
               className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm">Retour à l'accueil</span>
+              <span className="text-sm">Retour à l&apos;accueil</span>
             </motion.button>
           </Link>
           

@@ -143,7 +143,7 @@ export default function CorporatePage() {
             Corporate
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Les dynamiques humaines au service de l\'innovation
+            Les dynamiques humaines au service de l&apos;innovation
           </p>
         </motion.div>
       </div>

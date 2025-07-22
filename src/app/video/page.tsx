@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, ChevronLeft, ChevronRight, Play } from 'lucide-react'
+import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 export default function VideoPage() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
@@ -86,13 +86,13 @@ export default function VideoPage() {
     }
   ]
 
-  const nextVideo = () => {
+  const nextVideo = useCallback(() => {
     setCurrentVideoIndex((prev) => (prev + 1) % videoGallery.length)
-  }
+  }, [videoGallery.length])
 
-  const prevVideo = () => {
+  const prevVideo = useCallback(() => {
     setCurrentVideoIndex((prev) => (prev - 1 + videoGallery.length) % videoGallery.length)
-  }
+  }, [videoGallery.length])
 
   // Navigation par molette
   useEffect(() => {
@@ -115,7 +115,7 @@ export default function VideoPage() {
         galleryElement.removeEventListener('wheel', handleWheel)
       }
     }
-  }, [])
+  }, [nextVideo, prevVideo])
 
   // Auto-play
   useEffect(() => {
@@ -126,7 +126,7 @@ export default function VideoPage() {
     }, 8000) // Plus long pour les vidéos
 
     return () => clearInterval(interval)
-  }, [isAutoPlaying, currentVideoIndex])
+  }, [isAutoPlaying, currentVideoIndex, nextVideo])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
@@ -140,7 +140,7 @@ export default function VideoPage() {
               className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm">Retour à l'accueil</span>
+              <span className="text-sm">Retour à l&apos;accueil</span>
             </motion.button>
           </Link>
           

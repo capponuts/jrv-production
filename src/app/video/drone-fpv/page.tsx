@@ -59,7 +59,7 @@ export default function DroneFPVPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
       {/* Header */}
       <div className="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/50">
         <div className="flex items-center justify-between p-4">
@@ -88,100 +88,69 @@ export default function DroneFPVPage() {
         </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?w=1920&h=1080&fit=crop"
-            alt="Hero Drone FPV"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/70"></div>
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-20 text-center px-4"
-        >
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-xl">
-              <span className="text-2xl">🚁</span>
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent">
-            Drone FPV
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Prises de vue aériennes immersives et dynamiques
-          </p>
-          
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-gray-400"
-          >
-            <span className="text-sm mb-2">Faites défiler horizontalement</span>
-            <div className="w-6 h-6 border-2 border-gray-400 rounded-full flex items-center justify-center">
-              <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-            </div>
-          </motion.div>
-        </motion.div>
+      {/* Titre de la catégorie */}
+      <div className="text-center py-6">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent">
+          Drone FPV
+        </h1>
+        <p className="text-gray-300 mt-2">
+          Prises de vue aériennes immersives et dynamiques
+        </p>
       </div>
 
-      {/* Défilement horizontal des vidéos */}
-      <div className="relative py-16">
-        <div className="flex items-center space-x-8 overflow-x-auto scrollbar-hide px-8 pb-8" style={{ scrollBehavior: 'smooth' }}>
+      {/* Galerie vidéo - occupe environ 3/4 de l'écran */}
+      <div className="h-3/4 px-4 pb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full"
+        >
           {videos.map((video, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="flex-shrink-0 w-96 group cursor-pointer"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03 }}
+              className="group relative overflow-hidden rounded-2xl cursor-pointer h-full"
               onClick={() => openVideo(index)}
             >
-              <div className="relative overflow-hidden rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10">
-                <div className="relative h-64">
-                  <Image
-                    src={video.thumbnail}
-                    alt={video.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                  
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-16 h-16 bg-blue-600/80 hover:bg-blue-500 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg backdrop-blur-sm"
-                    >
-                      <Play className="w-8 h-8 ml-1" />
-                    </motion.div>
-                  </div>
-                  
-                  <div className="absolute bottom-4 right-4">
-                    <span className="bg-black/70 text-white px-2 py-1 rounded text-sm font-medium">
-                      {video.duration}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                    {video.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {video.description}
-                  </p>
-                </div>
+              <Image
+                src={video.thumbnail}
+                alt={video.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-16 h-16 bg-blue-600/80 hover:bg-blue-500 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg backdrop-blur-sm"
+                >
+                  <Play className="w-8 h-8 ml-1" />
+                </motion.div>
+              </div>
+              
+              <div className="absolute bottom-4 right-4">
+                <span className="bg-black/70 text-white px-2 py-1 rounded text-sm font-medium">
+                  {video.duration}
+                </span>
+              </div>
+              
+              <div className="absolute bottom-4 left-4 right-16">
+                <h3 className="text-white text-sm font-medium mb-1">
+                  {video.title}
+                </h3>
+                <p className="text-gray-300 text-xs">
+                  {video.description}
+                </p>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Modal de lecture vidéo plein écran */}
@@ -238,16 +207,6 @@ export default function DroneFPVPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   )
 }

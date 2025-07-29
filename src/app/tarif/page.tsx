@@ -9,44 +9,48 @@ import Footer from '../../components/Footer'
 export default function TarifPage() {
   const pricingPlans = [
     {
-      title: 'Pack Essentiel',
-      price: 'À partir de 80€',
+      title: 'Pack Découverte',
+      price: 'À partir de 150€',
       description: 'Parfait pour découvrir mes services photo',
       features: [
-        '1h30 de shooting',
-        '30 photos retouchées',
+        '2h de shooting',
+        '50 photos retouchées',
         'Livraison numérique',
-        'Délai 1 semaine'
+        'Délai 1 semaine',
+        'Consultation préalable'
       ],
       color: 'from-blue-500 to-blue-600',
       popular: false
     },
     {
       title: 'Pack Événement',
-      price: 'À partir de 200€',
+      price: 'À partir de 350€',
       description: 'Idéal pour vos événements spéciaux',
       features: [
-        '4h de shooting',
-        '100 photos retouchées',
-        'Mini-vidéo souvenir (1-2 min)',
+        '6h de shooting',
+        '150 photos retouchées',
+        'Mini-vidéo souvenir (2-3 min)',
         'Livraison numérique + USB',
         'Délai 10 jours',
-        'Consultation préalable'
+        'Consultation préalable',
+        'Album photo numérique'
       ],
       color: 'from-orange-500 to-orange-600',
       popular: true
     },
     {
-      title: 'Pack Complet',
-      price: 'À partir de 350€',
+      title: 'Pack Premium',
+      price: 'À partir de 600€',
       description: 'Solution complète pour projets ambitieux',
       features: [
-        'Journée complète',
+        'Journée complète (8h)',
         'Photos illimitées',
-        'Vidéo complète (3-5 min)',
+        'Vidéo complète (5-8 min)',
         'Drone FPV inclus',
         'Livraison premium',
-        'Support prioritaire'
+        'Support prioritaire',
+        'Album photo physique',
+        'Séance de retouche personnalisée'
       ],
       color: 'from-purple-500 to-purple-600',
       popular: false
@@ -185,15 +189,17 @@ export default function TarifPage() {
                   <li>• Livraison numérique sécurisée</li>
                   <li>• Support client réactif</li>
                   <li>• Garantie satisfaction</li>
+                  <li>• Consultation préalable</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-3 text-orange-400">Options supplémentaires</h3>
                 <ul className="space-y-2 text-sm text-gray-300">
-                  <li>• Album photo physique (+30€)</li>
-                  <li>• Vidéo complète (+120€)</li>
-                  <li>• Drone FPV (+80€)</li>
-                  <li>• Livraison express (+50€)</li>
+                  <li>• Album photo physique (+50€)</li>
+                  <li>• Vidéo complète (+200€)</li>
+                  <li>• Drone FPV (+150€)</li>
+                  <li>• Livraison express (+80€)</li>
+                  <li>• Séance de retouche (+100€)</li>
                 </ul>
               </div>
             </div>

@@ -71,23 +71,8 @@ export default function EvenementsMariagesPage() {
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
-  // Effet de parallaxe au scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset
-      const parallaxElements = document.querySelectorAll('.parallax')
-      parallaxElements.forEach((element) => {
-        const speed = 0.5
-        ;(element as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`
-      })
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+    <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
       {/* Header */}
       <div className="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/50">
         <div className="flex items-center justify-between p-4">
@@ -116,45 +101,23 @@ export default function EvenementsMariagesPage() {
         </div>
       </div>
 
-      {/* Hero Section avec parallaxe */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="parallax absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=1080&fit=crop"
-            alt="Hero Événements & Mariages"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-20 text-center px-4"
-        >
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center shadow-xl">
-              <span className="text-2xl">💚</span>
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-green-600 bg-clip-text text-transparent">
-            Événements & Mariages
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Capturer vos instants précieux, des cérémonies intimes aux grands rassemblements festifs
-          </p>
-        </motion.div>
+      {/* Titre de la catégorie */}
+      <div className="text-center py-6">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-400 to-green-600 bg-clip-text text-transparent">
+          Événements & Mariages
+        </h1>
+        <p className="text-gray-300 mt-2">
+          Capturer vos instants précieux, des cérémonies intimes aux grands rassemblements festifs
+        </p>
       </div>
 
-      {/* Galerie principale */}
-      <div className="container mx-auto px-4 py-16">
+      {/* Galerie principale - occupe environ 3/4 de l'écran */}
+      <div className="h-3/4 px-4 pb-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full"
         >
           {images.map((image, index) => (
             <motion.div
@@ -163,22 +126,20 @@ export default function EvenementsMariagesPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.03 }}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl cursor-pointer h-full"
               onClick={() => openLightbox(index)}
             >
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {image.description}
-                  </p>
-                </div>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {image.description}
+                </p>
               </div>
             </motion.div>
           ))}

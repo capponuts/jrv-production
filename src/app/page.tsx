@@ -69,7 +69,7 @@ export default function Home() {
           animate={{ 
             scale: isIntroComplete ? 1 : [0.1, 1.5, 1],
             opacity: [0, 1, 1],
-            y: isIntroComplete ? -100 : [0, -100, 0]
+            y: isIntroComplete ? -120 : [0, -120, 0]
           }}
           transition={{ 
             duration: 3,
@@ -89,7 +89,7 @@ export default function Home() {
         </motion.div>
       </motion.div>
 
-      {/* Contenu principal avec réseaux sociaux */}
+      {/* Contenu principal avec réseaux sociaux - positionné en dessous du logo */}
       <motion.div 
         className="relative z-30 text-center px-4 max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 50 }}
@@ -98,11 +98,12 @@ export default function Home() {
           y: isIntroComplete ? 0 : 50
         }}
         transition={{ duration: 0.8, delay: 0.5 }}
+        style={{ marginTop: '200px' }} // Espacement pour éviter le chevauchement
       >
         <div className="max-w-4xl mx-auto">
           {/* CTA Principal et Réseaux sociaux - apparaissent ensemble */}
           <motion.div 
-            className="flex flex-col items-center space-y-6"
+            className="flex flex-col items-center space-y-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ 
               opacity: isIntroComplete ? 1 : 0,

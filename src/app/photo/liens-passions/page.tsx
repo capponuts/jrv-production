@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
@@ -10,47 +10,47 @@ export default function LiensPassionsPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // Images générées par IA pour liens et passions
+  // Images pour liens et passions
   const images = [
     {
+      src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop',
+      alt: 'Passion pour la musique',
+      description: 'Capturer l\'émotion et la passion dans chaque note'
+    },
+    {
       src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&h=800&fit=crop',
-      alt: 'Pêche en rivière',
-      description: 'Passion de la pêche dans les rivières de Vendée'
+      alt: 'Sport et performance',
+      description: 'L\'intensité et la détermination dans l\'effort'
     },
     {
       src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop',
-      alt: 'Chasse traditionnelle',
-      description: 'Art de la chasse et respect de la nature'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop',
-      alt: 'Artisanat local',
-      description: 'Savoir-faire traditionnel et artisanat local'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop',
-      alt: 'Nature et randonnée',
-      description: 'Exploration de la nature et randonnées en pleine air'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=800&fit=crop',
-      alt: 'Compagnons fidèles',
-      description: 'Chiens, chats et animaux de compagnie'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&h=800&fit=crop',
-      alt: 'Sports et loisirs',
-      description: 'Activités sportives et loisirs en plein air'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop',
-      alt: 'Jardinage et botanique',
-      description: 'Passion du jardinage et découverte botanique'
+      alt: 'Art et créativité',
+      description: 'L\'expression artistique dans toute sa splendeur'
     },
     {
       src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
-      alt: 'Photographie de nature',
-      description: 'Capturer la beauté de la nature et des paysages'
+      alt: 'Liens familiaux',
+      description: 'Les moments précieux entre proches'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop',
+      alt: 'Passion pour la nature',
+      description: 'L\'harmonie entre l\'homme et la nature'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop',
+      alt: 'Aventure et exploration',
+      description: 'L\'esprit d\'aventure et de découverte'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop',
+      alt: 'Cuisine et gastronomie',
+      description: 'L\'art culinaire et les saveurs'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1473163928189-364b2c4e1135?w=1200&h=800&fit=crop',
+      alt: 'Technologie et innovation',
+      description: 'L\'avenir et l\'innovation technologique'
     }
   ]
 
@@ -71,23 +71,8 @@ export default function LiensPassionsPage() {
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
-  // Effet de parallaxe au scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset
-      const parallaxElements = document.querySelectorAll('.parallax')
-      parallaxElements.forEach((element) => {
-        const speed = 0.5
-        ;(element as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`
-      })
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+    <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
       {/* Header */}
       <div className="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/50">
         <div className="flex items-center justify-between p-4">
@@ -116,45 +101,23 @@ export default function LiensPassionsPage() {
         </div>
       </div>
 
-      {/* Hero Section avec parallaxe */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="parallax absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1920&h=1080&fit=crop"
-            alt="Hero Liens & Passions"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-20 text-center px-4"
-        >
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center shadow-xl">
-              <span className="text-2xl">🤝</span>
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-amber-400 to-yellow-600 bg-clip-text text-transparent">
-            Liens & Passions
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Au cœur des compagnons et des passions de la vie
-          </p>
-        </motion.div>
+      {/* Titre de la catégorie */}
+      <div className="text-center py-6">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-400 to-yellow-600 bg-clip-text text-transparent">
+          Liens & Passions
+        </h1>
+        <p className="text-gray-300 mt-2">
+          Au cœur des compagnons et des passions de la vie
+        </p>
       </div>
 
-      {/* Galerie principale */}
-      <div className="container mx-auto px-4 py-16">
+      {/* Galerie principale - occupe environ 3/4 de l'écran */}
+      <div className="h-3/4 px-4 pb-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full"
         >
           {images.map((image, index) => (
             <motion.div
@@ -163,22 +126,20 @@ export default function LiensPassionsPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.03 }}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl cursor-pointer h-full"
               onClick={() => openLightbox(index)}
             >
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {image.description}
-                  </p>
-                </div>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {image.description}
+                </p>
               </div>
             </motion.div>
           ))}

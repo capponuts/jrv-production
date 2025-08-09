@@ -49,7 +49,7 @@ export default function ArchitectureEspacesPage() {
       {/* Titre */}
       <div className="text-center py-6">
         <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-400 to-gray-600 bg-clip-text text-transparent">Architecture & Espaces</h1>
-        <p className="text-gray-300 mt-2">Des images qui subliment vos lieux, captées avec soin pour donner envie d\'y être</p>
+        <p className="text-gray-300 mt-2">Des images qui subliment vos lieux, captées avec soin pour donner envie d&apos;y être</p>
       </div>
 
       {/* Grille 3/4 écran */}

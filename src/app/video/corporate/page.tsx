@@ -11,9 +11,9 @@ export default function VideoCorporatePage() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(0)
 
   const videos = [
-    { id: 'corp-1', title: "Présentation d'entreprise innovante", description: "Film corporate mettant en valeur les valeurs et l'équipe", thumbnail: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=800&fit=crop', duration: '3:15' },
+    { id: 'corp-1', title: 'Présentation d\'entreprise innovante', description: 'Film corporate mettant en valeur les valeurs et l\'équipe', thumbnail: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=800&fit=crop', duration: '3:15' },
     { id: 'corp-2', title: 'Formation et développement', description: 'Vidéo de formation professionnelle dynamique', thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop', duration: '2:45' },
-    { id: 'corp-3', title: "Événement d'entreprise", description: "Captation d'un séminaire d'équipe inspirant", thumbnail: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&h=800&fit=crop', duration: '4:30' },
+    { id: 'corp-3', title: 'Événement d\'entreprise', description: 'Captation d\'un séminaire d\'équipe inspirant', thumbnail: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&h=800&fit=crop', duration: '4:30' },
     { id: 'corp-4', title: 'Témoignages clients', description: 'Interviews authentiques de clients satisfaits', thumbnail: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=800&fit=crop', duration: '2:10' },
   ]
 
@@ -43,7 +43,7 @@ export default function VideoCorporatePage() {
       {/* Titre */}
       <div className="text-center py-6">
         <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">Corporate</h1>
-        <p className="text-gray-300 mt-2">Vidéos d'entreprise professionnelles et engageantes</p>
+        <p className="text-gray-300 mt-2">Vidéos d&apos;entreprise professionnelles et engageantes</p>
       </div>
 
       {/* Grille vidéo 3/4 écran */}

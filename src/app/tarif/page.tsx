@@ -86,7 +86,7 @@ export default function TarifPage() {
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.7 }} className="text-center">
           <div className="bg-gradient-to-r from-orange-500/10 to-orange-600/10 border border-orange-500/20 rounded-3xl p-8 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-semibold mb-4">Besoin d'un devis personnalisé ?</h2>
+            <h2 className="text-2xl font-semibold mb-4">Besoin d&apos;un devis personnalisé ?</h2>
             <p className="text-gray-300 mb-6">Chaque projet est unique. Contactez-moi pour discuter de vos besoins spécifiques.</p>
             <Link href="/contact"><motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-orange-500/25 flex items-center space-x-2 mx-auto"><Mail className="w-5 h-5" /><span>Demander un devis</span></motion.button></Link>
           </div>

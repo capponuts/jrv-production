@@ -24,13 +24,15 @@ export default function AboutPage() {
           </Link>
           
           <div className="flex items-center space-x-2">
-            <Image
-              src="/logo-jrv-production.png"
-              alt="JRV Production"
-              width={120}
-              height={36}
-              className="h-8 w-auto"
-            />
+            <Link href="/">
+              <Image
+                src="/logo-jrv-production.png"
+                alt="JRV Production"
+                width={120}
+                height={36}
+                className="h-8 w-auto"
+              />
+            </Link>
           </div>
           
           <div className="w-20"></div>

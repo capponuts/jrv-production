@@ -12,15 +12,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'JRV Production' }],
   creator: 'JRV Production',
   publisher: 'JRV Production',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL('https://jrv-production.vercel.app'),
-  alternates: {
-    canonical: '/',
-  },
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
     description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée. Mariages, événements, portraits et vidéos aériennes.',
@@ -28,53 +22,43 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://jrv-production.vercel.app',
     siteName: 'JRV Production',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
-      },
-    ],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'JRV Production - Photographe & Vidéaste Drone en Vendée' }],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
-    description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée',
-    images: ['/og-image.png'],
-    creator: '@jrv_production',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-verification-code',
-  },
+  twitter: { card: 'summary_large_image', title: 'JRV Production - Photographe & Vidéaste Drone en Vendée', description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée', images: ['/og-image.png'], creator: '@jrv_production' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+  verification: { google: 'your-google-verification-code' },
   category: 'Photography',
   classification: 'Business',
 }
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: '#f17e22',
-}
+export const viewport: Viewport = { width: 'device-width', initialScale: 1, maximumScale: 1, userScalable: false, themeColor: '#f17e22' }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children, }: { children: React.ReactNode }) {
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'JRV Production',
+    url: 'https://jrv-production.vercel.app',
+    logo: 'https://jrv-production.vercel.app/logo-jrv-production.png',
+    sameAs: [
+      'https://www.instagram.com/jrv.production/',
+      'https://www.youtube.com/@JRV.production',
+      'https://www.tiktok.com/@jvrprode'
+    ]
+  }
+
+  const webSiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'JRV Production',
+    url: 'https://jrv-production.vercel.app',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://jrv-production.vercel.app/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  }
+
   return (
     <html lang="fr" className="bg-gray-900">
       <head>
@@ -91,6 +75,8 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }} />
       </head>
       <body className={`${dmSans.className} bg-gray-900 text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#111827', color: '#ffffff'}}>
         {children}

@@ -55,7 +55,7 @@ export default function VideoPage() {
               className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm">Retour à Mes Services</span>
+              <span className="text-sm">Retour</span>
             </motion.button>
           </Link>
           

@@ -11,8 +11,8 @@ export default function Home() {
   const [videoOpacity, setVideoOpacity] = useState(0)
 
   useEffect(() => {
-    const videoTimer = setTimeout(() => { setVideoOpacity(1) }, 1500)
-    const introTimer = setTimeout(() => { setIsIntroComplete(true) }, 3000)
+    const videoTimer = setTimeout(() => { setVideoOpacity(1) }, 800)
+    const introTimer = setTimeout(() => { setIsIntroComplete(true) }, 1600)
     return () => { clearTimeout(videoTimer); clearTimeout(introTimer) }
   }, [])
 
@@ -23,20 +23,20 @@ export default function Home() {
           <source src="/Videohero.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
-        <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: isIntroComplete ? 0.4 : 0.8 }} transition={{ duration: 1.5, delay: 1.5 }} />
+        <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: isIntroComplete ? 0.4 : 0.8 }} transition={{ duration: 0.8, delay: 0.6 }} />
       </motion.div>
 
       <motion.div className="absolute inset-0 z-20 flex items-center justify-center" initial={{ opacity: 1 }} animate={{ opacity: 1 }}>
-        <motion.div initial={{ scale: 0.1, opacity: 0, y: 0 }} animate={{ scale: isIntroComplete ? 1 : [0.1, 1.5, 1], opacity: [0, 1, 1], y: isIntroComplete ? -120 : [0, -120, 0] }} transition={{ duration: 3, times: [0, 0.5, 1], ease: 'easeOut' }} className="relative">
+        <motion.div initial={{ scale: 0.1, opacity: 0, y: 0 }} animate={{ scale: isIntroComplete ? 1 : [0.1, 1.5, 1], opacity: [0, 1, 1], y: isIntroComplete ? -120 : [0, -120, 0] }} transition={{ duration: 1.5, times: [0, 0.5, 1], ease: 'easeOut' }} className="relative">
           <Link href="/" aria-label="Aller à l'accueil">
             <Image src="/logo-jrv-production.png" alt="JRV Production Logo" width={700} height={210} className="h-48 md:h-64 w-auto drop-shadow-2xl" priority />
           </Link>
         </motion.div>
       </motion.div>
 
-      <motion.div className="relative z-30 text-center px-4 max-w-6xl mx-auto" initial={{ opacity: 0, y: 50 }} animate={{ opacity: isIntroComplete ? 1 : 0, y: isIntroComplete ? 0 : 50 }} transition={{ duration: 0.8, delay: 0.5 }} style={{ marginTop: '200px' }}>
+      <motion.div className="relative z-30 text-center px-4 max-w-6xl mx-auto" initial={{ opacity: 0, y: 50 }} animate={{ opacity: isIntroComplete ? 1 : 0, y: isIntroComplete ? 0 : 50 }} transition={{ duration: 0.6, delay: 0.2 }} style={{ marginTop: '200px' }}>
         <div className="max-w-4xl mx-auto">
-          <motion.div className="flex flex-col items-center space-y-8" initial={{ opacity: 0, y: 30 }} animate={{ opacity: isIntroComplete ? 1 : 0, y: isIntroComplete ? 0 : 30 }} transition={{ duration: 0.6, delay: 1.2 }}>
+          <motion.div className="flex flex-col items-center space-y-8" initial={{ opacity: 0, y: 30 }} animate={{ opacity: isIntroComplete ? 1 : 0, y: isIntroComplete ? 0 : 30 }} transition={{ duration: 0.4, delay: 0.4 }}>
             <Link href="/services">
               <motion.button className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-5 rounded-full shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 flex items-center space-x-3 hover:scale-105 active:scale-95" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <span>Mes offres</span>

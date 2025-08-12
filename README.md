@@ -1,6 +1,6 @@
 # JRV Production - Site Vitrine
 
-Site vitrine professionnel pour JRV Production, photographe et vidéaste spécialisé dans les drones FPV en Vendée.
+Site vitrine professionnel pour JRV Production, photographe et vidéaste spécialisé dans les drones FPV en Vendée. 2025
 
 ## 🚀 Fonctionnalités
 

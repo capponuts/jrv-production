@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ArrowLeft, Camera, Video, DollarSign, User, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 
 export default function ServicesPage() {
+  const router = useRouter()
   const services = [
     {
       icon: <Camera className="w-8 h-8" />,
@@ -55,16 +57,15 @@ export default function ServicesPage() {
       {/* Header mobile */}
       <div className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50">
         <div className="flex items-center justify-between p-4">
-          <Link href="/">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm">Retour</span>
-            </motion.button>
-          </Link>
+          <motion.button
+            onClick={() => router.back()}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="text-sm">Retour</span>
+          </motion.button>
           
           <div className="flex items-center space-x-2">
             <Link href="/">

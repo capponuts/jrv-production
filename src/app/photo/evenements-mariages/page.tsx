@@ -3,10 +3,12 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 export default function EvenementsMariagesPage() {
+  const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
 
@@ -30,12 +32,10 @@ export default function EvenementsMariagesPage() {
     <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
       <div className="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/50">
         <div className="flex items-center justify-between p-4">
-          <Link href="/photo">
-            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm">Retour</span>
-            </motion.button>
-          </Link>
+          <motion.button onClick={() => router.back()} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+            <span className="text-sm">Retour</span>
+          </motion.button>
           <Link href="/" className="flex items-center space-x-2">
             <Image src="/logo-jrv-production.png" alt="JRV Production" width={120} height={36} className="h-8 w-auto" />
           </Link>

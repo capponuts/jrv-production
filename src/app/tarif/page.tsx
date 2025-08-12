@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ArrowLeft, DollarSign, Check, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 
 export default function TarifPage() {
+  const router = useRouter()
   const pricingPlans = [
     { title: 'Pack Découverte', price: 'À partir de 150€', description: 'Parfait pour découvrir mes services photo', features: ['2h de shooting', '50 photos retouchées', 'Livraison numérique', 'Délai 1 semaine', 'Consultation préalable'], color: 'from-blue-500 to-blue-600', popular: false },
     { title: 'Pack Événement', price: 'À partir de 350€', description: 'Idéal pour vos événements spéciaux', features: ['6h de shooting', '150 photos retouchées', 'Mini-vidéo souvenir (2-3 min)', 'Livraison numérique + USB', 'Délai 10 jours', 'Consultation préalable', 'Album photo numérique'], color: 'from-orange-500 to-orange-600', popular: true },
@@ -17,12 +19,10 @@ export default function TarifPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
       <div className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50">
         <div className="flex items-center justify-between p-4">
-          <Link href="/services">
-            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm">Retour</span>
-            </motion.button>
-          </Link>
+          <motion.button onClick={() => router.back()} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+            <span className="text-sm">Retour</span>
+          </motion.button>
           <div className="flex items-center space-x-2">
             <Link href="/">
               <Image src="/logo-jrv-production.png" alt="JRV Production" width={120} height={36} className="h-8 w-auto" />

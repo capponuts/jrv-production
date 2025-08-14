@@ -10,9 +10,65 @@ import Footer from '../../components/Footer'
 export default function TarifPage() {
   const router = useRouter()
   const pricingPlans = [
-    { title: 'Pack Découverte', price: 'À partir de 150€', description: 'Parfait pour découvrir mes services photo', features: ['2h de shooting', '50 photos retouchées', 'Livraison numérique', 'Délai 1 semaine', 'Consultation préalable'], color: 'from-blue-500 to-blue-600', popular: false },
-    { title: 'Pack Événement', price: 'À partir de 350€', description: 'Idéal pour vos événements spéciaux', features: ['6h de shooting', '150 photos retouchées', 'Mini-vidéo souvenir (2-3 min)', 'Livraison numérique + USB', 'Délai 10 jours', 'Consultation préalable', 'Album photo numérique'], color: 'from-orange-500 to-orange-600', popular: true },
-    { title: 'Pack Premium', price: 'À partir de 600€', description: 'Solution complète pour projets ambitieux', features: ['Journée complète (8h)', 'Photos illimitées', 'Vidéo complète (5-8 min)', 'Drone FPV inclus', 'Livraison premium', 'Support prioritaire', 'Album photo physique', 'Séance de retouche personnalisée'], color: 'from-purple-500 to-purple-600', popular: false }
+    {
+      title: 'Pack 1 – Photo Événement',
+      price: 'À partir de 200 €',
+      description: 'Idéal pour couvrir vos concerts, festivals ou événements pros',
+      features: [
+        '3 h de shooting sur place',
+        '80 photos retouchées en haute définition',
+        'Livraison numérique sécurisée',
+        'Consultation avant l’événement pour préparer le reportage',
+        'Délai de livraison : 5 jours',
+        'Options :',
+        'Album photo physique (+50 €)',
+        'Retouche avancée (+150 €)',
+        'Livraison express 48h (+80 €)'
+      ],
+      color: 'from-blue-500 to-blue-600',
+      popular: false
+    },
+    {
+      title: 'Pack 2 – Vidéo Événement',
+      price: 'À partir de 400 €',
+      description: 'Pour revivre et partager vos moments forts en vidéo',
+      features: [
+        '4 h de captation (caméra + micro)',
+        'Montage vidéo aftermovie ou résumé (2–3 min)',
+        'Livraison numérique en 4K',
+        '1 aller-retour de modifications inclus',
+        'Consultation préalable',
+        'Délai de livraison : 10 jours',
+        'Options :',
+        'Version complète (jusqu’à 5 min) (+200 €)',
+        'Drone FPV ou aérien (+150 €)',
+        'Livraison express 72h (+100 €)',
+        'Interviews intégrées (+80 € / interview)'
+      ],
+      color: 'from-orange-500 to-orange-600',
+      popular: true
+    },
+    {
+      title: 'Pack 3 – Premium Photo + Vidéo',
+      price: 'À partir de 700 €',
+      description: 'Solution complète pour un maximum d’impact',
+      features: [
+        'Journée complète (8 h)',
+        'Shooting photo illimité (retouches incluses)',
+        'Captation vidéo complète (jusqu’à 5 min)',
+        'Drone FPV inclus',
+        'Album photo numérique + clé USB vidéo',
+        'Support prioritaire',
+        '2 aller-retours de modifications vidéo inclus',
+        'Livraison premium (5 jours photos / 8 jours vidéo)',
+        'Options :',
+        'Album photo physique (+50 €)',
+        'Livraison express tout pack (+150 €)',
+        'Interviews supplémentaires (+80 € / interview)'
+      ],
+      color: 'from-purple-500 to-purple-600',
+      popular: false
+    }
   ]
 
   return (

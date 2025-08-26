@@ -2,8 +2,11 @@ import type { Metadata, Viewport } from 'next'
 import { DM_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
+import { getSiteUrl } from '@/lib/site'
 
 const dmSans = DM_Sans({ subsets: ['latin'] })
+
+const siteUrl = getSiteUrl()
 
 export const metadata: Metadata = {
   title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
@@ -13,14 +16,14 @@ export const metadata: Metadata = {
   creator: 'JRV Production',
   publisher: 'JRV Production',
   formatDetection: { email: false, address: false, telephone: false },
-  metadataBase: new URL('https://jrv-production.vercel.app'),
+  metadataBase: new URL(siteUrl),
   alternates: { canonical: '/' },
   openGraph: {
     title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
     description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée. Mariages, événements, portraits et vidéos aériennes.',
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://jrv-production.vercel.app',
+    url: siteUrl,
     siteName: 'JRV Production',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'JRV Production - Photographe & Vidéaste Drone en Vendée' }],
   },
@@ -38,8 +41,8 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'JRV Production',
-    url: 'https://jrv-production.vercel.app',
-    logo: 'https://jrv-production.vercel.app/logo-jrv-production.png',
+    url: siteUrl,
+    logo: `${siteUrl}/logo-jrv-production.png`,
     sameAs: [
       'https://www.instagram.com/jrv.production/',
       'https://www.youtube.com/@JRV.production',
@@ -51,10 +54,10 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'JRV Production',
-    url: 'https://jrv-production.vercel.app',
+    url: siteUrl,
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://jrv-production.vercel.app/search?q={search_term_string}',
+      target: `${siteUrl}/search?q={search_term_string}`,
       'query-input': 'required name=search_term_string'
     }
   }

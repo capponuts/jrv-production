@@ -19,7 +19,14 @@ export async function GET(
 
     const images = files.map((file) => `/photos/${encodeURIComponent(category)}/${encodeURIComponent(file)}`)
 
-    return NextResponse.json({ images })
+    return NextResponse.json(
+      { images },
+      {
+        headers: {
+          'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=3600',
+        },
+      }
+    )
   } catch {
     return NextResponse.json({ images: [] }, { status: 200 })
   }

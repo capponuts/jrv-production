@@ -5,10 +5,10 @@ import sharp from 'sharp'
 
 export async function GET(
   _request: Request,
-  { params }: { params: { category: string } }
+  context: unknown
 ) {
   try {
-    const { category } = params
+    const { category } = (context as { params: { category: string } }).params
     const photosDir = path.join(process.cwd(), 'public', 'photos', category)
 
     const entries = await fs.readdir(photosDir, { withFileTypes: true })

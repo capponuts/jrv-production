@@ -4,10 +4,10 @@ import path from 'path'
 
 export async function GET(
   _request: Request,
-  context: { params: { category: string } }
+  { params }: { params: { category: string } }
 ) {
   try {
-    const { category } = context.params
+    const { category } = params
     const photosDir = path.join(process.cwd(), 'public', 'photos', category)
 
     const entries = await fs.readdir(photosDir, { withFileTypes: true })

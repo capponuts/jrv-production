@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -11,18 +11,25 @@ export default function CorporatePage() {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [images, setImages] = useState<{ src: string, alt: string, description: string }[]>([])
 
-  // Images générées par IA pour corporate
-  const images = [
-    { src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop', alt: 'Équipe corporate moderne', description: 'Portraits d\'équipe professionnels et dynamiques' },
-    { src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=800&fit=crop', alt: 'Réunion d\'entreprise', description: 'Captation de réunions et événements d\'entreprise' },
-    { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop', alt: 'Portrait professionnel', description: 'Portraits individuels pour image de marque' },
-    { src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop', alt: 'Espace de travail moderne', description: 'Photographie d\'espaces de travail et bureaux' },
-    { src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop', alt: 'Événement corporate', description: 'Conférences et événements professionnels' },
-    { src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&h=800&fit=crop', alt: 'Présentation en entreprise', description: 'Captation de présentations et formations' },
-    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop', alt: 'Networking professionnel', description: 'Événements de networking et rencontres business' },
-    { src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop', alt: 'Innovation et créativité', description: 'Sessions de brainstorming et créativité en entreprise' }
-  ]
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/photos/corporate')
+        const data = await res.json()
+        const list = (data.images as string[]).map((url: string, idx: number) => ({
+          src: url,
+          alt: `Corporate ${idx + 1}`,
+          description: ''
+        }))
+        setImages(list)
+      } catch (_) {
+        setImages([])
+      }
+    }
+    load()
+  }, [])
 
   const openLightbox = (index: number) => {
     setSelectedImage(index)

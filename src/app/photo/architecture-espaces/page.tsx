@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -11,17 +11,25 @@ export default function ArchitectureEspacesPage() {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [images, setImages] = useState<{ src: string, alt: string, description: string }[]>([])
 
-  const images = [
-    { src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop', alt: 'Architecture moderne et design', description: 'Lignes épurées et jeu de lumière dans l\'architecture contemporaine' },
-    { src: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=800&fit=crop', alt: 'Intérieur Airbnb chaleureux', description: 'Espace de vie confortable et accueillant pour les voyageurs' },
-    { src: 'https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?w=1200&h=800&fit=crop', alt: 'Café moderne et design', description: 'Ambiance chaleureuse d\'un coffee shop contemporain' },
-    { src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop', alt: 'Gratte-ciel et architecture urbaine', description: 'Verticalité et modernité de l\'architecture urbaine' },
-    { src: 'https://images.unsplash.com/photo-1590725140246-20acdee442be?w=1200&h=800&fit=crop', alt: 'Restaurant design et atmosphère', description: 'Espace gastronomique alliant design et convivialité' },
-    { src: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=800&fit=crop', alt: 'Architecture historique préservée', description: 'Patrimoine architectural et beauté intemporelle' },
-    { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop', alt: 'Loft industriel rénové', description: 'Transformation créative d\'espaces industriels' },
-    { src: 'https://images.unsplash.com/photo-1571055107559-3e67626fa8be?w=1200&h=800&fit=crop', alt: 'Hall d\'hôtel luxueux', description: 'Élégance et raffinement dans l\'hôtellerie de prestige' }
-  ]
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/photos/architecture-espaces')
+        const data = await res.json()
+        const list = (data.images as string[]).map((url: string, idx: number) => ({
+          src: url,
+          alt: `Architecture & Espaces ${idx + 1}`,
+          description: ''
+        }))
+        setImages(list)
+      } catch (_) {
+        setImages([])
+      }
+    }
+    load()
+  }, [])
 
   const openLightbox = (index: number) => { setSelectedImage(index); setCurrentImageIndex(index) }
   const closeLightbox = () => setSelectedImage(null)

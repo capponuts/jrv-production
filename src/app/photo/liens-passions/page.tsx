@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -11,17 +11,25 @@ export default function LiensPassionsPage() {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
+  const [images, setImages] = useState<{ src: string, alt: string, description: string }[]>([])
 
-  const images = [
-    { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop', alt: 'Passion pour la musique', description: "Capturer l'émotion et la passion dans chaque note" },
-    { src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&h=800&fit=crop', alt: 'Sport et performance', description: "L'intensité et la détermination dans l'effort" },
-    { src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop', alt: 'Art et créativité', description: "L'expression artistique dans toute sa splendeur" },
-    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop', alt: 'Liens familiaux', description: 'Les moments précieux entre proches' },
-    { src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop', alt: 'Passion pour la nature', description: "L'harmonie entre l'homme et la nature" },
-    { src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop', alt: 'Aventure et exploration', description: "L'esprit d'aventure et de découverte" },
-    { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop', alt: 'Cuisine et gastronomie', description: "L'art culinaire et les saveurs" },
-    { src: 'https://images.unsplash.com/photo-1473163928189-364b2c4e1135?w=1200&h=800&fit=crop', alt: 'Technologie et innovation', description: "L'avenir et l'innovation technologique" }
-  ]
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/photos/liens-passions')
+        const data = await res.json()
+        const list = (data.images as string[]).map((url: string, idx: number) => ({
+          src: url,
+          alt: `Liens & Passions ${idx + 1}`,
+          description: ''
+        }))
+        setImages(list)
+      } catch (_) {
+        setImages([])
+      }
+    }
+    load()
+  }, [])
 
   const openLightbox = (index: number) => { setSelectedImage(index); setCurrentImageIndex(index) }
   const closeLightbox = () => setSelectedImage(null)

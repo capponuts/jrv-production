@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
+type ApiImage = { url: string; blurDataURL?: string }
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -18,7 +19,7 @@ export default function CorporatePage() {
       try {
         const res = await fetch('/api/photos/corporate')
         const data = await res.json()
-        const list = (data.images as { url: string, blurDataURL?: string }[]).map((item: any, idx: number) => ({
+        const list = (data.images as ApiImage[]).map((item: ApiImage, idx: number) => ({
           src: item.url,
           alt: `Corporate ${idx + 1}`,
           description: '',

@@ -11,17 +11,18 @@ export default function CorporatePage() {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [images, setImages] = useState<{ src: string, alt: string, description: string }[]>([])
+  const [images, setImages] = useState<{ src: string, alt: string, description: string, blurDataURL?: string }[]>([])
 
   useEffect(() => {
     const load = async () => {
       try {
         const res = await fetch('/api/photos/corporate')
         const data = await res.json()
-        const list = (data.images as string[]).map((url: string, idx: number) => ({
-          src: url,
+        const list = (data.images as { url: string, blurDataURL?: string }[]).map((item: any, idx: number) => ({
+          src: item.url,
           alt: `Corporate ${idx + 1}`,
-          description: ''
+          description: '',
+          blurDataURL: item.blurDataURL
         }))
         setImages(list)
       } catch {
@@ -69,7 +70,7 @@ export default function CorporatePage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full">
           {images.map((image, index) => (
             <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ scale: 1.03 }} className="group relative overflow-hidden rounded-2xl cursor-pointer h-full" onClick={() => openLightbox(index)}>
-              <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+              <Image src={image.src} alt={image.alt} fill placeholder={image.blurDataURL ? 'blur' : undefined} blurDataURL={image.blurDataURL} className="object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                 <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">{image.description}</p>
@@ -93,7 +94,7 @@ export default function CorporatePage() {
               <ChevronRight className="w-6 h-6 text-white" />
             </button>
             <motion.div key={currentImageIndex} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ duration: 0.3 }} className="relative w-full h-full flex items-center justify-center p-8">
-              <Image src={images[currentImageIndex].src} alt={images[currentImageIndex].alt} fill className="object-contain" />
+              <Image src={images[currentImageIndex].src} alt={images[currentImageIndex].alt} fill placeholder={images[currentImageIndex].blurDataURL ? 'blur' : undefined} blurDataURL={images[currentImageIndex].blurDataURL} className="object-contain" />
             </motion.div>
             <div className="absolute bottom-8 left-8 right-8 text-center">
               <p className="text-white text-lg font-medium">{images[currentImageIndex].description}</p>

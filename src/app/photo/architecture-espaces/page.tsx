@@ -24,7 +24,7 @@ export default function ArchitectureEspacesPage() {
           description: ''
         }))
         setImages(list)
-      } catch (_) {
+      } catch {
         setImages([])
       }
     }

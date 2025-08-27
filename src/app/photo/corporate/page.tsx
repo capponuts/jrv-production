@@ -24,7 +24,7 @@ export default function CorporatePage() {
           description: ''
         }))
         setImages(list)
-      } catch (_) {
+      } catch {
         setImages([])
       }
     }

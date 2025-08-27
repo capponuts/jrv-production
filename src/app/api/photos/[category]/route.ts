@@ -20,7 +20,7 @@ export async function GET(
     const images = files.map((file) => `/photos/${encodeURIComponent(category)}/${encodeURIComponent(file)}`)
 
     return NextResponse.json({ images })
-  } catch (error) {
+  } catch {
     return NextResponse.json({ images: [] }, { status: 200 })
   }
 }

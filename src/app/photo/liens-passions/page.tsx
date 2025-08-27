@@ -24,7 +24,7 @@ export default function LiensPassionsPage() {
           description: ''
         }))
         setImages(list)
-      } catch (_) {
+      } catch {
         setImages([])
       }
     }

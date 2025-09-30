@@ -4,6 +4,7 @@ import path from 'path'
 import sharp from 'sharp'
 
 export type StoredImage = {
+  name: string
   url: string
   width: number
   height: number
@@ -75,6 +76,7 @@ class FileSystemPhotoStorage implements PhotoStorage {
           const blurDataURL = `data:image/jpeg;base64,${blurBuffer.toString('base64')}`
 
           return {
+            name: file,
             url: `/photos/${encodeURIComponent(safeCategory)}/${encodeURIComponent(file)}`,
             width,
             height,

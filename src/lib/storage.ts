@@ -2,6 +2,7 @@ import { promises as fs } from 'fs'
 import type { Dirent } from 'fs'
 import path from 'path'
 import sharp from 'sharp'
+import { put, list, del } from '@vercel/blob'
 
 export type StoredImage = {
   name: string
@@ -108,8 +109,78 @@ class FileSystemPhotoStorage implements PhotoStorage {
   }
 }
 
+class VercelBlobPhotoStorage implements PhotoStorage {
+  private readonly rootPrefix = 'photos/'
+
+  private toPath(category: string, filename?: string): string {
+    const safeCategory = sanitizeCategory(category)
+    if (!filename) return `${this.rootPrefix}${safeCategory}/`
+    const safeFilename = sanitizeFilename(filename)
+    return `${this.rootPrefix}${safeCategory}/${safeFilename}`
+  }
+
+  async listCategories(): Promise<string[]> {
+    const categories = new Set<string>()
+    let cursor: string | undefined
+    do {
+      const res = await list({ prefix: this.rootPrefix, limit: 1000, cursor })
+      for (const b of res.blobs) {
+        const pathname = b.pathname // e.g., photos/cat/file.jpg
+        const rest = pathname.slice(this.rootPrefix.length)
+        const firstSlash = rest.indexOf('/')
+        if (firstSlash > 0) {
+          categories.add(rest.slice(0, firstSlash))
+        }
+      }
+      cursor = res.cursor
+    } while (cursor)
+    return Array.from(categories.values()).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+  }
+
+  async ensureCategory(category: string): Promise<void> {
+    // Create a placeholder to ensure the category appears in listings
+    const key = this.toPath(category, '.keep')
+    await put(key, new Uint8Array(0), { access: 'public', addRandomSuffix: false })
+  }
+
+  async listImages(category: string): Promise<StoredImage[]> {
+    const prefix = this.toPath(category)
+    const results: StoredImage[] = []
+    let cursor: string | undefined
+    do {
+      const res = await list({ prefix, limit: 1000, cursor })
+      for (const b of res.blobs) {
+        const name = b.pathname.substring(prefix.length)
+        if (!/\.(jpe?g|png|webp|avif)$/i.test(name)) continue
+        results.push({
+          name,
+          url: b.url,
+          width: 0,
+          height: 0,
+        })
+      }
+      cursor = res.cursor
+    } while (cursor)
+    results.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+    return results
+  }
+
+  async uploadImage(category: string, filename: string, data: Buffer): Promise<void> {
+    const key = this.toPath(category, filename)
+    await put(key, data, { access: 'public', addRandomSuffix: false })
+  }
+
+  async deleteImage(category: string, filename: string): Promise<void> {
+    const key = this.toPath(category, filename)
+    await del(key)
+  }
+}
+
 export function getPhotoStorage(): PhotoStorage {
-  // Placeholder for future providers (e.g., S3, Cloudinary). Defaults to filesystem.
+  // Use Vercel Blob if configured; fallback to filesystem in local/dev.
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    return new VercelBlobPhotoStorage()
+  }
   return new FileSystemPhotoStorage()
 }
 

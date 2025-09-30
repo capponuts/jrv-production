@@ -1,27 +1,37 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
+type ApiImage = { url: string; blurDataURL?: string }
 
 export default function EvenementsMariagesPage() {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
+  const [images, setImages] = useState<{ src: string, alt: string, description: string, blurDataURL?: string }[]>([])
 
-  const images = [
-    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop', alt: 'Mariage romantique en extérieur', description: 'Cérémonie de mariage dans un cadre naturel idyllique' },
-    { src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&h=800&fit=crop', alt: 'Réception de mariage élégante', description: 'Ambiance festive et chaleureuse lors de la réception' },
-    { src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop', alt: 'Premier pas de danse des mariés', description: 'Moment magique du premier pas de danse en tant que couple marié' },
-    { src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=800&fit=crop', alt: "Événement corporate professionnel", description: "Captation d'événements d'entreprise et conférences" },
-    { src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=800&fit=crop', alt: 'Festival de musique en plein air', description: 'Énergie et ambiance des festivals et concerts' },
-    { src: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1200&h=800&fit=crop', alt: 'Anniversaire festif', description: "Célébrations d'anniversaires et événements privés" },
-    { src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=800&fit=crop', alt: 'Cérémonie religieuse', description: 'Mariages traditionnels et cérémonies religieuses' },
-    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop', alt: 'Séance photo de couple', description: 'Séances photo romantiques pour couples et fiançailles' }
-  ]
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/photos/evenements-mariages')
+        const data = await res.json()
+        const list = (data.images as ApiImage[]).map((item: ApiImage, idx: number) => ({
+          src: item.url,
+          alt: `Événements & Mariages ${idx + 1}`,
+          description: '',
+          blurDataURL: item.blurDataURL
+        }))
+        setImages(list)
+      } catch {
+        setImages([])
+      }
+    }
+    load()
+  }, [])
 
   const openLightbox = (index: number) => { setSelectedImage(index); setCurrentImageIndex(index) }
   const closeLightbox = () => setSelectedImage(null)

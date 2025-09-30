@@ -3,6 +3,9 @@ import { getPhotoStorage } from '@/lib/storage'
 
 export async function POST(request: Request) {
   try {
+    if (process.env.VERCEL && !process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json({ error: 'Blob non configuré: ajoutez BLOB_READ_WRITE_TOKEN dans les variables d\'environnement et redeployez.' }, { status: 500 })
+    }
     const { name } = await request.json()
     if (!name || typeof name !== 'string') {
       return NextResponse.json({ error: 'Invalid name' }, { status: 400 })
@@ -14,4 +17,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Unexpected error' }, { status: 500 })
   }
 }
+
+export const runtime = 'nodejs'
 

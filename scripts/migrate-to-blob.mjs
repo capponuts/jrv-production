@@ -32,6 +32,7 @@ async function main() {
   }
 
   const photosRoot = path.join(projectRoot, 'public', 'photos')
+  const portfolioRoot = path.join(projectRoot, 'public', 'portfolio')
   let stats
   try {
     stats = await fs.stat(photosRoot)
@@ -45,6 +46,7 @@ async function main() {
   }
 
   let count = 0
+  // Migrate photos/*
   for await (const filePath of walk(photosRoot)) {
     const rel = path.relative(photosRoot, filePath)
     if (!isImage(rel)) continue
@@ -57,6 +59,23 @@ async function main() {
     process.stdout.write('done\n')
     count += 1
   }
+
+  // Migrate portfolio/* into photos/portfolio/* so qu511'il soit géré dans l'admin
+  try {
+    const statPortfolio = await fs.stat(portfolioRoot)
+    if (statPortfolio.isDirectory()) {
+      for await (const filePath of walk(portfolioRoot)) {
+        const filename = path.basename(filePath)
+        if (!isImage(filename)) continue
+        const key = `photos/portfolio/${filename}`
+        const data = await fs.readFile(filePath)
+        process.stdout.write(`Uploading: ${key} ... `)
+        await put(key, data, { access: 'public', addRandomSuffix: false })
+        process.stdout.write('done\n')
+        count += 1
+      }
+    }
+  } catch {}
 
   console.log(`Migration complete. Uploaded ${count} files to Vercel Blob.`)
 }

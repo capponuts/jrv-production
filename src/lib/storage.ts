@@ -1,6 +1,9 @@
 import { promises as fs } from 'fs'
+import type { Dirent } from 'fs'
 import path from 'path'
 import sharp from 'sharp'
+import type { Buffer } from 'buffer'
+import process from 'node:process'
 
 export type StoredImage = {
   url: string
@@ -35,11 +38,11 @@ class FileSystemPhotoStorage implements PhotoStorage {
   async listCategories(): Promise<string[]> {
     try {
       const photosRoot = getPhotosRootDir()
-      const entries = await fs.readdir(photosRoot, { withFileTypes: true })
+      const entries = await fs.readdir(photosRoot, { withFileTypes: true }) as unknown as Dirent[]
       return entries
-        .filter((e) => e.isDirectory())
-        .map((e) => e.name)
-        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+        .filter((e: Dirent) => e.isDirectory())
+        .map((e: Dirent) => e.name)
+        .sort((a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }))
     } catch {
       return []
     }
@@ -56,15 +59,15 @@ class FileSystemPhotoStorage implements PhotoStorage {
     const photosDir = path.join(getPhotosRootDir(), safeCategory)
 
     try {
-      const entries = await fs.readdir(photosDir, { withFileTypes: true })
+      const entries = await fs.readdir(photosDir, { withFileTypes: true }) as unknown as Dirent[]
       const files = entries
-        .filter((e) => e.isFile())
-        .map((e) => e.name)
-        .filter((name) => /\.(jpe?g|png|webp|avif)$/i.test(name))
-        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+        .filter((e: Dirent) => e.isFile())
+        .map((e: Dirent) => e.name)
+        .filter((name: string) => /\.(jpe?g|png|webp|avif)$/i.test(name))
+        .sort((a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }))
 
       const images = await Promise.all(
-        files.map(async (file) => {
+        files.map(async (file: string) => {
           const filePath = path.join(photosDir, file)
           const img = sharp(filePath)
           const metadata = await img.metadata()

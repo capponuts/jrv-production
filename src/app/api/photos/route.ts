@@ -10,7 +10,7 @@ export async function GET() {
         'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=3600',
       },
     })
-  } catch (error) {
+  } catch {
     return NextResponse.json({ categories: [] }, { status: 200 })
   }
 }

@@ -33,34 +33,29 @@ async function main() {
 
   const photosRoot = path.join(projectRoot, 'public', 'photos')
   const portfolioRoot = path.join(projectRoot, 'public', 'portfolio')
-  let stats
-  try {
-    stats = await fs.stat(photosRoot)
-  } catch {
-    console.error('No local photos directory found at public/photos. Nothing to migrate.')
-    return
-  }
-  if (!stats.isDirectory()) {
-    console.error('public/photos exists but is not a directory')
-    process.exit(1)
-  }
-
   let count = 0
-  // Migrate photos/*
-  for await (const filePath of walk(photosRoot)) {
-    const rel = path.relative(photosRoot, filePath)
-    if (!isImage(rel)) continue
-    const category = path.dirname(rel).replace(/\\/g, '/')
-    const filename = path.basename(rel)
-    const key = `photos/${category}/${filename}`
-    const data = await fs.readFile(filePath)
-    process.stdout.write(`Uploading: ${key} ... `)
-    await put(key, data, { access: 'public', addRandomSuffix: false })
-    process.stdout.write('done\n')
-    count += 1
+  // Migrate photos/* if present
+  try {
+    const stats = await fs.stat(photosRoot)
+    if (stats.isDirectory()) {
+      for await (const filePath of walk(photosRoot)) {
+        const rel = path.relative(photosRoot, filePath)
+        if (!isImage(rel)) continue
+        const category = path.dirname(rel).replace(/\\/g, '/')
+        const filename = path.basename(rel)
+        const key = `photos/${category}/${filename}`
+        const data = await fs.readFile(filePath)
+        process.stdout.write(`Uploading: ${key} ... `)
+        await put(key, data, { access: 'public', addRandomSuffix: false })
+        process.stdout.write('done\n')
+        count += 1
+      }
+    }
+  } catch {
+    console.warn('No local photos directory found at public/photos. Skipping.')
   }
 
-  // Migrate portfolio/* into photos/portfolio/* so qu511'il soit géré dans l'admin
+  // Migrate portfolio/* into photos/portfolio/* so it is managed in admin
   try {
     const statPortfolio = await fs.stat(portfolioRoot)
     if (statPortfolio.isDirectory()) {
@@ -76,6 +71,15 @@ async function main() {
       }
     }
   } catch {}
+
+  // Ensure placeholder entries for site photo pages so albums appear in admin
+  const defaultAlbums = ['architecture-espaces', 'corporate', 'evenements-mariages', 'liens-passions']
+  for (const album of defaultAlbums) {
+    const key = `photos/${album}/.keep`
+    process.stdout.write(`Ensuring album: ${album} ... `)
+    await put(key, Buffer.from('placeholder'), { access: 'public', addRandomSuffix: false })
+    process.stdout.write('ok\n')
+  }
 
   console.log(`Migration complete. Uploaded ${count} files to Vercel Blob.`)
 }

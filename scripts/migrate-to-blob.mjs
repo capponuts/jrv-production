@@ -33,6 +33,7 @@ async function main() {
 
   const photosRoot = path.join(projectRoot, 'public', 'photos')
   const portfolioRoot = path.join(projectRoot, 'public', 'portfolio')
+  const videoRoot = path.join(projectRoot, 'public', 'videos')
   let count = 0
   // Migrate photos/* if present
   try {
@@ -80,6 +81,25 @@ async function main() {
     await put(key, Buffer.from('placeholder'), { access: 'public', addRandomSuffix: false })
     process.stdout.write('ok\n')
   }
+
+  // Migrate videos if present: expect pairs <name>.thumb.<ext> + <name>.<mp4|webm>
+  try {
+    const statVideos = await fs.stat(videoRoot)
+    if (statVideos.isDirectory()) {
+      for await (const filePath of walk(videoRoot)) {
+        const filename = path.basename(filePath)
+        const dir = path.dirname(filePath)
+        // Only upload actual files; keeping original filenames under videos/<category>/
+        const rel = path.relative(videoRoot, filePath)
+        const key = `videos/${rel.replace(/\\/g, '/')}`
+        const data = await fs.readFile(filePath)
+        process.stdout.write(`Uploading: ${key} ... `)
+        await put(key, data, { access: 'public', addRandomSuffix: false })
+        process.stdout.write('done\n')
+        count += 1
+      }
+    }
+  } catch {}
 
   console.log(`Migration complete. Uploaded ${count} files to Vercel Blob.`)
 }

@@ -1,14 +1,14 @@
 'use client'
 
-import { useEffect, useState, type FormEvent } from 'react'
+import { useEffect, useState } from 'react'
 import type React from 'react'
 import Link from 'next/link'
 
 export default function AdminDashboardPage() {
   const [albums, setAlbums] = useState<string[]>([])
-  const [newAlbum, setNewAlbum] = useState('')
-  const [error, setError] = useState('')
+  const [error] = useState('')
   const [showHelp, setShowHelp] = useState(false)
+  const [videoCategories, setVideoCategories] = useState<string[]>([])
 
   useEffect(() => {
     const load = async () => {
@@ -19,33 +19,18 @@ export default function AdminDashboardPage() {
       } catch {
         setAlbums([])
       }
+      try {
+        const res = await fetch('/api/videos')
+        const data = await res.json()
+        setVideoCategories(data.categories || [])
+      } catch {
+        setVideoCategories([])
+      }
     }
     load()
   }, [])
 
-  const createCategory = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setError('')
-    const name = newAlbum.trim()
-    if (!name) return
-    try {
-      const res = await fetch('/api/admin/categories', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name }),
-      })
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        setError(data?.error || 'Impossible de créer la catégorie')
-        return
-      }
-      setNewAlbum('')
-      const updated = await fetch('/api/photos').then(r => r.json())
-      setAlbums(updated.categories || [])
-    } catch {
-      setError('Erreur réseau')
-    }
-  }
+  // Album creation removed per requirements
 
   const logout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' })
@@ -80,17 +65,10 @@ export default function AdminDashboardPage() {
             </div>
           </div>
         )}
-        <section className="mb-8">
-          <h2 className="text-base font-medium mb-3">Créer un album</h2>
-          <form onSubmit={createCategory} className="flex gap-2">
-            <input value={newAlbum} onChange={(e) => setNewAlbum(e.target.value)} placeholder="ex: corporate" className="flex-1 rounded-md bg-gray-900 border border-gray-800 px-3 py-2" />
-            <button className="px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-500">Créer</button>
-          </form>
-          {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
-        </section>
+        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
 
         <section>
-          <h2 className="text-base font-medium mb-3">Albums</h2>
+          <h2 className="text-base font-medium mb-3">Albums (photos)</h2>
           <ul className="divide-y divide-gray-800 rounded-md border border-gray-800 overflow-hidden">
             {albums.map((album: string) => (
               <li key={album} className="flex items-center justify-between px-4 py-3 bg-gray-900">
@@ -99,7 +77,22 @@ export default function AdminDashboardPage() {
               </li>
             ))}
             {albums.length === 0 && (
-              <li className="px-4 py-3 text-gray-400">Aucune catégorie</li>
+              <li className="px-4 py-3 text-gray-400">Aucun album</li>
+            )}
+          </ul>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="text-base font-medium mb-3">Vidéos</h2>
+          <ul className="divide-y divide-gray-800 rounded-md border border-gray-800 overflow-hidden">
+            {videoCategories.map((cat: string) => (
+              <li key={cat} className="flex items-center justify-between px-4 py-3 bg-gray-900">
+                <span>{cat}</span>
+                <Link href={`/admin/videos/${encodeURIComponent(cat)}`} className="text-indigo-400 hover:underline">Gérer</Link>
+              </li>
+            ))}
+            {videoCategories.length === 0 && (
+              <li className="px-4 py-3 text-gray-400">Aucune catégorie vidéo</li>
             )}
           </ul>
         </section>

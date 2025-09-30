@@ -2,8 +2,6 @@ import { promises as fs } from 'fs'
 import type { Dirent } from 'fs'
 import path from 'path'
 import sharp from 'sharp'
-import type { Buffer } from 'buffer'
-import process from 'node:process'
 
 export type StoredImage = {
   url: string

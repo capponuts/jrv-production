@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useState, type FormEvent, Suspense } from 'react'
 import type React from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function AdminLoginPage() {
+function LoginInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const nextPath = searchParams.get('next') || '/admin'
@@ -53,6 +53,14 @@ export default function AdminLoginPage() {
         </button>
       </form>
     </div>
+  )
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-gray-950 text-white">Chargement…</div>}>
+      <LoginInner />
+    </Suspense>
   )
 }
 

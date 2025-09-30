@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import process from 'node:process'
 
 const ADMIN_LOGIN_PATH = '/admin/login'
 const ADMIN_DASHBOARD_PATH = '/admin'

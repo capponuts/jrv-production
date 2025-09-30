@@ -8,6 +8,7 @@ export default function AdminDashboardPage() {
   const [albums, setAlbums] = useState<string[]>([])
   const [newAlbum, setNewAlbum] = useState('')
   const [error, setError] = useState('')
+  const [showHelp, setShowHelp] = useState(false)
 
   useEffect(() => {
     const load = async () => {
@@ -55,9 +56,30 @@ export default function AdminDashboardPage() {
     <div className="min-h-screen bg-gray-950 text-white">
       <header className="flex items-center justify-between p-4 border-b border-gray-800">
         <h1 className="text-lg font-semibold">Administration</h1>
-        <button onClick={logout} className="px-3 py-1.5 rounded-md bg-gray-800 hover:bg-gray-700">Se déconnecter</button>
+        <div className="flex items-center gap-2">
+          <button onClick={() => setShowHelp(true)} className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500">Mode d&apos;emploi</button>
+          <button onClick={logout} className="px-3 py-1.5 rounded-md bg-gray-800 hover:bg-gray-700">Se déconnecter</button>
+        </div>
       </header>
       <main className="max-w-3xl mx-auto p-4">
+        {showHelp && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+            <div className="w-full max-w-lg bg-gray-900 border border-gray-800 rounded-xl p-5 text-white">
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-lg font-semibold">Mode d&apos;emploi</h2>
+                <button onClick={() => setShowHelp(false)} className="px-2 py-1 rounded-md bg-gray-800 hover:bg-gray-700">Fermer</button>
+              </div>
+              <div className="space-y-3 text-sm text-gray-200">
+                <p><strong>Connexion</strong> → /admin/login avec votre mot de passe admin.</p>
+                <p><strong>Albums</strong> → Cette page liste vos albums. Cliquez sur « Gérer » pour ouvrir un album.</p>
+                <p><strong>Ajouter</strong> → Dans un album, glissez-déposez des images ou cliquez sur « Parcourir… ».</p>
+                <p><strong>Remplacer</strong> → Bouton « Remplacer » sur une photo pour uploader un nouveau fichier au même nom.</p>
+                <p><strong>Supprimer</strong> → Bouton « Supprimer » pour retirer une photo.</p>
+                <p><strong>Stockage</strong> → Les fichiers sont enregistrés sur Vercel Blob (persistant en production).</p>
+              </div>
+            </div>
+          </div>
+        )}
         <section className="mb-8">
           <h2 className="text-base font-medium mb-3">Créer un album</h2>
           <form onSubmit={createCategory} className="flex gap-2">

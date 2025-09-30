@@ -140,7 +140,7 @@ class VercelBlobPhotoStorage implements PhotoStorage {
   async ensureCategory(category: string): Promise<void> {
     // Create a placeholder to ensure the category appears in listings
     const key = this.toPath(category, '.keep')
-    await put(key, new Uint8Array(0), { access: 'public', addRandomSuffix: false })
+    await put(key, Buffer.alloc(0), { access: 'public', addRandomSuffix: false })
   }
 
   async listImages(category: string): Promise<StoredImage[]> {

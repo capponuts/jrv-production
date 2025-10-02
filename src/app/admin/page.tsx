@@ -9,6 +9,7 @@ export default function AdminDashboardPage() {
   const [error] = useState('')
   const [showHelp, setShowHelp] = useState(false)
   const [videoCategories, setVideoCategories] = useState<string[]>([])
+  const [newVideoCategory, setNewVideoCategory] = useState('')
 
   useEffect(() => {
     const load = async () => {
@@ -84,6 +85,39 @@ export default function AdminDashboardPage() {
 
         <section className="mt-10">
           <h2 className="text-base font-medium mb-3">Vidéos</h2>
+        <div className="mb-3 flex gap-2">
+          <input
+            value={newVideoCategory}
+            onChange={(e) => setNewVideoCategory(e.target.value)}
+            placeholder="Nom de catégorie"
+            className="rounded-md bg-gray-900 border border-gray-800 px-3 py-2 flex-1"
+          />
+          <button
+            onClick={async () => {
+              const name = newVideoCategory.trim()
+              if (!name) return
+              const res = await fetch('/api/admin/videos/categories', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name })
+              })
+              if (res.ok) {
+                setNewVideoCategory('')
+                // reload categories
+                try {
+                  const r = await fetch('/api/videos')
+                  const d = await r.json()
+                  setVideoCategories(d.categories || [])
+                } catch {
+                  // ignore
+                }
+              }
+            }}
+            className="px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-500"
+          >
+            Créer
+          </button>
+        </div>
           <ul className="divide-y divide-gray-800 rounded-md border border-gray-800 overflow-hidden">
             {videoCategories.map((cat: string) => (
               <li key={cat} className="flex items-center justify-between px-4 py-3 bg-gray-900">

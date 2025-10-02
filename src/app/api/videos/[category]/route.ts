@@ -21,7 +21,9 @@ export async function GET(_request: Request, context: unknown) {
         if (/\.thumb\.(jpe?g|png|webp|avif)$/i.test(b.pathname)) {
           const base = b.pathname.replace(/\.thumb\.(jpe?g|png|webp|avif)$/i, '')
           const thumbUrl = b.url
-          const videoEntry = res.blobs.find((x) => x.pathname === `${base}.mp4` || `${base}.webm`)
+          const videoEntry = res.blobs.find((x: { pathname: string; url: string }) => (
+            x.pathname === `${base}.mp4` || x.pathname === `${base}.webm`
+          ))
           const name = base.substring(prefix.length)
           if (videoEntry) {
             items.push({ thumbnailUrl: thumbUrl, videoUrl: videoEntry.url, name })

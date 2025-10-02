@@ -83,7 +83,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
       </head>
       <body className={`${dmSans.className} bg-gray-900 text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#111827', color: '#ffffff'}}>
         {children}
-        <Analytics />
+        {process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === 'true' && <Analytics />}
       </body>
     </html>
   )

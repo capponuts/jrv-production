@@ -105,7 +105,13 @@ class FileSystemPhotoStorage implements PhotoStorage {
     const safeCategory = sanitizeCategory(category)
     const safeFilename = sanitizeFilename(filename)
     const targetPath = path.join(getPhotosRootDir(), safeCategory, safeFilename)
-    await fs.unlink(targetPath)
+    try {
+      await fs.unlink(targetPath)
+    } catch (err: unknown) {
+      const error = err as { code?: string }
+      if (error && error.code === 'ENOENT') return
+      throw err
+    }
   }
 }
 
@@ -172,7 +178,11 @@ class VercelBlobPhotoStorage implements PhotoStorage {
 
   async deleteImage(category: string, filename: string): Promise<void> {
     const key = this.toPath(category, filename)
-    await del(key)
+    try {
+      await del(key)
+    } catch {
+      // Ignore not found errors to make deletion idempotent
+    }
   }
 }
 

@@ -24,7 +24,8 @@ export async function POST(request: Request, context: unknown) {
 
     const form = await request.formData()
     const files = form.getAll('file') as File[]
-    const replaceName = form.get('filename') as string | null
+    const replaceNameRaw = form.get('filename') as string | null
+    const replaceName = replaceNameRaw && typeof replaceNameRaw === 'string' ? replaceNameRaw.trim() : null
 
     if (!files || files.length === 0) {
       return NextResponse.json({ error: 'No file' }, { status: 400 })

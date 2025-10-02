@@ -41,7 +41,8 @@ export default function AdminCategoryPage() {
       form.append('file', file)
       const res = await fetch(`/api/admin/photos/${encodeURIComponent(category)}`, { method: 'POST', body: form })
       if (!res.ok) {
-        setError('Upload échoué')
+        const msg = await res.json().catch(() => ({})) as { error?: string }
+        setError(msg.error || 'Upload échoué')
         break
       }
     }
@@ -60,7 +61,10 @@ export default function AdminCategoryPage() {
     form.append('file', file)
     form.append('filename', replaceTarget)
     const res = await fetch(`/api/admin/photos/${encodeURIComponent(category)}`, { method: 'POST', body: form })
-    if (!res.ok) setError('Remplacement échoué')
+    if (!res.ok) {
+      const msg = await res.json().catch(() => ({})) as { error?: string }
+      setError(msg.error || 'Remplacement échoué')
+    }
     setReplaceTarget(null)
     e.currentTarget.value = ''
     await load()
@@ -73,7 +77,10 @@ export default function AdminCategoryPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ filename: name }),
     })
-    if (!res.ok) setError('Suppression échouée')
+    if (!res.ok) {
+      const msg = await res.json().catch(() => ({})) as { error?: string }
+      setError(msg.error || 'Suppression échouée')
+    }
     await load()
   }
 

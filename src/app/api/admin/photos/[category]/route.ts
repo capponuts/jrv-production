@@ -16,6 +16,9 @@ export async function POST(request: Request, context: unknown) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
   try {
+    if (process.env.VERCEL && !process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json({ error: 'Blob non configuré: ajoutez BLOB_READ_WRITE_TOKEN dans les variables d\'environnement et redeployez.' }, { status: 500 })
+    }
     const { category } = (context as { params: { category: string } }).params
     const storage = getPhotoStorage()
 
@@ -47,6 +50,9 @@ export async function DELETE(request: Request, context: unknown) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
   try {
+    if (process.env.VERCEL && !process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json({ error: 'Blob non configuré: ajoutez BLOB_READ_WRITE_TOKEN dans les variables d\'environnement et redeployez.' }, { status: 500 })
+    }
     const { category } = (context as { params: { category: string } }).params
     const storage = getPhotoStorage()
     const { filename } = await request.json()

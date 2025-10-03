@@ -24,7 +24,7 @@ const Header = () => {
     { name: 'Vidéo', href: '/video' },
     { name: 'Photo', href: '/photo' },
     { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Tarif', href: '/tarif' },
+    // { name: 'Tarif', href: '/tarif' },
     { name: 'Qui Suis-je ?', href: '/#about' },
     { name: 'Contact', href: '/#contact' },
   ]

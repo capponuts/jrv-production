@@ -31,6 +31,7 @@ export default function AdminVideoCategoryPage() {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load() }, [category])
 
   const onUpload = async () => {

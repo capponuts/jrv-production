@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import { del } from '@vercel/blob'
 import { cookies } from 'next/headers'
 import { getVideoStorage } from '@/lib/video'
 

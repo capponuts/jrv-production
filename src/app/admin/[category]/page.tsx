@@ -31,6 +31,7 @@ export default function AdminCategoryPage() {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load() }, [category])
 
   const onUpload = async (files: FileList | File[]) => {

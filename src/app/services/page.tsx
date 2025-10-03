@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Camera, Video, DollarSign, User, Mail } from 'lucide-react'
+import { ArrowLeft, Camera, Video, User, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 
@@ -23,13 +23,6 @@ export default function ServicesPage() {
       description: 'Récits visuels immersifs',
       href: '/video',
       color: 'from-red-500 to-red-600'
-    },
-    {
-      icon: <DollarSign className="w-8 h-8" />,
-      title: 'Tarifs',
-      description: 'Nos offres et prix',
-      href: '/tarif',
-      color: 'from-green-500 to-green-600'
     },
     {
       icon: <User className="w-8 h-8" />,

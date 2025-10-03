@@ -16,6 +16,9 @@ async function isAuthorized(): Promise<boolean> {
 export async function POST(request: Request, context: unknown) {
   if (!(await isAuthorized())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
+    if (process.env.VERCEL && !process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json({ error: 'Blob non configuré: ajoutez BLOB_READ_WRITE_TOKEN dans les variables d\'environnement et redeployez.' }, { status: 500 })
+    }
     const { category } = (context as { params: { category: string } }).params
     const form = await request.formData()
     const thumbnail = form.get('thumbnail') as File | null
@@ -40,6 +43,9 @@ export async function POST(request: Request, context: unknown) {
 export async function DELETE(request: Request, context: unknown) {
   if (!(await isAuthorized())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
+    if (process.env.VERCEL && !process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json({ error: 'Blob non configuré: ajoutez BLOB_READ_WRITE_TOKEN dans les variables d\'environnement et redeployez.' }, { status: 500 })
+    }
     const { category } = (context as { params: { category: string } }).params
     const { name } = await request.json()
     if (!name || typeof name !== 'string') return NextResponse.json({ error: 'Invalid name' }, { status: 400 })

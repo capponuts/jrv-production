@@ -45,7 +45,8 @@ export default function AdminVideoCategoryPage() {
     if (name) form.append('name', name)
     const res = await fetch(`/api/admin/videos/${encodeURIComponent(category)}`, { method: 'POST', body: form })
     if (!res.ok) {
-      setError('Upload échoué')
+      const msg = await res.json().catch(() => ({})) as { error?: string }
+      setError(msg.error || 'Upload échoué')
       return
     }
     if (thumbRef.current) thumbRef.current.value = ''
@@ -61,7 +62,10 @@ export default function AdminVideoCategoryPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name })
     })
-    if (!res.ok) setError('Suppression échouée')
+    if (!res.ok) {
+      const msg = await res.json().catch(() => ({})) as { error?: string }
+      setError(msg.error || 'Suppression échouée')
+    }
     await load()
   }
 

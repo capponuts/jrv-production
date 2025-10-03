@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
-type VideoItem = { name: string; thumbnailUrl: string; videoUrl: string }
+type VideoItem = { name: string; thumbnailUrl?: string; url: string }
 
 export default function AdminVideoCategoryPage() {
   const params = useParams<{ category: string }>()
@@ -14,9 +14,8 @@ export default function AdminVideoCategoryPage() {
   const [items, setItems] = useState<VideoItem[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const thumbRef = useRef<HTMLInputElement | null>(null)
-  const videoRef = useRef<HTMLInputElement | null>(null)
   const nameRef = useRef<HTMLInputElement | null>(null)
+  const urlRef = useRef<HTMLInputElement | null>(null)
 
   const load = async () => {
     setLoading(true)
@@ -35,23 +34,21 @@ export default function AdminVideoCategoryPage() {
   useEffect(() => { load() }, [category])
 
   const onUpload = async () => {
-    const thumbnail = thumbRef.current?.files?.[0]
-    const video = videoRef.current?.files?.[0]
     const name = nameRef.current?.value?.trim()
-    if (!thumbnail || !video) return setError('Sélectionnez miniature et vidéo')
-    const form = new FormData()
-    form.append('thumbnail', thumbnail)
-    form.append('video', video)
-    if (name) form.append('name', name)
-    const res = await fetch(`/api/admin/videos/${encodeURIComponent(category)}`, { method: 'POST', body: form })
+    const url = urlRef.current?.value?.trim()
+    if (!url) return setError('Entrez une URL')
+    const res = await fetch(`/api/admin/videos/${encodeURIComponent(category)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, name })
+    })
     if (!res.ok) {
       const msg = await res.json().catch(() => ({})) as { error?: string }
       setError(msg.error || 'Upload échoué')
       return
     }
-    if (thumbRef.current) thumbRef.current.value = ''
-    if (videoRef.current) videoRef.current.value = ''
     if (nameRef.current) nameRef.current.value = ''
+    if (urlRef.current) urlRef.current.value = ''
     await load()
   }
 
@@ -84,8 +81,7 @@ export default function AdminVideoCategoryPage() {
           <h2 className="text-base font-medium mb-3">Ajouter une vidéo</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
             <input ref={nameRef} placeholder="Nom (facultatif)" className="rounded-md bg-gray-900 border border-gray-800 px-3 py-2" />
-            <input ref={thumbRef} type="file" accept="image/*" className="rounded-md bg-gray-900 border border-gray-800 px-3 py-2" />
-            <input ref={videoRef} type="file" accept="video/mp4,video/webm" className="rounded-md bg-gray-900 border border-gray-800 px-3 py-2" />
+            <input ref={urlRef} placeholder="URL YouTube/Instagram" className="rounded-md bg-gray-900 border border-gray-800 px-3 py-2 md:col-span-2" />
           </div>
           <button onClick={onUpload} className="mt-3 px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-500">Uploader</button>
           {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
@@ -100,12 +96,16 @@ export default function AdminVideoCategoryPage() {
               {items.map((it) => (
                 <div key={it.name} className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
                   <div className="relative w-full aspect-video">
-                    <Image src={it.thumbnailUrl} alt={it.name} fill className="object-cover" />
+                    {it.thumbnailUrl ? (
+                      <Image src={it.thumbnailUrl} alt={it.name} fill className="object-cover" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-400">Pas de miniature</div>
+                    )}
                   </div>
                   <div className="p-3 flex items-center justify-between gap-2">
                     <span className="truncate text-sm text-gray-300" title={it.name}>{it.name}</span>
                     <div className="flex gap-2">
-                      <a href={it.videoUrl} target="_blank" className="px-2 py-1 text-xs rounded bg-blue-600 hover:bg-blue-500">Voir</a>
+                      <a href={it.url} target="_blank" className="px-2 py-1 text-xs rounded bg-blue-600 hover:bg-blue-500">Voir</a>
                       <button onClick={() => onDelete(it.name)} className="px-2 py-1 text-xs rounded bg-red-600 hover:bg-red-500">Supprimer</button>
                     </div>
                   </div>

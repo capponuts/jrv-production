@@ -86,9 +86,39 @@ class FileSystemPhotoStorage implements PhotoStorage {
         })
       )
 
-      return images
+      if (images.length > 0) {
+        return images
+      }
+
+      // If directory exists but contains no valid images, return fallback
+      const fallbackMap: Record<string, string[]> = {
+        'evenements-mariages': ['portfolio/wedding-1.jpg', 'portfolio/wedding-2.jpg'],
+        'liens-passions': ['portfolio/portrait-outdoor.jpg', 'portfolio/portrait-studio.jpg'],
+        'corporate': ['portfolio/corporate-event.jpg'],
+        'architecture-espaces': ['portfolio/real-estate-drone.jpg'],
+      }
+      const fallbacks = fallbackMap[safeCategory] || []
+      return fallbacks.map((rel) => ({
+        name: path.basename(rel),
+        url: `/${rel}`,
+        width: 0,
+        height: 0,
+      }))
     } catch {
-      return []
+      // Fallback: map known categories to example portfolio images so pages are not empty
+      const fallbackMap: Record<string, string[]> = {
+        'evenements-mariages': ['portfolio/wedding-1.jpg', 'portfolio/wedding-2.jpg'],
+        'liens-passions': ['portfolio/portrait-outdoor.jpg', 'portfolio/portrait-studio.jpg'],
+        'corporate': ['portfolio/corporate-event.jpg'],
+        'architecture-espaces': ['portfolio/real-estate-drone.jpg'],
+      }
+      const fallbacks = fallbackMap[safeCategory] || []
+      return fallbacks.map((rel) => ({
+        name: path.basename(rel),
+        url: `/${rel}`,
+        width: 0,
+        height: 0,
+      }))
     }
   }
 
@@ -177,10 +207,8 @@ class VercelBlobPhotoStorage implements PhotoStorage {
 }
 
 export function getPhotoStorage(): PhotoStorage {
-  // Use Vercel Blob if configured; fallback to filesystem in local/dev.
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
-    return new VercelBlobPhotoStorage()
-  }
+  // Always use filesystem-based storage so photos are served from public/photos
+  // This avoids dependency on Vercel Blob and ensures predictable file paths.
   return new FileSystemPhotoStorage()
 }
 

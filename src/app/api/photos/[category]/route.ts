@@ -22,4 +22,6 @@ export async function GET(
   }
 }
 
+export const runtime = 'nodejs'
+
 

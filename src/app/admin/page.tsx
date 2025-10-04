@@ -60,7 +60,7 @@ export default function AdminDashboardPage() {
                 <p><strong>Ajouter</strong> → Dans un album, glissez-déposez des images ou cliquez sur « Parcourir… ».</p>
                 <p><strong>Remplacer</strong> → Bouton « Remplacer » sur une photo pour uploader un nouveau fichier au même nom.</p>
                 <p><strong>Supprimer</strong> → Bouton « Supprimer » pour retirer une photo.</p>
-                <p><strong>Stockage</strong> → Les fichiers sont enregistrés sur Vercel Blob (persistant en production).</p>
+                <p><strong>Stockage</strong> → Les photos sont servies depuis <code>public/photos</code> et gérées par le serveur.</p>
               </div>
             </div>
           </div>

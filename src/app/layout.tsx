@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { DM_Sans } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
+// import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site'
 
@@ -83,7 +83,6 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
       </head>
       <body className={`${dmSans.className} bg-gray-900 text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#111827', color: '#ffffff'}}>
         {children}
-        <Analytics />
       </body>
     </html>
   )

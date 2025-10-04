@@ -91,10 +91,10 @@ class FileSystemPhotoStorage implements PhotoStorage {
 
       // If directory exists but contains no valid images, return fallback
       const fallbackMap: Record<string, string[]> = {
-        'evenements-mariages': ['portfolio/wedding-1.jpg', 'portfolio/wedding-2.jpg'],
+        'evenements-mariages': ['portfolio/wedding-1.jpg', 'portfolio/wedding-2.jpg', 'portfolio/wedding-vendee.jpg'],
         'liens-passions': ['portfolio/portrait-outdoor.jpg', 'portfolio/portrait-studio.jpg'],
         'corporate': ['portfolio/corporate-event.jpg'],
-        'architecture-espaces': ['portfolio/real-estate-drone.jpg'],
+        'architecture-espaces': ['portfolio/real-estate-drone.jpg', 'portfolio/drone-cinematic.jpg'],
       }
       const fallbacks = fallbackMap[safeCategory] || []
       return fallbacks.map((rel) => ({
@@ -106,10 +106,10 @@ class FileSystemPhotoStorage implements PhotoStorage {
     } catch {
       // Fallback: map known categories to example portfolio images so pages are not empty
       const fallbackMap: Record<string, string[]> = {
-        'evenements-mariages': ['portfolio/wedding-1.jpg', 'portfolio/wedding-2.jpg'],
+        'evenements-mariages': ['portfolio/wedding-1.jpg', 'portfolio/wedding-2.jpg', 'portfolio/wedding-vendee.jpg'],
         'liens-passions': ['portfolio/portrait-outdoor.jpg', 'portfolio/portrait-studio.jpg'],
         'corporate': ['portfolio/corporate-event.jpg'],
-        'architecture-espaces': ['portfolio/real-estate-drone.jpg'],
+        'architecture-espaces': ['portfolio/real-estate-drone.jpg', 'portfolio/drone-cinematic.jpg'],
       }
       const fallbacks = fallbackMap[safeCategory] || []
       return fallbacks.map((rel) => ({

@@ -2,27 +2,30 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDown, Volume2, VolumeX } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 
 export default function Home() {
   const [isIntroComplete, setIsIntroComplete] = useState(false)
   const [videoOpacity, setVideoOpacity] = useState(0)
-  const [isMuted, setIsMuted] = useState(true)
+  const [isMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [showIntro, setShowIntro] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const videoTimer = setTimeout(() => { setVideoOpacity(1) }, 800)
     const introTimer = setTimeout(() => { setIsIntroComplete(true) }, 1600)
+    // Détecter mobile (simple heuristique client)
+    setIsMobile(typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches)
     return () => { clearTimeout(videoTimer); clearTimeout(introTimer) }
   }, [])
 
   return (
     <main className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
       <motion.div className="absolute inset-0 z-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: videoOpacity }} transition={{ duration: 2, ease: 'easeInOut' }}>
-        <video ref={videoRef} autoPlay loop playsInline muted={isMuted} className="absolute inset-0 w-full h-full object-cover">
+        <video ref={videoRef} autoPlay loop playsInline muted className="absolute inset-0 w-full h-full object-cover">
           <source src="/video-hero.webm" type="video/webm" />
           <source src="/video-hero.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
@@ -30,32 +33,7 @@ export default function Home() {
         <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: isIntroComplete ? 0.4 : 0.8 }} transition={{ duration: 0.8, delay: 0.6 }} />
       </motion.div>
 
-      {/* Bouton son */}
-      {!showIntro && (
-      <div className="absolute top-4 right-4 z-40">
-        <button
-          onClick={() => {
-            const next = !isMuted
-            setIsMuted(next)
-            const el = videoRef.current
-            if (el) {
-              el.muted = next
-              if (!next && el.volume === 0) el.volume = 0.5
-              if (!next) {
-                const p = el.play ? el.play() : undefined
-                if (p && typeof (p as Promise<void>).catch === 'function') {
-                  (p as Promise<void>).catch(() => {})
-                }
-              }
-            }
-          }}
-          aria-label={isMuted ? 'Activer le son' : 'Couper le son'}
-          className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm flex items-center justify-center transition"
-        >
-          {isMuted ? <VolumeX className="w-6 h-6 text-white" /> : <Volume2 className="w-6 h-6 text-white" />}
-        </button>
-      </div>
-      )}
+      {/* Pas de bouton son: vidéo hero toujours muette */}
 
       {/* Intro plein écran */}
       {showIntro && (
@@ -72,7 +50,7 @@ export default function Home() {
               el?.pause?.()
             }}
           >
-            <source src="/video-intro.mp4" type="video/mp4" />
+            <source src={isMobile ? '/video-portrait.mp4' : '/video-intro.mp4'} type="video/mp4" />
           </video>
           {/* Bouton "Passer" */}
           <button

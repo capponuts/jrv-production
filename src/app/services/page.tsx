@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Camera, Video, DollarSign, User, Mail } from 'lucide-react'
+import { ArrowLeft, Camera, Video, User, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Footer from '../../components/Footer'
 

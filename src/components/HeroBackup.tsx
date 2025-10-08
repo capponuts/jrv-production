@@ -73,7 +73,7 @@ const HeroBackup = () => {
           </motion.div>
 
           <motion.p
-            className="text-lg md:text-xl mb-8 text البيضاء/80 leading-relaxed"
+            className="text-lg md:text-xl mb-8 text-white/80 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.4 }}

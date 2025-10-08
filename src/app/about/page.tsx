@@ -70,7 +70,7 @@ export default function AboutPage() {
                   JRV Production
                 </h2>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Je m'appelle Jérémy, je suis vidéaste en Vendée. Ce que j’aime, c’est capturer ce qu’on ne rejoue pas : un regard, une ambiance, un moment vrai. À travers mes images, je cherche à raconter ce qui se vit sur le moment, sans triche, sans filtre, avec du style et de la spontanéité.
+                  Je m&apos;appelle Jérémy, je suis vidéaste en Vendée. Ce que j’aime, c’est capturer ce qu’on ne rejoue pas : un regard, une ambiance, un moment vrai. À travers mes images, je cherche à raconter ce qui se vit sur le moment, sans triche, sans filtre, avec du style et de la spontanéité.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
                   Mariages, soirées, événements, séances photo… j’aime m’adapter à chaque univers. Je travaille sérieusement, mais sans prise de tête, pour créer quelque chose de pro, de sincère, et qui vous ressemble.

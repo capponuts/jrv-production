@@ -62,6 +62,7 @@ export default function Home() {
         <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
           <video
             autoPlay
+            muted
             playsInline
             className="w-full h-full object-cover"
             onEnded={() => setShowIntro(false)}

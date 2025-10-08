@@ -11,6 +11,7 @@ export default function Home() {
   const [videoOpacity, setVideoOpacity] = useState(0)
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [showIntro, setShowIntro] = useState(true)
 
   useEffect(() => {
     const videoTimer = setTimeout(() => { setVideoOpacity(1) }, 800)
@@ -22,14 +23,15 @@ export default function Home() {
     <main className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
       <motion.div className="absolute inset-0 z-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: videoOpacity }} transition={{ duration: 2, ease: 'easeInOut' }}>
         <video ref={videoRef} autoPlay loop playsInline muted={isMuted} className="absolute inset-0 w-full h-full object-cover">
-          <source src="/Videohero.webm" type="video/webm" />
-          <source src="/Videohero-optimized.mp4" type="video/mp4" />
+          <source src="/video-hero.webm" type="video/webm" />
+          <source src="/video-hero.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
         <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: isIntroComplete ? 0.4 : 0.8 }} transition={{ duration: 0.8, delay: 0.6 }} />
       </motion.div>
 
       {/* Bouton son */}
+      {!showIntro && (
       <div className="absolute top-4 right-4 z-40">
         <button
           onClick={() => {
@@ -39,6 +41,15 @@ export default function Home() {
             if (el) {
               el.muted = next
               if (!next && el.volume === 0) el.volume = 0.5
+              if (!next) {
+                const p = el.play?.()
+                // Eviter les erreurs de promesse si le navigateur bloque
+                // la lecture auto avec son avant interaction suffisante
+                // (ici on est dans un clic utilisateur, donc OK en général)
+                // mais on catch au cas où.
+                // @ts-ignore optional chaining guard
+                p?.catch?.(() => {})
+              }
             }
           }}
           aria-label={isMuted ? 'Activer le son' : 'Couper le son'}
@@ -47,6 +58,34 @@ export default function Home() {
           {isMuted ? <VolumeX className="w-6 h-6 text-white" /> : <Volume2 className="w-6 h-6 text-white" />}
         </button>
       </div>
+      )}
+
+      {/* Intro plein écran */}
+      {showIntro && (
+        <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
+          <video
+            autoPlay
+            playsInline
+            className="w-full h-full object-cover"
+            onEnded={() => setShowIntro(false)}
+            onPlay={() => {
+              // Pause la vidéo de fond pendant l'intro
+              const el = videoRef.current
+              el?.pause?.()
+            }}
+          >
+            <source src="/video-intro.mp4" type="video/mp4" />
+          </video>
+          {/* Bouton "Passer" */}
+          <button
+            onClick={() => setShowIntro(false)}
+            className="absolute top-4 right-4 z-50 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-sm"
+            aria-label="Passer l'introduction"
+          >
+            Passer
+          </button>
+        </div>
+      )}
 
       <motion.div className="absolute inset-0 z-20 flex items-center justify-center" initial={{ opacity: 1 }} animate={{ opacity: 1 }}>
         <motion.div initial={{ scale: 0.1, opacity: 0, y: 0 }} animate={{ scale: isIntroComplete ? 1 : [0.1, 1.5, 1], opacity: [0, 1, 1], y: isIntroComplete ? -120 : [0, -120, 0] }} transition={{ duration: 1.5, times: [0, 0.5, 1], ease: 'easeOut' }} className="relative">

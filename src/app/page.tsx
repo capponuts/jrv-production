@@ -9,7 +9,6 @@ import { useState, useEffect, useRef } from 'react'
 export default function Home() {
   const [isIntroComplete, setIsIntroComplete] = useState(false)
   const [videoOpacity, setVideoOpacity] = useState(0)
-  const [isMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [showIntro, setShowIntro] = useState(true)
   const [isMobile, setIsMobile] = useState(false)

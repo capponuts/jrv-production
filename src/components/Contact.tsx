@@ -103,7 +103,7 @@ ${formData.message}
     {
       icon: <Facebook size={24} />,
       name: 'Facebook',
-      url: 'https://www.facebook.com/',
+      url: 'https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR',
       color: 'from-blue-600 to-blue-800'
     },
     {

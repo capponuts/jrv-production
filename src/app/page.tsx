@@ -2,13 +2,15 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Volume2, VolumeX } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function Home() {
   const [isIntroComplete, setIsIntroComplete] = useState(false)
   const [videoOpacity, setVideoOpacity] = useState(0)
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
     const videoTimer = setTimeout(() => { setVideoOpacity(1) }, 800)
@@ -19,13 +21,32 @@ export default function Home() {
   return (
     <main className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
       <motion.div className="absolute inset-0 z-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: videoOpacity }} transition={{ duration: 2, ease: 'easeInOut' }}>
-        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+        <video ref={videoRef} autoPlay loop playsInline muted={isMuted} className="absolute inset-0 w-full h-full object-cover">
           <source src="/Videohero.webm" type="video/webm" />
           <source src="/Videohero-optimized.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
         <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: isIntroComplete ? 0.4 : 0.8 }} transition={{ duration: 0.8, delay: 0.6 }} />
       </motion.div>
+
+      {/* Bouton son */}
+      <div className="absolute top-4 right-4 z-40">
+        <button
+          onClick={() => {
+            const next = !isMuted
+            setIsMuted(next)
+            const el = videoRef.current
+            if (el) {
+              el.muted = next
+              if (!next && el.volume === 0) el.volume = 0.5
+            }
+          }}
+          aria-label={isMuted ? 'Activer le son' : 'Couper le son'}
+          className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm flex items-center justify-center transition"
+        >
+          {isMuted ? <VolumeX className="w-6 h-6 text-white" /> : <Volume2 className="w-6 h-6 text-white" />}
+        </button>
+      </div>
 
       <motion.div className="absolute inset-0 z-20 flex items-center justify-center" initial={{ opacity: 1 }} animate={{ opacity: 1 }}>
         <motion.div initial={{ scale: 0.1, opacity: 0, y: 0 }} animate={{ scale: isIntroComplete ? 1 : [0.1, 1.5, 1], opacity: [0, 1, 1], y: isIntroComplete ? -120 : [0, -120, 0] }} transition={{ duration: 1.5, times: [0, 0.5, 1], ease: 'easeOut' }} className="relative">
@@ -55,7 +76,7 @@ export default function Home() {
               <motion.a href="https://www.tiktok.com/@jvrprode" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Suivez-nous sur TikTok">
                 <Image src="/tiktok.webp" alt="TikTok" width={32} height={32} className="w-8 h-8 object-contain" />
               </motion.a>
-              <motion.a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Suivez-nous sur Facebook">
+              <motion.a href="https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Suivez-nous sur Facebook">
                 <Image src="/facebook.svg" alt="Facebook" width={32} height={32} className="w-8 h-8" />
               </motion.a>
             </div>

@@ -190,6 +190,23 @@ export default function AboutPage() {
                   className="w-8 h-8 object-contain"
                 />
               </motion.a>
+
+              <motion.a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
+              >
+                <Image
+                  src="/facebook.svg"
+                  alt="Facebook"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                />
+              </motion.a>
             </div>
           </div>
         </motion.div>

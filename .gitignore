@@ -42,3 +42,6 @@ next-env.d.ts
 
 # assets lourds (photos locales non versionnées)
 public/photos/
+ffmpeg
+ffprobe
+public/travail/

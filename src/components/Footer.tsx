@@ -32,6 +32,18 @@ const Footer = () => {
                 <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
                 <a href="#" className="hover:text-white transition-colors">CGV</a>
               </div>
+
+              <div className="flex items-center space-x-4">
+                <a href="https://www.instagram.com/jrv.production/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                  <Image src="/instagram.svg" alt="Instagram" width={20} height={20} />
+                </a>
+                <a href="https://www.youtube.com/@JRV.production" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                  <Image src="/youtube.svg" alt="YouTube" width={20} height={20} />
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                  <Image src="/facebook.svg" alt="Facebook" width={20} height={20} />
+                </a>
+              </div>
               
               {/* Site créé par Kapinfo */}
               <motion.a

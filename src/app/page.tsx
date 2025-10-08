@@ -20,7 +20,8 @@ export default function Home() {
     <main className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
       <motion.div className="absolute inset-0 z-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: videoOpacity }} transition={{ duration: 2, ease: 'easeInOut' }}>
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-          <source src="/Videohero.mp4" type="video/mp4" />
+          <source src="/Videohero.webm" type="video/webm" />
+          <source src="/Videohero-optimized.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
         <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: isIntroComplete ? 0.4 : 0.8 }} transition={{ duration: 0.8, delay: 0.6 }} />
@@ -53,6 +54,9 @@ export default function Home() {
               </motion.a>
               <motion.a href="https://www.tiktok.com/@jvrprode" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Suivez-nous sur TikTok">
                 <Image src="/tiktok.webp" alt="TikTok" width={32} height={32} className="w-8 h-8 object-contain" />
+              </motion.a>
+              <motion.a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Suivez-nous sur Facebook">
+                <Image src="/facebook.svg" alt="Facebook" width={32} height={32} className="w-8 h-8" />
               </motion.a>
             </div>
           </motion.div>

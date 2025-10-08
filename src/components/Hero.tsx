@@ -20,7 +20,8 @@ const Hero = () => {
             objectFit: 'cover'
           }}
         >
-          <source src="/Videohero.mp4" type="video/mp4" />
+          <source src="/Videohero.webm" type="video/webm" />
+          <source src="/Videohero-optimized.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
         <div className="absolute inset-0 bg-black/40 z-10"></div>

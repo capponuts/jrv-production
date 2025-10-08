@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Instagram, Youtube, Music, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Instagram, Youtube, Music, Facebook, CheckCircle } from 'lucide-react'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -99,6 +99,12 @@ ${formData.message}
       name: 'Instagram',
       url: 'https://www.instagram.com/jrv.production/',
       color: 'from-pink-500 to-purple-500'
+    },
+    {
+      icon: <Facebook size={24} />,
+      name: 'Facebook',
+      url: 'https://www.facebook.com/',
+      color: 'from-blue-600 to-blue-800'
     },
     {
       icon: <Youtube size={24} />,

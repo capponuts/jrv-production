@@ -9,9 +9,9 @@ const dmSans = DM_Sans({ subsets: ['latin'] })
 const siteUrl = getSiteUrl()
 
 export const metadata: Metadata = {
-  title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
-  description: 'JRV Production, photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée, Pays de la Loire. Sublimez vos événements avec nos services de photographie et vidéographie aérienne.',
-  keywords: 'photographe vendée, vidéaste drone, drone FPV, photographie aérienne, vidéographie vendée, pays de la loire, mariage vendée, événementiel vendée, portrait vendée',
+  title: 'JRV Production - Photographe & Vidéaste en Vendée',
+  description: 'JRV Production, photographe et vidéaste professionnel en Vendée, Pays de la Loire. Sublimez vos événements avec nos services de photographie et vidéographie.',
+  keywords: 'photographe vendée, vidéaste, photographie, vidéographie vendée, pays de la loire, mariage vendée, événementiel vendée, portrait vendée',
   authors: [{ name: 'JRV Production' }],
   creator: 'JRV Production',
   publisher: 'JRV Production',
@@ -19,15 +19,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
-    description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée. Mariages, événements, portraits et vidéos aériennes.',
+    title: 'JRV Production - Photographe & Vidéaste en Vendée',
+    description: 'Photographe et vidéaste professionnel en Vendée. Mariages, événements, portraits et vidéos.',
     type: 'website',
     locale: 'fr_FR',
     url: siteUrl,
     siteName: 'JRV Production',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'JRV Production - Photographe & Vidéaste Drone en Vendée' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'JRV Production - Photographe & Vidéaste en Vendée' }],
   },
-  twitter: { card: 'summary_large_image', title: 'JRV Production - Photographe & Vidéaste Drone en Vendée', description: 'Photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée', images: ['/og-image.png'], creator: '@jrv_production' },
+  twitter: { card: 'summary_large_image', title: 'JRV Production - Photographe & Vidéaste en Vendée', description: 'Photographe et vidéaste professionnel en Vendée', images: ['/og-image.png'], creator: '@jrv_production' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
   verification: { google: 'your-google-verification-code' },
   category: 'Photography',
@@ -46,7 +46,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
     sameAs: [
       'https://www.instagram.com/jrv.production/',
       'https://www.youtube.com/@JRV.production',
-      'https://www.tiktok.com/@jvrprode'
+      'https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR'
     ]
   }
 

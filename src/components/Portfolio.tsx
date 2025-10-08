@@ -10,7 +10,6 @@ const Portfolio = () => {
 
   const categories = [
     { id: 'all', name: 'Tous' },
-    { id: 'drone', name: 'Drone FPV' },
     { id: 'wedding', name: 'Mariages' },
     { id: 'event', name: 'Événements' },
     { id: 'corporate', name: 'Corporate' },
@@ -50,14 +49,7 @@ const Portfolio = () => {
       image: '/portfolio/corporate-event.jpg',
       description: 'Aftermovie d\'un événement d\'entreprise'
     },
-    {
-      id: 5,
-      title: 'Drone FPV Cinematic',
-      category: 'drone',
-      type: 'video',
-      image: '/portfolio/drone-cinematic.jpg',
-      description: 'Vidéo cinématographique avec drone FPV'
-    },
+    
     {
       id: 6,
       title: 'Mariage Vendée',
@@ -82,14 +74,7 @@ const Portfolio = () => {
       image: '/portfolio/portrait-outdoor.jpg',
       description: 'Séance portrait en extérieur'
     },
-    {
-      id: 9,
-      title: 'Survol Immobilier',
-      category: 'drone',
-      type: 'video',
-      image: '/portfolio/real-estate-drone.jpg',
-      description: 'Vidéo promotionnelle immobilière'
-    }
+    
   ]
 
   const filteredItems = activeCategory === 'all' 

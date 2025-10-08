@@ -41,7 +41,7 @@ export default function TarifPage() {
         'Délai de livraison : 10 jours',
         'Options :',
         'Version complète (jusqu’à 5 min) (+200 €)',
-        'Drone FPV ou aérien (+150 €)',
+        'Prises de vue aériennes (+150 €)',
         'Livraison express 72h (+100 €)',
         'Interviews intégrées (+80 € / interview)'
       ],
@@ -56,7 +56,7 @@ export default function TarifPage() {
         'Journée complète (8 h)',
         'Shooting photo illimité (retouches incluses)',
         'Captation vidéo complète (jusqu’à 5 min)',
-        'Drone FPV inclus',
+        'Prises de vue aériennes incluses',
         'Album photo numérique + clé USB vidéo',
         'Support prioritaire',
         '2 aller-retours de modifications vidéo inclus',
@@ -131,7 +131,7 @@ export default function TarifPage() {
                 <ul className="space-y-2 text-sm text-gray-300">
                   <li>• Album photo physique (+50€)</li>
                   <li>• Vidéo complète (+200€)</li>
-                  <li>• Drone FPV (+150€)</li>
+                  <li>• Prises de vue aériennes (+150€)</li>
                   <li>• Livraison express (+80€)</li>
                   <li>• Séance de retouche (+100€)</li>
                 </ul>

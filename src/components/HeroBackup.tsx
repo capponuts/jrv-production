@@ -73,12 +73,12 @@ const HeroBackup = () => {
           </motion.div>
 
           <motion.p
-            className="text-lg md:text-xl mb-8 text-white/80 leading-relaxed"
+            className="text-lg md:text-xl mb-8 text البيضاء/80 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.4 }}
           >
-            Spécialisé dans les <span className="text-blue-400 font-semibold">drones FPV</span> pour sublimer vos événements
+            Vidéos immersives et créatives pour sublimer vos événements
             <br />
             Capturer l&apos;émotion sous tous les angles
           </motion.p>

@@ -107,10 +107,10 @@ ${formData.message}
       color: 'from-red-500 to-red-600'
     },
     {
-      icon: <Music size={24} />,
-      name: 'TikTok',
-      url: 'https://www.tiktok.com/@jvrprode',
-      color: 'from-pink-400 to-cyan-400'
+      icon: <Heart size={24} />,
+      name: 'Facebook',
+      url: 'https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR',
+      color: 'from-orange-500 to-orange-600'
     }
   ]
 
@@ -256,9 +256,7 @@ ${formData.message}
                     <option value="portrait" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
                       Portrait
                     </option>
-                    <option value="drone" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
-                      Drone FPV
-                    </option>
+                    
                     <option value="other" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>
                       Autre
                     </option>

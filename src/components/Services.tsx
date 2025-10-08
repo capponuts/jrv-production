@@ -82,12 +82,6 @@ const Services = () => {
       title: '🚁 Spécialités & Premium',
       services: [
         {
-          icon: '🚁',
-          title: 'Drones FPV',
-          description: 'Des prises de vue aériennes immersives et dynamiques, pour un rendu unique et impactant.',
-          subtext: 'Spécialisé dans le pilotage de drones FPV, je capture des images spectaculaires qui mettent en valeur vos lieux, vos événements ou vos projets de manière originale.'
-        },
-        {
           icon: '⭐',
           title: 'Prestations Premium',
           description: 'Une approche haut de gamme pour ceux qui veulent plus qu&apos;une simple vidéo.',

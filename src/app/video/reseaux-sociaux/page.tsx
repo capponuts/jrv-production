@@ -52,7 +52,7 @@ export default function ReseauxSociauxPage() {
       {/* Titre */}
       <div className="text-center py-6">
         <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Réseaux Sociaux</h1>
-        <p className="text-gray-300 mt-2">Contenus optimisés pour Instagram, TikTok, YouTube</p>
+        <p className="text-gray-300 mt-2">Contenus optimisés pour Instagram, YouTube, Facebook</p>
       </div>
 
       {/* Grille vidéo 3/4 écran */}

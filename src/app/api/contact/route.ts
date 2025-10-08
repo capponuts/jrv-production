@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     const serviceLabels: { [key: string]: string } = {
       photo: 'Photographie',
       video: 'Vidéographie',
-      drone: 'Drone FPV',
+      aerial: 'Prises de vue aériennes',
       event: 'Événementiel',
       other: 'Autre'
     }
@@ -150,6 +150,7 @@ Envoyé le ${new Date().toLocaleString('fr-FR')}
               <div style="text-align: center; margin: 30px 0;">
                 <a href="https://www.instagram.com/jrv.production/" style="display: inline-block; margin: 0 10px; padding: 10px 20px; background: linear-gradient(135deg, #f17e22, #ff6b35); color: white; text-decoration: none; border-radius: 25px; font-weight: bold;">Instagram</a>
                 <a href="https://www.youtube.com/@JRV.production" style="display: inline-block; margin: 0 10px; padding: 10px 20px; background: linear-gradient(135deg, #f17e22, #ff6b35); color: white; text-decoration: none; border-radius: 25px; font-weight: bold;">YouTube</a>
+                <a href="https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR" style="display: inline-block; margin: 0 10px; padding: 10px 20px; background: linear-gradient(135deg, #f17e22, #ff6b35); color: white; text-decoration: none; border-radius: 25px; font-weight: bold;">Facebook</a>
               </div>
               
               <p style="color: #333; font-size: 16px; line-height: 1.6;">

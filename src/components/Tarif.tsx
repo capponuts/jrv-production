@@ -38,13 +38,13 @@ const Tarif = () => {
     {
       icon: <Plane size={32} />,
       title: 'Pack Premium',
-      subtitle: 'Drone + Vidéo',
+      subtitle: 'Aérien + Vidéo',
       price: 'À partir de 800€',
-      description: 'L\'expérience complète avec vues aériennes',
+      description: 'L\'expérience complète avec prises de vue aériennes',
       features: [
-        'Captation vidéo + drone',
+        'Captation vidéo + aérien',
         'Film de 5-8 min',
-        'Vues aériennes FPV',
+        'Prises de vue aériennes',
         'Étalonnage pro',
         'Délai 3-4 semaines'
       ],

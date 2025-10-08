@@ -52,7 +52,7 @@ export default function AboutPage() {
             Qui suis-je ?
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Passionné de photographie et vidéographie, spécialisé dans les drones FPV
+            JRV Production
           </p>
         </motion.div>
 
@@ -70,13 +70,10 @@ export default function AboutPage() {
                   JRV Production
                 </h2>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Vidéaste passionné basé en Vendée, je me spécialise dans la capture d&apos;émotions authentiques 
-                  et de moments précieux. Mon expertise en drones FPV me permet de créer des perspectives 
-                  uniques et des récits visuels immersifs.
+                  Je m'appelle Jérémy, je suis vidéaste en Vendée. Ce que j’aime, c’est capturer ce qu’on ne rejoue pas : un regard, une ambiance, un moment vrai. À travers mes images, je cherche à raconter ce qui se vit sur le moment, sans triche, sans filtre, avec du style et de la spontanéité.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
-                  Que ce soit pour un mariage, un événement corporate ou une séance photo, 
-                  je m&apos;engage à sublimer vos moments les plus importants avec créativité et professionnalisme.
+                  Mariages, soirées, événements, séances photo… j’aime m’adapter à chaque univers. Je travaille sérieusement, mais sans prise de tête, pour créer quelque chose de pro, de sincère, et qui vous ressemble.
                 </p>
               </div>
               
@@ -175,7 +172,7 @@ export default function AboutPage() {
               </motion.a>
               
               <motion.a
-                href="https://www.tiktok.com/@jvrprode"
+                href="https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -183,11 +180,11 @@ export default function AboutPage() {
                 className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
               >
                 <Image
-                  src="/tiktok.webp"
-                  alt="TikTok"
+                  src="/facebook.svg"
+                  alt="Facebook"
                   width={32}
                   height={32}
-                  className="w-8 h-8 object-contain"
+                  className="w-8 h-8"
                 />
               </motion.a>
             </div>

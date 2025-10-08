@@ -51,8 +51,8 @@ export default function Home() {
               <motion.a href="https://www.youtube.com/@JRV.production" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Regardez nos vidéos sur YouTube">
                 <Image src="/youtube.svg" alt="YouTube" width={32} height={32} className="w-8 h-8 text-white" />
               </motion.a>
-              <motion.a href="https://www.tiktok.com/@jvrprode" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Suivez-nous sur TikTok">
-                <Image src="/tiktok.webp" alt="TikTok" width={32} height={32} className="w-8 h-8 object-contain" />
+              <motion.a href="https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Suivez-nous sur Facebook">
+                <Image src="/facebook.svg" alt="Facebook" width={32} height={32} className="w-8 h-8 text-white" />
               </motion.a>
             </div>
           </motion.div>

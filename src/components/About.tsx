@@ -13,8 +13,8 @@ const About = () => {
     },
     {
       icon: <Award size={32} />,
-      title: 'Expertise FPV',
-      description: 'Spécialiste reconnu dans les prises de vue drone FPV'
+      title: 'Vidéos immersives',
+      description: 'Des prises de vue créatives et impactantes pour sublimer vos projets'
     },
     {
       icon: <Users size={32} />,

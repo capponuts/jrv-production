@@ -24,13 +24,7 @@ export default function ServicesPage() {
       href: '/video',
       color: 'from-red-500 to-red-600'
     },
-    {
-      icon: <DollarSign className="w-8 h-8" />,
-      title: 'Tarifs',
-      description: 'Nos offres et prix',
-      href: '/tarif',
-      color: 'from-green-500 to-green-600'
-    },
+    
     {
       icon: <User className="w-8 h-8" />,
       title: 'À propos',

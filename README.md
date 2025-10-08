@@ -1,6 +1,6 @@
 # JRV Production - Site Vitrine
 
-Site vitrine professionnel pour JRV Production, photographe et vidéaste spécialisé dans les drones FPV en Vendée. 2025
+Site vitrine professionnel pour JRV Production, photographe et vidéaste en Vendée. 2025
 
 ## 🚀 Fonctionnalités
 
@@ -36,25 +36,23 @@ Site vitrine professionnel pour JRV Production, photographe et vidéaste spécia
 Les images actuelles sont des placeholders. Remplacez-les par de vraies photos :
 
 #### Vidéo Hero
-- `public/hero-video.mp4` - Vidéo de drone FPV en action
+- `public/hero-video.mp4` - Vidéo héro (remplaçable)
 
 #### Portfolio
-- `public/portfolio/wedding-drone.jpg` - Mariage avec drone
-- `public/portfolio/festival-fpv.jpg` - Festival avec drone FPV
+- `public/portfolio/wedding-drone.jpg` - Mariage
+- `public/portfolio/festival-fpv.jpg` - Festival
 - `public/portfolio/portrait-studio.jpg` - Portrait studio
 - `public/portfolio/corporate-event.jpg` - Événement corporate
-- `public/portfolio/drone-cinematic.jpg` - Vidéo drone cinématique
 - `public/portfolio/wedding-vendee.jpg` - Mariage en Vendée
 - `public/portfolio/concert-live.jpg` - Concert live
 - `public/portfolio/portrait-outdoor.jpg` - Portrait extérieur
-- `public/portfolio/real-estate-drone.jpg` - Immobilier drone
 
 #### Section About
 - `public/about-image.jpg` - Photo de JRV Production en action
 
 ### 🆓 Sources d'images gratuites
 
-#### Vidéos de drone
+#### Vidéos
 - **Pexels** : https://www.pexels.com/videos/
 - **Pixabay** : https://pixabay.com/videos/
 - **Unsplash** : https://unsplash.com/
@@ -64,10 +62,10 @@ Les images actuelles sont des placeholders. Remplacez-les par de vraies photos :
 - **Pexels** : https://www.pexels.com/
 - **Pixabay** : https://pixabay.com/
 
-#### Mots-clés de recherche
-- "drone fpv", "aerial view", "wedding photography"
+### Mots-clés de recherche
+- "wedding photography", "event video", "portrait photography"
 - "professional photographer", "event photography"
-- "portrait photography", "cinematography"
+- "cinematography"
 
 ## 🔧 Installation et développement
 
@@ -122,9 +120,9 @@ Modifier dans `src/components/Footer.tsx` et `src/components/Contact.tsx` :
 ## 🎯 SEO et référencement
 
 ### Métadonnées optimisées
-- Titre : "JRV Production - Photographe & Vidéaste Drone en Vendée"
+- Titre : "JRV Production - Photographe & Vidéaste en Vendée"
 - Description optimisée pour les moteurs de recherche
-- Mots-clés ciblés : photographe vendée, drone FPV, etc.
+- Mots-clés : photographe vendée, vidéaste, mariage vendée, portrait, corporate
 
 ### Améliorations SEO supplémentaires
 - Ajouter un sitemap.xml
@@ -157,5 +155,5 @@ Pour toute question ou personnalisation supplémentaire, contactez le développe
 
 ---
 
-**JRV Production** - Photographe & Vidéaste Drone en Vendée
+**JRV Production** - Photographe & Vidéaste en Vendée
 Site développé avec ❤️ en Next.js

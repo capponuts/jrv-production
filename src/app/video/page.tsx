@@ -11,7 +11,8 @@ export default function VideoPage() {
   const router = useRouter()
   const socialLinks = [
     { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
-    { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' }
+    { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' },
+    { icon: <Image src="/facebook.svg" alt="Facebook" width={24} height={24} className="w-6 h-6" />, url: 'https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR', name: 'Facebook' }
   ]
 
   const videoServices = [
@@ -22,13 +23,7 @@ export default function VideoPage() {
       icon: '🎬',
       href: '/video/films-evenementiels'
     },
-    {
-      title: 'Drone FPV',
-      description: 'Captures aériennes immersives et dynamiques',
-      color: 'from-blue-500 to-blue-600',
-      icon: '🚁',
-      href: '/video/drone-fpv'
-    },
+    
     {
       title: 'Corporate',
       description: 'Vidéos d\'entreprise et contenus professionnels',
@@ -38,7 +33,7 @@ export default function VideoPage() {
     },
     {
       title: 'Réseaux sociaux',
-      description: 'Contenus optimisés pour Instagram, TikTok, YouTube',
+      description: 'Contenus optimisés pour Instagram, YouTube, Facebook',
       color: 'from-purple-500 to-purple-600',
       icon: '📱',
       href: '/video/reseaux-sociaux'
@@ -161,7 +156,7 @@ export default function VideoPage() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300"
+                className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
               >
                 {link.icon}
               </motion.a>

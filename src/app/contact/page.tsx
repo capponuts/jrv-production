@@ -24,7 +24,7 @@ export default function ContactPage() {
   const socialLinks = [
     { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
     { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' },
-    { icon: <Image src="/tiktok.webp" alt="TikTok" width={24} height={24} className="w-6 h-6 object-contain" />, url: 'https://www.tiktok.com/@jvrprode', name: 'TikTok' }
+    { icon: <Image src="/facebook.svg" alt="Facebook" width={24} height={24} className="w-6 h-6" />, url: 'https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR', name: 'Facebook' }
   ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -292,7 +292,7 @@ export default function ContactPage() {
                       <option value="">Sélectionnez un service</option>
                       <option value="photo">Photographie</option>
                       <option value="video">Vidéographie</option>
-                      <option value="drone">Drone FPV</option>
+                      
                       <option value="event">Événementiel</option>
                       <option value="other">Autre</option>
                     </select>

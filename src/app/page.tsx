@@ -42,13 +42,10 @@ export default function Home() {
               el.muted = next
               if (!next && el.volume === 0) el.volume = 0.5
               if (!next) {
-                const p = el.play?.()
-                // Eviter les erreurs de promesse si le navigateur bloque
-                // la lecture auto avec son avant interaction suffisante
-                // (ici on est dans un clic utilisateur, donc OK en général)
-                // mais on catch au cas où.
-                // @ts-ignore optional chaining guard
-                p?.catch?.(() => {})
+                const p = el.play ? el.play() : undefined
+                if (p && typeof (p as Promise<void>).catch === 'function') {
+                  (p as Promise<void>).catch(() => {})
+                }
               }
             }
           }}

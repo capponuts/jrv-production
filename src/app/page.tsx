@@ -12,19 +12,25 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [showIntro, setShowIntro] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
+  const [introSrc, setIntroSrc] = useState<string | null>(null)
 
   useEffect(() => {
     const videoTimer = setTimeout(() => { setVideoOpacity(1) }, 800)
     const introTimer = setTimeout(() => { setIsIntroComplete(true) }, 1600)
-    // Détecter mobile (simple heuristique client)
-    setIsMobile(typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches)
+    // Détecter mobile (heuristique UA + largeur)
+    if (typeof window !== 'undefined') {
+      const ua = navigator.userAgent || ''
+      const mobileGuess = /Mobi|Android|iPhone|iPad|iPod/i.test(ua) || window.matchMedia('(max-width: 767px)').matches
+      setIsMobile(mobileGuess)
+      setIntroSrc(mobileGuess ? '/video-portrait.mp4' : '/video-intro.mp4')
+    }
     return () => { clearTimeout(videoTimer); clearTimeout(introTimer) }
   }, [])
 
   return (
     <main className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
       <motion.div className="absolute inset-0 z-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: videoOpacity }} transition={{ duration: 2, ease: 'easeInOut' }}>
-        <video ref={videoRef} autoPlay loop playsInline muted className="absolute inset-0 w-full h-full object-cover">
+        <video ref={videoRef} autoPlay loop playsInline muted preload="auto" className="absolute inset-0 w-full h-full object-cover">
           <source src="/video-hero.webm" type="video/webm" />
           <source src="/video-hero.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
@@ -35,25 +41,35 @@ export default function Home() {
       {/* Pas de bouton son: vidéo hero toujours muette */}
 
       {/* Intro plein écran */}
-      {showIntro && (
+      {showIntro && introSrc && (
         <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
           <video
             autoPlay
             muted
             playsInline
+            preload="auto"
             className="w-full h-full object-cover"
-            onEnded={() => setShowIntro(false)}
+            onEnded={() => {
+              setShowIntro(false)
+              // Relance la vidéo hero quand l'intro se termine (notamment mobile)
+              const bg = videoRef.current
+              bg?.play?.()
+            }}
             onPlay={() => {
               // Pause la vidéo de fond pendant l'intro
               const el = videoRef.current
               el?.pause?.()
             }}
           >
-            <source src={isMobile ? '/video-portrait.mp4' : '/video-intro.mp4'} type="video/mp4" />
+            <source src={introSrc} type="video/mp4" />
           </video>
           {/* Bouton "Passer" */}
           <button
-            onClick={() => setShowIntro(false)}
+            onClick={() => {
+              setShowIntro(false)
+              const bg = videoRef.current
+              bg?.play?.()
+            }}
             className="absolute top-4 right-4 z-50 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-sm"
             aria-label="Passer l'introduction"
           >

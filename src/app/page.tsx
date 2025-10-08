@@ -11,7 +11,6 @@ export default function Home() {
   const [videoOpacity, setVideoOpacity] = useState(0)
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [showIntro, setShowIntro] = useState(true)
-  const [isMobile, setIsMobile] = useState(false)
   const [introSrc, setIntroSrc] = useState<string | null>(null)
 
   useEffect(() => {
@@ -21,7 +20,6 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       const ua = navigator.userAgent || ''
       const mobileGuess = /Mobi|Android|iPhone|iPad|iPod/i.test(ua) || window.matchMedia('(max-width: 767px)').matches
-      setIsMobile(mobileGuess)
       setIntroSrc(mobileGuess ? '/video-portrait.mp4' : '/video-intro.mp4')
     }
     return () => { clearTimeout(videoTimer); clearTimeout(introTimer) }

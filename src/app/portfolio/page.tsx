@@ -3,15 +3,13 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import Image from 'next/image'
-import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 type ApiImage = { url: string; blurDataURL?: string }
 
 export default function PortfolioPage() {
-  const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
   const [images, setImages] = useState<{ src: string, alt: string, description: string, blurDataURL?: string }[]>([])

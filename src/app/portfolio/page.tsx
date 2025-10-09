@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'

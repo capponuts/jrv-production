@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import Image from 'next/image'
-import { ArrowLeft, Play, X } from 'lucide-react'
+import { Play, X } from 'lucide-react'
 
 type VideoItem = { name: string; thumbnailUrl: string; videoUrl: string }
 

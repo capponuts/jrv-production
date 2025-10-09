@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 type ApiImage = { url: string; blurDataURL?: string }
 import Breadcrumbs from '@/components/Breadcrumbs'
 import Image from 'next/image'
-import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 export default function LiensPassionsPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)

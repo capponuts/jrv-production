@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import Image from 'next/image'
-import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 type ApiImage = { url: string; blurDataURL?: string }
 
 export default function EvenementsMariagesPage() {

@@ -70,20 +70,20 @@ export default function Home() {
         <div className="container-custom">
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl md:text-4xl font-bold">Mes services</h2>
-            <Link href="/services" className="text-orange-400 hover:text-orange-300 transition">Tout voir →</Link>
+            <div className="text-gray-500 text-sm">Photo • Vidéo • Drone FPV</div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { title: 'Photographie', href: '/photo', emoji: '📸', color: 'from-blue-500 to-blue-600' },
               { title: 'Vidéographie', href: '/video', emoji: '🎬', color: 'from-red-500 to-red-600' },
-              { title: 'Tarifs', href: '/tarif', emoji: '💼', color: 'from-emerald-500 to-emerald-600' },
+              { title: 'Drone FPV', href: '/video/drone-fpv', emoji: '🚁', color: 'from-emerald-500 to-emerald-600' },
             ].map((card) => (
               <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <Link href={card.href} className="block group">
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/60 to-gray-900/80 border border-gray-700/30 p-6 h-full">
+                  <div className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 p-6 h-full shadow-sm hover:shadow-md transition">
                     <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${card.color} text-2xl flex items-center justify-center mb-4`}>{card.emoji}</div>
                     <div className="text-xl font-semibold mb-2">{card.title}</div>
-                    <div className="text-white/70 text-sm">En savoir plus</div>
+                    <div className="text-gray-600 text-sm">En savoir plus</div>
                   </div>
           </Link>
         </motion.div>
@@ -145,21 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* À propos bref */}
-      <section id="about" className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Qui suis-je ?</h2>
-              <p className="text-white/80">Je capture des histoires vraies avec une approche humaine, naturelle et créative. Basé en Vendée, je me déplace partout dans les Pays de la Loire.</p>
-              <Link href="/about" className="inline-block mt-6 btn-secondary">En savoir plus</Link>
-            </div>
-            <div className="p-6 rounded-3xl bg-white border border-gray-200">
-              <Image src="/Jeremy-rondeau-jrvproduction.png" alt="Jérémy Rondeau" width={400} height={400} className="w-auto h-auto rounded-2xl mx-auto" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* À propos retiré (page dédiée) */}
 
       {/* Contact bref */}
       <section id="contact" className="section-padding bg-gray-50">

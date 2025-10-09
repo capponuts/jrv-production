@@ -2,15 +2,13 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import Image from 'next/image'
 import { ArrowLeft, Play, X } from 'lucide-react'
 
 type VideoItem = { name: string; thumbnailUrl: string; videoUrl: string }
 
 export default function ReseauxSociauxPage() {
-  const router = useRouter()
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null)
   const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(0)
   const [items, setItems] = useState<VideoItem[]>([])
@@ -32,38 +30,22 @@ export default function ReseauxSociauxPage() {
   const closeVideo = () => setSelectedVideo(null)
 
   return (
-    <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
-      {/* Header */}
-      <div className="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/50">
-        <div className="flex items-center justify-between p-4">
-          <motion.button onClick={() => router.back()} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="text-sm">Retour</span>
-          </motion.button>
-          
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo-jrv-production.png" alt="JRV Production" width={120} height={36} className="h-8 w-auto" />
-          </Link>
-          
-          <div className="w-32" />
-        </div>
-      </div>
-
-      {/* Titre */}
-      <div className="text-center py-6">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Réseaux Sociaux</h1>
-        <p className="text-gray-300 mt-2">Contenus optimisés pour Instagram, TikTok, YouTube</p>
+    <div className="min-h-screen bg-white text-gray-900">
+      <div className="container mx-auto px-4 py-6"><Breadcrumbs /></div>
+      <div className="text-center py-2">
+        <h1 className="text-3xl md:text-4xl font-bold">Réseaux Sociaux</h1>
+        <p className="text-gray-600 mt-2">Contenus optimisés pour Instagram, TikTok, YouTube</p>
       </div>
 
       {/* Grille vidéo 3/4 écran */}
-      <div className="h-3/4 px-4 pb-4">
+      <div className="px-4 pb-12">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full">
           {items.map((video, index) => (
             <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ scale: 1.03 }} className="group relative overflow-hidden rounded-2xl cursor-pointer h-full" onClick={() => openVideo(index)}>
               <Image src={video.thumbnailUrl} alt={video.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="w-16 h-16 bg-purple-600/80 hover:bg-purple-500 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg backdrop-blur-sm">
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="w-16 h-16 bg-purple-600/80 hover:bg-purple-500 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-md backdrop-blur-sm">
                   <Play className="w-8 h-8 ml-1" />
                 </motion.div>
               </div>

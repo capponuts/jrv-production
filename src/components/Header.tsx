@@ -67,14 +67,6 @@ const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#f17e22] to-[#ff6b35] transition-all duration-300 group-hover:w-full rounded-full"></span>
               </motion.a>
             ))}
-            {/* Dropdown Prestations */}
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-[#f17e22] font-medium">Prestations</button>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-xl p-3 w-56">
-                <a href="/video" className="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Vidéographie</a>
-                <a href="/photo" className="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Photographie</a>
-              </div>
-            </div>
           </nav>
 
           {/* Menu Mobile */}

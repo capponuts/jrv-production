@@ -45,11 +45,11 @@ const Header = () => {
               className="flex items-center"
             >
               <Image
-                src="/logo-jrv-production.png"
-                alt="JRV Production Logo"
-                width={100}
-                height={100}
-                className="h-20 w-auto transition-transform duration-300 hover:scale-110"
+                src="/JRV_logo_rond.png"
+                alt="JRV Production"
+                width={64}
+                height={64}
+                className="h-14 w-14 rounded-full transition-transform duration-300 hover:scale-110"
               />
             </motion.div>
           </Link>

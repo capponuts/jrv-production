@@ -2,12 +2,9 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 
 export default function VideoPage() {
-  const router = useRouter()
   const socialLinks = [
     { icon: <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6" />, url: 'https://www.instagram.com/jrv.production/', name: 'Instagram' },
     { icon: <Image src="/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />, url: 'https://www.youtube.com/@JRV.production', name: 'YouTube' },

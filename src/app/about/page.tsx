@@ -2,12 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, Camera, Video, MapPin, Mail, Phone } from 'lucide-react'
+import { Camera, Video, MapPin, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
 
 export default function AboutPage() {
-  const router = useRouter()
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
       {/* En-tête global géré par le layout */}

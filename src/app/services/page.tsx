@@ -2,12 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, Camera, Video, DollarSign, User, Mail } from 'lucide-react'
+import { Camera, Video, DollarSign, User, Mail } from 'lucide-react'
 import Image from 'next/image'
 
 export default function ServicesPage() {
-  const router = useRouter()
   const services = [
     {
       icon: <Camera className="w-8 h-8" />,

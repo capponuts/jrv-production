@@ -2,12 +2,9 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, DollarSign, Check, Mail } from 'lucide-react'
-import Image from 'next/image'
+import { DollarSign, Check, Mail } from 'lucide-react'
 
 export default function TarifPage() {
-  const router = useRouter()
   const pricingPlans = [
     {
       title: 'Pack 1 – Photo Événement',

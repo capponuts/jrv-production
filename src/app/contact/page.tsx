@@ -2,13 +2,11 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, Mail, Phone, MapPin, Send } from 'lucide-react'
+import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
 export default function ContactPage() {
-  const router = useRouter()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

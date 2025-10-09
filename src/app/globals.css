@@ -78,6 +78,15 @@
   .container-custom {
     @apply max-w-7xl mx-auto;
   }
+
+  /* Texture subtile pour le fond clair */
+  .background-texture {
+    background-image:
+      radial-gradient(rgba(17, 24, 39, 0.06) 1px, transparent 1px),
+      radial-gradient(rgba(17, 24, 39, 0.04) 1px, transparent 1px);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+  }
   
   /* S'assurer que les sections ne se chevauchent pas */
   section {

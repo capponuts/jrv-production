@@ -75,33 +75,33 @@ export default function VideoPage() {
             >
               <Link href={service.href}>
                 <motion.div
-                  whileHover={{ scale: 1.03, y: -8 }}
+                  whileHover={{ scale: 1.02, y: -4 }}
                   whileTap={{ scale: 0.97 }}
-                  className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-800/60 to-gray-900/80 backdrop-blur-xl border border-gray-700/30 h-full transition-all duration-500 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/10 cursor-pointer"
+                  className="group relative overflow-hidden rounded-3xl bg-white border border-gray-200 h-full transition-all duration-300 hover:border-orange-300 hover:shadow-lg cursor-pointer"
                 >
-                  {/* Effet de brillance */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                  {/* Effet d'animation subtile */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-50 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   
                   {/* Contenu */}
                   <div className="relative p-8 h-full flex flex-col">
                     {/* Icône avec effet morphing */}
                     <div className="relative mb-6">
-                      <div className={`w-20 h-20 bg-gradient-to-br ${service.color} rounded-full flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all duration-500`}>
+                      <div className={`w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-white shadow-md group-hover:shadow-lg transition-all duration-300`}>
                         <span className="text-2xl">{service.icon}</span>
                       </div>
-                      <div className={`absolute inset-0 w-20 h-20 bg-gradient-to-br ${service.color} rounded-full opacity-30 group-hover:scale-150 group-hover:opacity-10 transition-all duration-700`}></div>
+                      <div className={`absolute inset-0 w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl opacity-10 group-hover:scale-125 group-hover:opacity-5 transition-all duration-500`}></div>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-300">
                       {service.title}
                     </h3>
                     
-                    <p className="text-gray-300 text-sm leading-relaxed flex-grow">
+                    <p className="text-gray-600 text-sm leading-relaxed flex-grow">
                       {service.description}
                     </p>
                     
                     {/* Flèche d'indication */}
-                    <div className="mt-6 flex items-center text-orange-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="mt-6 flex items-center text-orange-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <span>Explorer cette galerie</span>
                       <motion.div
                         className="ml-2"

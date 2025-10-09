@@ -71,7 +71,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* En-tête global géré par le layout */}
 
       {/* Contenu principal */}
@@ -82,10 +82,10 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
             Contact
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Parlons de votre projet et créons ensemble quelque chose d&apos;extraordinaire
           </p>
         </motion.div>
@@ -98,7 +98,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 h-full">
+              <div className="bg-white border border-gray-200 rounded-3xl p-8 h-full">
                 <h2 className="text-2xl font-semibold mb-6">Mes coordonnées</h2>
                 
                 <div className="space-y-6">
@@ -107,8 +107,8 @@ export default function ContactPage() {
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">Email</p>
-                      <a href="mailto:jrv.production85@gmail.com" className="text-white hover:text-orange-400 transition-colors">
+                      <p className="text-sm text-gray-500">Email</p>
+                      <a href="mailto:jrv.production85@gmail.com" className="text-gray-900 hover:text-orange-600 transition-colors">
                         jrv.production85@gmail.com
                       </a>
                     </div>
@@ -119,8 +119,8 @@ export default function ContactPage() {
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">Téléphone</p>
-                      <a href="tel:+33672751954" className="text-white hover:text-orange-400 transition-colors">
+                      <p className="text-sm text-gray-500">Téléphone</p>
+                      <a href="tel:+33672751954" className="text-gray-900 hover:text-orange-600 transition-colors">
                         06 72 75 19 54
                       </a>
                     </div>
@@ -131,8 +131,8 @@ export default function ContactPage() {
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">Localisation</p>
-                      <p className="text-white">Vendée, Pays de la Loire</p>
+                      <p className="text-sm text-gray-500">Localisation</p>
+                      <p className="text-gray-900">Vendée, Pays de la Loire</p>
                     </div>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
+              <div className="bg-white border border-gray-200 rounded-3xl p-8">
                 <h2 className="text-2xl font-semibold mb-6">Envoyez-moi un message</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -184,7 +184,7 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                         Prénom *
                       </label>
                       <input
@@ -194,13 +194,13 @@ export default function ContactPage() {
                         value={formData.firstName}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                        className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                         placeholder="Votre prénom"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
                         Nom *
                       </label>
                       <input
@@ -210,14 +210,14 @@ export default function ContactPage() {
                         value={formData.lastName}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                        className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                         placeholder="Votre nom"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email *
                     </label>
                     <input
@@ -227,13 +227,13 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                       placeholder="votre@email.com"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                       Téléphone
                     </label>
                     <input
@@ -242,13 +242,13 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                       placeholder="06 72 75 19 54"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                       Type de service *
                     </label>
                     <select
@@ -257,7 +257,7 @@ export default function ContactPage() {
                       value={formData.service}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                     >
                       <option value="">Sélectionnez un service</option>
                       <option value="photo">Photographie</option>
@@ -269,7 +269,7 @@ export default function ContactPage() {
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                       Message *
                     </label>
                     <textarea
@@ -279,7 +279,7 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none"
                       placeholder="Décrivez votre projet..."
                     ></textarea>
                   </div>

@@ -85,7 +85,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
       </head>
       <body className={`${dmSans.className} bg-white text-gray-900 overflow-x-hidden min-h-screen`}>
         <Header />
-        <main className="pt-24">
+        <main className="pt-24 background-texture">
           {children}
         </main>
         <Footer />

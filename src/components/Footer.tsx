@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="bg-gray-900 border-t border-gray-700/50 relative z-10">
+    <footer className="bg-white border-t border-gray-200 relative z-10 text-gray-700">
       <div className="container mx-auto px-4">
         <div className="py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
@@ -16,7 +16,7 @@ const Footer = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-gray-400 text-sm text-center md:text-left"
+              className="text-gray-500 text-sm text-center md:text-left"
             >
               © {currentYear} JRV Production. Tous droits réservés.
             </motion.div>
@@ -28,19 +28,19 @@ const Footer = () => {
               viewport={{ once: true }}
               className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6"
             >
-              <div className="flex space-x-6 text-white/60 text-sm">
-                <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-                <a href="#" className="hover:text-white transition-colors">CGV</a>
+              <div className="flex space-x-6 text-gray-500 text-sm">
+                <a href="#" className="hover:text-gray-800 transition-colors">Mentions légales</a>
+                <a href="#" className="hover:text-gray-800 transition-colors">CGV</a>
               </div>
 
               <div className="flex items-center space-x-4">
-                <a href="https://www.instagram.com/jrv.production/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                <a href="https://www.instagram.com/jrv.production/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center">
                   <Image src="/instagram.svg" alt="Instagram" width={20} height={20} />
                 </a>
-                <a href="https://www.youtube.com/@JRV.production" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                <a href="https://www.youtube.com/@JRV.production" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center">
                   <Image src="/youtube.svg" alt="YouTube" width={20} height={20} />
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                <a href="https://www.facebook.com/profile.php?id=61581653144065&locale=fr_FR" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center">
                   <Image src="/facebook.svg" alt="Facebook" width={20} height={20} />
                 </a>
               </div>
@@ -51,7 +51,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center space-x-2 text-white/60 hover:text-white transition-all duration-300 text-sm"
+                className="flex items-center space-x-2 text-gray-500 hover:text-gray-800 transition-all duration-300 text-sm"
               >
                 <span>Site web créé par</span>
                 <Image

@@ -65,7 +65,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
   }
 
   return (
-    <html lang="fr" className="bg-gray-900">
+    <html lang="fr" className="bg-white">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/logo-jrv-production.png" type="image/png" />
@@ -83,7 +83,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }} />
       </head>
-      <body className={`${dmSans.className} bg-gray-900 text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#111827', color: '#ffffff'}}>
+      <body className={`${dmSans.className} bg-white text-gray-900 overflow-x-hidden min-h-screen`}>
         <Header />
         <main className="pt-24">
           {children}

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import Breadcrumbs from '@/components/Breadcrumbs'
 
 export default function PhotoPage() {
   const socialLinks = [
@@ -47,24 +48,25 @@ export default function PhotoPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* En-tête global géré par le layout */}
 
       {/* Contenu principal */}
       <div className="container mx-auto px-4 py-8">
+        <Breadcrumbs />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
             Photographie
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-4">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-4">
             Des photos qui racontent vos passions, vos espaces, vos liens.
           </p>
-          <p className="text-gray-300 text-base max-w-2xl mx-auto">
+          <p className="text-gray-600 text-base max-w-2xl mx-auto">
             Pour chaque projet, une approche naturelle et artistique, fidèle à votre univers.
           </p>
         </motion.div>

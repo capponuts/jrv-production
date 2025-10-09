@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
   --primary: #f17e22;
   --secondary: #004193;
   --accent: #ff6b35;
-  --dark-gray: #1a1a1a;
-  --medium-gray: #2a2a2a;
-  --light-gray: #3a3a3a;
+  --dark-gray: #f9fafb;
+  --medium-gray: #f3f4f6;
+  --light-gray: #e5e7eb;
 }
 
 @layer base {
@@ -23,7 +23,7 @@
   }
   
   html, body {
-    background: linear-gradient(135deg, var(--background) 0%, var(--dark-gray) 50%, var(--medium-gray) 100%);
+    background: var(--background);
     color: var(--foreground) !important;
     margin: 0;
     padding: 0;
@@ -31,8 +31,7 @@
   }
   
   body {
-    @apply text-white antialiased;
-    background-attachment: fixed;
+    @apply text-gray-900 antialiased;
   }
 }
 
@@ -58,8 +57,8 @@
   }
   
   .glass-effect {
-    @apply bg-gray-800/20 backdrop-blur-xl border border-gray-700/50 rounded-2xl shadow-2xl;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    @apply bg-white/60 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   }
   
   .btn-primary {
@@ -86,9 +85,7 @@
     z-index: 10;
   }
   
-  #home {
-    z-index: 1;
-  }
+  #home { z-index: 1; }
   
   /* Fix pour les options de select visibles */
   select option {

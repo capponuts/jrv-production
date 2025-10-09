@@ -5,40 +5,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ArrowLeft, Camera, Video, MapPin, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
-import Footer from '../../components/Footer'
 
 export default function AboutPage() {
   const router = useRouter()
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
-      {/* Header mobile */}
-      <div className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50">
-        <div className="flex items-center justify-between p-4">
-          <motion.button
-            onClick={() => router.back()}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span className="text-sm">Retour</span>
-          </motion.button>
-          
-          <div className="flex items-center space-x-2">
-            <Link href="/">
-              <Image
-                src="/logo-jrv-production.png"
-                alt="JRV Production"
-                width={120}
-                height={36}
-                className="h-8 w-auto"
-              />
-            </Link>
-          </div>
-          
-          <div className="w-20"></div>
-        </div>
-      </div>
+      {/* En-tête global géré par le layout */}
 
       {/* Contenu principal */}
       <div className="container mx-auto px-4 py-8">
@@ -271,7 +243,7 @@ export default function AboutPage() {
         </motion.div>
       </div>
       
-      <Footer />
+      {/* Pied de page global géré par le layout */}
     </div>
   )
 } 

@@ -3,6 +3,8 @@ import { DM_Sans } from 'next/font/google'
 // import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
@@ -82,7 +84,11 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }} />
       </head>
       <body className={`${dmSans.className} bg-gray-900 text-white overflow-x-hidden min-h-screen`} style={{backgroundColor: '#111827', color: '#ffffff'}}>
-        {children}
+        <Header />
+        <main className="pt-24">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

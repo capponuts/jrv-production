@@ -7,22 +7,12 @@ import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 
 export default function Home() {
-  const [isIntroComplete, setIsIntroComplete] = useState(false)
   const [videoOpacity, setVideoOpacity] = useState(0)
   const videoRef = useRef<HTMLVideoElement | null>(null)
-  const [showIntro, setShowIntro] = useState(true)
-  const [introSrc, setIntroSrc] = useState<string | null>(null)
 
   useEffect(() => {
     const videoTimer = setTimeout(() => { setVideoOpacity(1) }, 800)
-    const introTimer = setTimeout(() => { setIsIntroComplete(true) }, 1600)
-    // Détecter mobile (heuristique UA + largeur)
-    if (typeof window !== 'undefined') {
-      const ua = navigator.userAgent || ''
-      const mobileGuess = /Mobi|Android|iPhone|iPad|iPod/i.test(ua) || window.matchMedia('(max-width: 767px)').matches
-      setIntroSrc(mobileGuess ? '/video-portrait.mp4' : '/video-intro.mp4')
-    }
-    return () => { clearTimeout(videoTimer); clearTimeout(introTimer) }
+    return () => { clearTimeout(videoTimer) }
   }, [])
 
   return (
@@ -33,60 +23,22 @@ export default function Home() {
           <source src="/video-hero.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
-        <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: isIntroComplete ? 0.4 : 0.8 }} transition={{ duration: 0.8, delay: 0.6 }} />
+        <motion.div className="absolute inset-0 bg-black/40 z-10" initial={{ opacity: 1 }} animate={{ opacity: 0.4 }} transition={{ duration: 0.8, delay: 0.6 }} />
       </motion.div>
 
-      {/* Pas de bouton son: vidéo hero toujours muette */}
+      {/* Pas de bouton son: vidéo hero toujours muette, intro supprimée */}
 
-      {/* Intro plein écran */}
-      {showIntro && introSrc && (
-        <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
-          <video
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover"
-            onEnded={() => {
-              setShowIntro(false)
-              // Relance la vidéo hero quand l'intro se termine (notamment mobile)
-              const bg = videoRef.current
-              bg?.play?.()
-            }}
-            onPlay={() => {
-              // Pause la vidéo de fond pendant l'intro
-              const el = videoRef.current
-              el?.pause?.()
-            }}
-          >
-            <source src={introSrc} type="video/mp4" />
-          </video>
-          {/* Bouton "Passer" */}
-          <button
-            onClick={() => {
-              setShowIntro(false)
-              const bg = videoRef.current
-              bg?.play?.()
-            }}
-            className="absolute top-4 right-4 z-50 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-sm"
-            aria-label="Passer l'introduction"
-          >
-            Passer
-          </button>
-        </div>
-      )}
-
-      <motion.div className="absolute inset-0 z-20 flex items-center justify-center" initial={{ opacity: 1 }} animate={{ opacity: 1 }}>
-        <motion.div initial={{ scale: 0.1, opacity: 0, y: 0 }} animate={{ scale: isIntroComplete ? 1 : [0.1, 1.5, 1], opacity: [0, 1, 1], y: isIntroComplete ? -120 : [0, -120, 0] }} transition={{ duration: 1.5, times: [0, 0.5, 1], ease: 'easeOut' }} className="relative">
+      <motion.div className="absolute inset-0 z-20 flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}>
+        <motion.div initial={{ scale: 0.95, opacity: 0, y: 0 }} animate={{ scale: 1, opacity: 1, y: -120 }} transition={{ duration: 0.8, ease: 'easeOut' }} className="relative">
           <Link href="/" aria-label="Aller à l'accueil">
             <Image src="/logo-jrv-production.png" alt="JRV Production Logo" width={700} height={210} className="h-48 md:h-64 w-auto drop-shadow-2xl" priority />
           </Link>
         </motion.div>
       </motion.div>
 
-      <motion.div className="relative z-30 text-center px-4 max-w-6xl mx-auto" initial={{ opacity: 0, y: 50 }} animate={{ opacity: isIntroComplete ? 1 : 0, y: isIntroComplete ? 0 : 50 }} transition={{ duration: 0.6, delay: 0.2 }} style={{ marginTop: '200px' }}>
+      <motion.div className="relative z-30 text-center px-4 max-w-6xl mx-auto" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} style={{ marginTop: '200px' }}>
         <div className="max-w-4xl mx-auto">
-          <motion.div className="flex flex-col items-center space-y-8" initial={{ opacity: 0, y: 30 }} animate={{ opacity: isIntroComplete ? 1 : 0, y: isIntroComplete ? 0 : 30 }} transition={{ duration: 0.4, delay: 0.4 }}>
+          <motion.div className="flex flex-col items-center space-y-8" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.6 }}>
             <Link href="/services">
               <motion.button className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-5 rounded-full shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 flex items-center space-x-3 hover:scale-105 active:scale-95" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <span>Mes offres</span>

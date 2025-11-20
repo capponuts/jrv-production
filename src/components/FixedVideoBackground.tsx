@@ -12,7 +12,7 @@ export default function FixedVideoBackground() {
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videoback.mp4" type="video/mp4" />
+        <source src="/videoback2.mp4" type="video/mp4" />
       </video>
     </div>
   )

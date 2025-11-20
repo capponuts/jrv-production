@@ -1,20 +1,30 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Camera, Video, MonitorPlay, Mail, Phone, MapPin, ChevronDown } from 'lucide-react'
 import FixedVideoBackground from '@/components/FixedVideoBackground'
 
 export default function Home() {
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end']
+  })
+
+  const yHero = useTransform(scrollYProgress, [0, 0.2], ['0%', '50%'])
+  const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0])
+
   return (
-    <main className="relative min-h-screen text-white font-sans selection:bg-orange-500/30">
+    <main ref={containerRef} className="relative min-h-screen text-white font-sans selection:bg-orange-500/30">
       <FixedVideoBackground />
 
       {/* 1. HERO SECTION */}
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-12">
         <motion.div
+          style={{ y: yHero, opacity: opacityHero }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
@@ -26,13 +36,15 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             className="mb-8 flex justify-center"
           >
-            <Image 
-              src="/JRV_logo_rond.png" 
-              alt="JRV Production" 
-              width={180} 
-              height={180} 
-              className="rounded-full border-2 border-white/10 shadow-2xl drop-shadow-lg"
-            />
+            <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-white/10 shadow-2xl drop-shadow-2xl overflow-hidden">
+               <Image 
+                src="/JRV_logo_rond.png" 
+                alt="JRV Production" 
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight drop-shadow-xl">

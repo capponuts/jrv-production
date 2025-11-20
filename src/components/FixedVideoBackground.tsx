@@ -2,8 +2,8 @@
 
 export default function FixedVideoBackground() {
   return (
-    <div className="fixed inset-0 -z-50 w-full h-full overflow-hidden bg-gray-900">
-      <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay sombre pour lisibilité */}
+    <div className="fixed inset-0 -z-50 w-full h-full overflow-hidden">
+      <div className="absolute inset-0 bg-black/20 z-10" />
       <video
         autoPlay
         loop

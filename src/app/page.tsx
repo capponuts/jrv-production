@@ -9,7 +9,7 @@ import FixedVideoBackground from '@/components/FixedVideoBackground'
 
 export default function Home() {
   const containerRef = useRef(null)
-  const [selectedPortfolioItem, setSelectedPortfolioItem] = useState<{ src: string, title: string } | null>(null)
+  const [selectedPortfolioItem, setSelectedPortfolioItem] = useState<{ src: string, title: string, type?: 'video' | 'image' } | null>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
@@ -100,11 +100,11 @@ export default function Home() {
           <SectionHeader title="Réalisations" subtitle="Aperçu de mes derniers travaux" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div onClick={() => setSelectedPortfolioItem({ src: "/portfolio/wedding-drone.jpg", title: "Mariage" })}>
-              <PortfolioItem src="/portfolio/wedding-drone.jpg" category="Mariage" title="Émotion & Authenticité" />
+            <div onClick={() => setSelectedPortfolioItem({ src: "/mariage1.mp4", title: "Mariage", type: "video" })}>
+              <PortfolioItem src="/mariage1.mp4" category="Mariage" title="Émotion & Authenticité" isVideo />
             </div>
-            <div onClick={() => setSelectedPortfolioItem({ src: "/portfolio/wedding-drone.jpg", title: "Corporate" })}>
-              <PortfolioItem src="/portfolio/wedding-drone.jpg" category="Corporate" title="Dynamisme & Précision" />
+            <div onClick={() => setSelectedPortfolioItem({ src: "/corporate1.mp4", title: "Corporate", type: "video" })}>
+              <PortfolioItem src="/corporate1.mp4" category="Corporate" title="Dynamisme & Précision" isVideo />
             </div>
           </div>
         </div>
@@ -133,12 +133,21 @@ export default function Home() {
               >
                 <X size={24} />
               </button>
-              <Image 
-                src={selectedPortfolioItem.src} 
-                alt={selectedPortfolioItem.title} 
-                fill 
-                className="object-contain" 
-              />
+              {selectedPortfolioItem.type === 'video' ? (
+                <video 
+                  src={selectedPortfolioItem.src} 
+                  autoPlay 
+                  controls 
+                  className="w-full h-full object-contain bg-black"
+                />
+              ) : (
+                <Image 
+                  src={selectedPortfolioItem.src} 
+                  alt={selectedPortfolioItem.title} 
+                  fill 
+                  className="object-contain" 
+                />
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -208,7 +217,7 @@ function ServiceCard({ title, icon, desc }: { title: string, icon: ReactNode, de
   )
 }
 
-function PortfolioItem({ src, category, title }: { src: string, category: string, title: string }) {
+function PortfolioItem({ src, category, title, isVideo }: { src: string, category: string, title: string, isVideo?: boolean }) {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
@@ -216,12 +225,23 @@ function PortfolioItem({ src, category, title }: { src: string, category: string
       viewport={{ once: true }}
       className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl cursor-pointer"
     >
-      <Image 
-        src={src} 
-        alt={title} 
-        fill 
-        className="object-cover transition-transform duration-700 group-hover:scale-110" 
-      />
+      {isVideo ? (
+        <video 
+          src={src} 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+      ) : (
+        <Image 
+          src={src} 
+          alt={title} 
+          fill 
+          className="object-cover transition-transform duration-700 group-hover:scale-110" 
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
       <div className="absolute bottom-0 left-0 p-6 md:p-8">
         <span className="px-3 py-1 bg-orange-500/90 text-white text-xs font-bold rounded-full mb-3 inline-block backdrop-blur-sm">

@@ -38,10 +38,10 @@ export default function Home() {
           >
             <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-white/10 shadow-2xl drop-shadow-2xl overflow-hidden">
                <Image 
-                src="/JRV_logo_rond.png" 
+                src="/logo-jrv-production.png" 
                 alt="JRV Production" 
                 fill
-                className="object-cover"
+                className="object-cover bg-white/10"
                 priority
               />
             </div>

@@ -3,6 +3,9 @@ import { DM_Sans } from 'next/font/google'
 // import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import SmoothScroll from '@/components/SmoothScroll'
 
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
@@ -82,6 +85,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }} />
       </head>
       <body className={`${dmSans.className} antialiased bg-transparent text-white overflow-x-hidden min-h-screen`}>
+        <SmoothScroll />
         <Header />
         <main className="pt-24">
           {children}

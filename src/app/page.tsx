@@ -1,14 +1,15 @@
 'use client'
 
-import { ReactNode, useRef } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Camera, Video, MonitorPlay, Mail, Phone, MapPin, ChevronDown } from 'lucide-react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { Camera, Video, MonitorPlay, Mail, Phone, MapPin, ChevronDown, X } from 'lucide-react'
 import FixedVideoBackground from '@/components/FixedVideoBackground'
 
 export default function Home() {
   const containerRef = useRef(null)
+  const [selectedPortfolioItem, setSelectedPortfolioItem] = useState<{ src: string, title: string } | null>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
@@ -68,7 +69,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* 2. SERVICES SECTION (Glass Cards) */}
+      {/* 2. SERVICES SECTION (Glass Cards - Non Clickable) */}
       <section id="services" className="section-padding min-h-[80vh] flex items-center">
         <div className="container-custom">
           <SectionHeader title="Mes Expertises" subtitle="Des solutions visuelles sur mesure" />
@@ -78,41 +79,70 @@ export default function Home() {
               title="Vidéographie" 
               icon={<Video size={32} className="text-orange-500" />}
               desc="Films d'entreprise, reportages événementiels, clips promotionnels. Une image soignée pour une communication impactante."
-              link="/video"
             />
             <ServiceCard 
               title="Photographie" 
               icon={<Camera size={32} className="text-blue-500" />}
               desc="Portraits, architecture, mariages. Des clichés haute définition qui immortalisent vos moments forts."
-              link="/photo"
             />
             <ServiceCard 
               title="Drone FPV" 
               icon={<MonitorPlay size={32} className="text-green-500" />}
               desc="Prises de vue aériennes dynamiques et immersives. Donnez de la hauteur à vos projets."
-              link="/video/drone-fpv"
             />
           </div>
         </div>
       </section>
 
-      {/* 3. PORTFOLIO PREVIEW (Slider style) */}
+      {/* 3. PORTFOLIO PREVIEW (Popup Mode) */}
       <section id="portfolio" className="section-padding">
         <div className="container-custom">
           <SectionHeader title="Réalisations" subtitle="Aperçu de mes derniers travaux" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <PortfolioItem src="/portfolio/wedding-drone.jpg" category="Mariage" title="Émotion & Authenticité" />
-            <PortfolioItem src="/portfolio/wedding-drone.jpg" category="Corporate" title="Dynamisme & Précision" />
-          </div>
-          
-          <div className="text-center mt-12">
-             <Link href="/portfolio" className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-medium transition-colors">
-               Voir tout le portfolio <span className="text-xl">→</span>
-             </Link>
+            <div onClick={() => setSelectedPortfolioItem({ src: "/portfolio/wedding-drone.jpg", title: "Mariage" })}>
+              <PortfolioItem src="/portfolio/wedding-drone.jpg" category="Mariage" title="Émotion & Authenticité" />
+            </div>
+            <div onClick={() => setSelectedPortfolioItem({ src: "/portfolio/wedding-drone.jpg", title: "Corporate" })}>
+              <PortfolioItem src="/portfolio/wedding-drone.jpg" category="Corporate" title="Dynamisme & Précision" />
+            </div>
           </div>
         </div>
       </section>
+
+      {/* PORTFOLIO MODAL */}
+      <AnimatePresence>
+        {selectedPortfolioItem && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+            onClick={() => setSelectedPortfolioItem(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              className="relative max-w-5xl w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                className="absolute top-4 right-4 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 text-white transition-colors"
+                onClick={() => setSelectedPortfolioItem(null)}
+              >
+                <X size={24} />
+              </button>
+              <Image 
+                src={selectedPortfolioItem.src} 
+                alt={selectedPortfolioItem.title} 
+                fill 
+                className="object-contain" 
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 4. CONTACT SECTION */}
       <section id="contact" className="section-padding pb-32">
@@ -130,27 +160,7 @@ export default function Home() {
                 <ContactItem icon={<MapPin />} label="Localisation" value="Vendée, Pays de la Loire" />
               </div>
 
-              <form action="/api/contact" method="POST" className="space-y-4">
-                <div>
-                  <input 
-                    type="text" name="name" placeholder="Votre Nom" required
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition"
-                  />
-                </div>
-                <div>
-                  <input 
-                    type="email" name="email" placeholder="Votre Email" required
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition"
-                  />
-                </div>
-                <div>
-                  <textarea 
-                    name="message" rows={4} placeholder="Votre Message" required
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition"
-                  ></textarea>
-                </div>
-                <button type="submit" className="w-full btn-primary">Envoyer</button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </div>
@@ -176,28 +186,24 @@ function SectionHeader({ title, subtitle }: { title: string, subtitle: string })
   )
 }
 
-function ServiceCard({ title, icon, desc, link }: { title: string, icon: ReactNode, desc: string, link: string }) {
+function ServiceCard({ title, icon, desc }: { title: string, icon: ReactNode, desc: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      whileHover={{ y: -10 }}
+      whileHover={{ y: -5 }}
+      className="block h-full cursor-default"
     >
-      <Link href={link} className="block h-full">
-        <div className="glass-card p-8 h-full flex flex-col items-start">
-          <div className="bg-white/5 p-4 rounded-2xl mb-6 backdrop-blur-sm border border-white/5">
-            {icon}
-          </div>
-          <h3 className="text-2xl font-bold mb-3">{title}</h3>
-          <p className="text-gray-400 leading-relaxed mb-6 flex-grow">
-            {desc}
-          </p>
-          <div className="text-orange-400 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform flex items-center gap-2">
-            Explorer <span className="text-lg">→</span>
-          </div>
+      <div className="glass-card p-8 h-full flex flex-col items-start hover:border-white/10">
+        <div className="bg-white/5 p-4 rounded-2xl mb-6 backdrop-blur-sm border border-white/5">
+          {icon}
         </div>
-      </Link>
+        <h3 className="text-2xl font-bold mb-3">{title}</h3>
+        <p className="text-gray-400 leading-relaxed mb-6 flex-grow">
+          {desc}
+        </p>
+      </div>
     </motion.div>
   )
 }
@@ -208,7 +214,7 @@ function PortfolioItem({ src, category, title }: { src: string, category: string
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+      className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl cursor-pointer"
     >
       <Image 
         src={src} 
@@ -239,4 +245,87 @@ function ContactItem({ icon, label, value, href }: { icon: ReactNode, label: str
   )
 
   return href ? <a href={href}>{content}</a> : content
+}
+
+function ContactForm() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setStatus('loading')
+    setErrorMsg('')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      firstName: formData.get('name'), // Mapping 'name' to 'firstName' for API compat
+      lastName: '.', // Default for simple form
+      email: formData.get('email'),
+      service: 'contact-form', // Default service
+      message: formData.get('message'),
+      phone: ''
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+
+      if (res.ok) {
+        setStatus('success')
+        // Reset form
+        ;(e.target as HTMLFormElement).reset()
+      } else {
+        const json = await res.json()
+        throw new Error(json.error || 'Erreur lors de l\'envoi')
+      }
+    } catch (err) {
+      setStatus('error')
+      setErrorMsg(err instanceof Error ? err.message : 'Erreur inconnue')
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <input 
+          type="text" name="name" placeholder="Votre Nom" required
+          className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition"
+        />
+      </div>
+      <div>
+        <input 
+          type="email" name="email" placeholder="Votre Email" required
+          className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition"
+        />
+      </div>
+      <div>
+        <textarea 
+          name="message" rows={4} placeholder="Votre Message" required
+          className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition"
+        ></textarea>
+      </div>
+      
+      <button 
+        type="submit" 
+        disabled={status === 'loading' || status === 'success'}
+        className={`w-full btn-primary ${status === 'loading' ? 'opacity-70 cursor-wait' : ''}`}
+      >
+        {status === 'loading' ? 'Envoi en cours...' : status === 'success' ? 'Message Envoyé !' : 'Envoyer'}
+      </button>
+
+      {status === 'error' && (
+        <p className="text-red-400 text-sm mt-2 bg-red-900/20 p-3 rounded-lg border border-red-500/20">
+          {errorMsg}
+        </p>
+      )}
+      {status === 'success' && (
+        <p className="text-green-400 text-sm mt-2 bg-green-900/20 p-3 rounded-lg border border-green-500/20">
+          Merci ! Je vous recontacterai très vite.
+        </p>
+      )}
+    </form>
+  )
 }

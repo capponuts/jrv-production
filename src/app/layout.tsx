@@ -5,6 +5,7 @@ import './globals.css'
 import { getSiteUrl } from '@/lib/site'
 import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
+import MusicPlayer from '@/components/MusicPlayer'
 
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
@@ -85,6 +86,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
       </head>
       <body className={`${dmSans.className} antialiased bg-transparent text-white overflow-x-hidden min-h-screen`}>
         <SmoothScroll />
+        <MusicPlayer />
         <main className="pt-24">
           {children}
         </main>

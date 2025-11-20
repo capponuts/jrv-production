@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Music, Volume2, VolumeX } from 'lucide-react'
+import { Music, VolumeX } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function MusicPlayer() {

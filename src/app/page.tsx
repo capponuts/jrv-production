@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef } from 'react'
+import { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Camera, Video, MonitorPlay, Mail, Phone, MapPin, ChevronDown } from 'lucide-react'
 import FixedVideoBackground from '@/components/FixedVideoBackground'
 
@@ -36,7 +36,7 @@ export default function Home() {
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight drop-shadow-xl">
-            Capturer <span className="gradient-text">l'Instant</span>
+            Capturer <span className="gradient-text">l&apos;Instant</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed font-light drop-shadow-md">
@@ -163,7 +163,7 @@ function SectionHeader({ title, subtitle }: { title: string, subtitle: string })
   )
 }
 
-function ServiceCard({ title, icon, desc, link }: { title: string, icon: any, desc: string, link: string }) {
+function ServiceCard({ title, icon, desc, link }: { title: string, icon: ReactNode, desc: string, link: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -214,7 +214,7 @@ function PortfolioItem({ src, category, title }: { src: string, category: string
   )
 }
 
-function ContactItem({ icon, label, value, href }: { icon: any, label: string, value: string, href?: string }) {
+function ContactItem({ icon, label, value, href }: { icon: ReactNode, label: string, value: string, href?: string }) {
   const content = (
     <div className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
       <div className="text-orange-500">{icon}</div>

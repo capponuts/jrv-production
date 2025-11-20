@@ -36,12 +36,13 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             className="mb-8 flex justify-center"
           >
-            <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-white/10 shadow-2xl drop-shadow-2xl overflow-hidden">
+            <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
                <Image 
                 src="/logo-jrv-production.png" 
                 alt="JRV Production" 
-                fill
-                className="object-cover bg-white/10"
+                width={256}
+                height={256}
+                className="object-contain drop-shadow-2xl"
                 priority
               />
             </div>

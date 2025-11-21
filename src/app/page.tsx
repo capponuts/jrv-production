@@ -135,13 +135,17 @@ export default function Home() {
                 <div className="h-1 w-20 bg-orange-500 rounded-full"></div>
 
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Moi c&apos;est Jérémy. Je capture les moments comme je les ressens : simples, vrais et avec une énergie qui me parle.
-                  J&apos;aime raconter des histoires avec mes images, sans surjouer, juste avec sincérité et passion.
+                  Moi c&apos;est Jérémy. J&apos;aime créer des images qui ressemblent vraiment aux moments que je vis : des ambiances naturelles,
+                  des lumières qui parlent d&apos;elles-mêmes, et ces petits détails que la plupart ne remarquent pas.
                 </p>
 
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Que ce soit pour immortaliser votre mariage, valoriser votre entreprise ou explorer des paysages aériens,
-                  chaque projet est une opportunité de créer quelque chose d&apos;unique et mémorable.
+                  Je travaille calmement, en prenant le temps de ressentir l&apos;énergie du lieu et des personnes. Que ce soit en photo ou en vidéo,
+                  j&apos;aime capturer quelque chose de sincère, d&apos;esthétique, et qui donne une vraie émotion quand on le regarde.
+                </p>
+
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Chaque projet, c&apos;est pour moi l&apos;occasion de raconter une histoire à ma façon : simple, propre, humaine, et visuellement soignée.
                 </p>
               </motion.div>
             </div>

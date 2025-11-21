@@ -7,9 +7,16 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Camera, Video, MonitorPlay, Mail, Phone, MapPin, ChevronDown, X } from 'lucide-react'
 import FixedVideoBackground from '@/components/FixedVideoBackground'
 
+// Helper function to extract YouTube video ID from URL
+function getYouTubeID(url: string): string {
+  const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)
+  return match ? match[1] : ''
+}
+
 export default function Home() {
   const containerRef = useRef(null)
   const [selectedPortfolioItem, setSelectedPortfolioItem] = useState<{ src: string, title: string, type?: 'video' | 'image' } | null>(null)
+  const [selectedGallery, setSelectedGallery] = useState<{ title: string, videos: { title: string, url: string }[] } | null>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
@@ -98,14 +105,36 @@ export default function Home() {
       <section id="portfolio" className="section-padding">
         <div className="container-custom">
           <SectionHeader title="Réalisations" subtitle="Aperçu de mes derniers travaux" />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div onClick={() => setSelectedPortfolioItem({ src: "/mariage1.mp4", title: "Mariage", type: "video" })}>
-              <PortfolioItem src="/mariage1.mp4" category="Mariage" title="Émotion & Authenticité" isVideo />
-            </div>
-            <div onClick={() => setSelectedPortfolioItem({ src: "/corporate1.mp4", title: "Corporate", type: "video" })}>
-              <PortfolioItem src="/corporate1.mp4" category="Corporate" title="Dynamisme & Précision" isVideo />
-            </div>
+            <PortfolioItem
+              src="/mariage1.mp4"
+              category="Mariage"
+              title="Émotion & Authenticité"
+              isVideo
+              onVideoClick={() => setSelectedPortfolioItem({ src: "/mariage1.mp4", title: "Mariage", type: "video" })}
+              onGalleryClick={() => setSelectedGallery({
+                title: "Mariage & Événements",
+                videos: [
+                  { title: "Festival la Nuit sans fin", url: "https://www.youtube.com/watch?v=WO4Df476lqE" },
+                  { title: "Fête Medievale de Commequiers", url: "https://www.youtube.com/watch?v=Ww7nbRwwbIk" },
+                  { title: "Chateau de commequiers vue du ciel", url: "https://www.youtube.com/watch?v=6gZ-PhBmEVw&t=5s" }
+                ]
+              })}
+            />
+            <PortfolioItem
+              src="/corporate1.mp4"
+              category="Corporate"
+              title="Dynamisme & Précision"
+              isVideo
+              onVideoClick={() => setSelectedPortfolioItem({ src: "/corporate1.mp4", title: "Corporate", type: "video" })}
+              onGalleryClick={() => setSelectedGallery({
+                title: "Vidéos Corporate",
+                videos: [
+                  { title: "Corporate Video", url: "https://www.youtube.com/watch?v=l5pSoNNuVHc" }
+                ]
+              })}
+            />
           </div>
         </div>
       </section>
@@ -113,41 +142,94 @@ export default function Home() {
       {/* PORTFOLIO MODAL */}
       <AnimatePresence>
         {selectedPortfolioItem && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
             onClick={() => setSelectedPortfolioItem(null)}
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
               className="relative max-w-5xl w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
+              <button
                 className="absolute top-4 right-4 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 text-white transition-colors"
                 onClick={() => setSelectedPortfolioItem(null)}
               >
                 <X size={24} />
               </button>
               {selectedPortfolioItem.type === 'video' ? (
-                <video 
-                  src={selectedPortfolioItem.src} 
-                  autoPlay 
-                  controls 
+                <video
+                  src={selectedPortfolioItem.src}
+                  autoPlay
+                  controls
                   className="w-full h-full object-contain bg-black"
                 />
               ) : (
-                <Image 
-                  src={selectedPortfolioItem.src} 
-                  alt={selectedPortfolioItem.title} 
-                  fill 
-                  className="object-contain" 
+                <Image
+                  src={selectedPortfolioItem.src}
+                  alt={selectedPortfolioItem.title}
+                  fill
+                  className="object-contain"
                 />
               )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* GALLERY MODAL */}
+      <AnimatePresence>
+        {selectedGallery && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+            onClick={() => setSelectedGallery(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              className="relative max-w-6xl w-full max-h-[80vh] rounded-2xl overflow-hidden border border-white/10 shadow-2xl glass-panel p-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-4 right-4 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 text-white transition-colors"
+                onClick={() => setSelectedGallery(null)}
+              >
+                <X size={24} />
+              </button>
+
+              <h3 className="text-2xl font-bold mb-6 text-center">{selectedGallery.title}</h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-auto max-h-[60vh]">
+                {selectedGallery.videos.map((video, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="aspect-video bg-black rounded-lg overflow-hidden border border-white/10"
+                  >
+                    <iframe
+                      src={`https://www.youtube.com/embed/${getYouTubeID(video.url)}`}
+                      title={video.title}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                    <div className="p-3">
+                      <h4 className="text-sm font-semibold text-white">{video.title}</h4>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         )}
@@ -217,29 +299,43 @@ function ServiceCard({ title, icon, desc }: { title: string, icon: ReactNode, de
   )
 }
 
-function PortfolioItem({ src, category, title, isVideo }: { src: string, category: string, title: string, isVideo?: boolean }) {
+function PortfolioItem({
+  src,
+  category,
+  title,
+  isVideo,
+  onVideoClick,
+  onGalleryClick
+}: {
+  src: string,
+  category: string,
+  title: string,
+  isVideo?: boolean,
+  onVideoClick?: () => void,
+  onGalleryClick?: () => void
+}) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl cursor-pointer"
+      className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
     >
       {isVideo ? (
-        <video 
-          src={src} 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
       ) : (
-        <Image 
-          src={src} 
-          alt={title} 
-          fill 
-          className="object-cover transition-transform duration-700 group-hover:scale-110" 
+        <Image
+          src={src}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
@@ -248,6 +344,26 @@ function PortfolioItem({ src, category, title, isVideo }: { src: string, categor
           {category}
         </span>
         <h3 className="text-2xl font-bold text-white mt-2">{title}</h3>
+        <div className="flex gap-3 mt-4">
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onVideoClick?.()
+            }}
+            className="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg text-white text-sm font-medium transition-colors"
+          >
+            Voir la vidéo
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onGalleryClick?.()
+            }}
+            className="px-4 py-2 bg-orange-500/90 hover:bg-orange-500 text-white text-sm font-medium rounded-lg transition-colors"
+          >
+            Voir plus
+          </button>
+        </div>
       </div>
     </motion.div>
   )

@@ -72,6 +72,9 @@ export default function Home() {
             <Link href="#portfolio" className="px-8 py-3 rounded-xl border border-white/20 hover:bg-white/10 backdrop-blur-md transition-all text-white font-medium">
               Portfolio
             </Link>
+            <Link href="#qui-je-suis" className="px-8 py-3 rounded-xl border border-white/20 hover:bg-white/10 backdrop-blur-md transition-all text-white font-medium">
+              Qui je suis
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -101,7 +104,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. PORTFOLIO PREVIEW (Popup Mode) */}
+      {/* 3. QUI JE SUIS SECTION */}
+      <section id="qui-je-suis" className="section-padding">
+        <div className="container-custom">
+          <div className="glass-panel p-8 md:p-12 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <Image
+                  src="/jeremy.jpeg"
+                  alt="Jérémy - JRV Production"
+                  width={400}
+                  height={500}
+                  className="rounded-2xl shadow-2xl object-cover w-full h-auto"
+                  priority={false}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold">Qui je suis</h2>
+                <div className="h-1 w-20 bg-orange-500 rounded-full"></div>
+
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Moi c&apos;est Jérémy. Je capture les moments comme je les ressens : simples, vrais et avec une énergie qui me parle.
+                  J&apos;aime raconter des histoires avec mes images, sans surjouer, juste avec sincérité et passion.
+                </p>
+
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Que ce soit pour immortaliser votre mariage, valoriser votre entreprise ou explorer des paysages aériens,
+                  chaque projet est une opportunité de créer quelque chose d&apos;unique et mémorable.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PORTFOLIO PREVIEW (Popup Mode) */}
       <section id="portfolio" className="section-padding">
         <div className="container-custom">
           <SectionHeader title="Réalisations" subtitle="Aperçu de mes derniers travaux" />
@@ -235,7 +283,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* 4. CONTACT SECTION */}
+      {/* 5. CONTACT SECTION */}
       <section id="contact" className="section-padding pb-32">
         <div className="container-custom">
           <div className="glass-panel p-8 md:p-12 max-w-4xl mx-auto">

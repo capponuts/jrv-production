@@ -17,6 +17,8 @@ export default function Home() {
   const containerRef = useRef(null)
   const [selectedPortfolioItem, setSelectedPortfolioItem] = useState<{ src: string, title: string, type?: 'video' | 'image' } | null>(null)
   const [selectedGallery, setSelectedGallery] = useState<{ title: string, videos: { title: string, url: string }[] } | null>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
@@ -25,9 +27,20 @@ export default function Home() {
   const yHero = useTransform(scrollYProgress, [0, 0.2], ['0%', '50%'])
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
+  const playJeremySong = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio('/jeremy.mp3')
+      audioRef.current.volume = 0.7
+    }
+    audioRef.current.play().catch((err) => console.log('Audio play failed:', err))
+  }
+
   return (
     <main ref={containerRef} className="relative min-h-screen text-white font-sans selection:bg-orange-500/30">
       <FixedVideoBackground />
+
+      {/* Hidden audio element for easter egg */}
+      <audio ref={audioRef} preload="none" />
 
       {/* 1. HERO SECTION */}
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-12">
@@ -155,7 +168,11 @@ export default function Home() {
                 className="space-y-6"
               >
                 <h2 className="text-3xl md:text-4xl font-bold">Qui je suis</h2>
-                <div className="h-1 w-20 bg-orange-500 rounded-full"></div>
+                <div
+                  className="h-1 w-20 bg-orange-500 rounded-full cursor-pointer hover:bg-orange-400 transition-colors duration-300"
+                  onClick={playJeremySong}
+                  title="🎵 Cliquez pour découvrir ma musique préférée"
+                ></div>
 
                 <p className="text-lg text-gray-300 leading-relaxed">
                   Moi c&apos;est Jérémy. J&apos;aime créer des images qui ressemblent vraiment aux moments que je vis : des ambiances naturelles,
@@ -181,7 +198,7 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeader title="Réalisations" subtitle="Aperçu de mes derniers travaux" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <PortfolioItem
               src="/ambiance.mp4"
               title="Ambiances & Saveurs"
@@ -189,9 +206,7 @@ export default function Home() {
               onGalleryClick={() => setSelectedGallery({
                 title: "Ambiances & Saveurs",
                 videos: [
-                  { title: "Festival la Nuit sans fin", url: "https://www.youtube.com/watch?v=WO4Df476lqE" },
-                  { title: "Fête Medievale de Commequiers", url: "https://www.youtube.com/watch?v=Ww7nbRwwbIk" },
-                  { title: "Chateau de commequiers vue du ciel", url: "https://www.youtube.com/watch?v=6gZ-PhBmEVw&t=5s" }
+                  { title: "Ambiance Culinaire", url: "https://www.youtube.com/watch?v=NiNXI6SiHyM" }
                 ]
               })}
             />
@@ -202,7 +217,20 @@ export default function Home() {
               onGalleryClick={() => setSelectedGallery({
                 title: "Architecture & Vision",
                 videos: [
-                  { title: "Corporate Video", url: "https://www.youtube.com/watch?v=l5pSoNNuVHc" }
+                  { title: "Corporate Video", url: "https://www.youtube.com/watch?v=l5pSoNNuVHc" },
+                  { title: "Chateau de commequiers vue du ciel", url: "https://www.youtube.com/watch?v=6gZ-PhBmEVw&t=5s" }
+                ]
+              })}
+            />
+            <PortfolioItem
+              src="/event.mp4"
+              title="Événement & Divertissement"
+              isVideo
+              onGalleryClick={() => setSelectedGallery({
+                title: "Événement & Divertissement",
+                videos: [
+                  { title: "Festival la Nuit sans fin", url: "https://www.youtube.com/watch?v=WO4Df476lqE" },
+                  { title: "Fête Medievale de Commequiers", url: "https://www.youtube.com/watch?v=Ww7nbRwwbIk" }
                 ]
               })}
             />

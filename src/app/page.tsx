@@ -160,7 +160,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <PortfolioItem
-              src="/mariage1.mp4"
+              src="/ambiance.mp4"
               title="Ambiances & Saveurs"
               isVideo
               onGalleryClick={() => setSelectedGallery({
@@ -173,7 +173,7 @@ export default function Home() {
               })}
             />
             <PortfolioItem
-              src="/corporate1.mp4"
+              src="/immo.mp4"
               title="Architecture & Vision"
               isVideo
               onGalleryClick={() => setSelectedGallery({
@@ -184,9 +184,9 @@ export default function Home() {
               })}
             />
             <PortfolioItem
-              src="/portfolio/wedding-drone.jpg"
+              src="/moment.mp4"
               title="Moments Capturés"
-              isVideo={false}
+              isVideo
               onGalleryClick={() => setSelectedGallery({
                 title: "Moments Capturés",
                 videos: [

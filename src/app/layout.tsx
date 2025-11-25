@@ -12,9 +12,9 @@ const dmSans = DM_Sans({ subsets: ['latin'] })
 const siteUrl = getSiteUrl()
 
 export const metadata: Metadata = {
-  title: 'JRV Production - Photographe & Vidéaste Drone en Vendée',
-  description: 'JRV Production, photographe et vidéaste professionnel spécialisé dans les drones FPV en Vendée, Pays de la Loire. Sublimez vos événements avec nos services de photographie et vidéographie aérienne.',
-  keywords: 'photographe vendée, vidéaste drone, drone FPV, photographie aérienne, vidéographie vendée, pays de la loire, mariage vendée, événementiel vendée, portrait vendée',
+  title: 'JRV Production - Vidéaste Drone Professionnel en Vendée',
+  description: 'JRV Production, vidéaste professionnel spécialisé dans les drones FPV en Vendée. Capturez vos événements avec style grâce à nos vidéos aériennes et cinématographiques de qualité professionnelle.',
+  keywords: 'vidéaste vendée, vidéaste drone, drone FPV, vidéographie aérienne, vidéos événementielles, mariage vendée, événementiel vendée, vidéos corporate, drone cinéma',
   authors: [{ name: 'JRV Production' }],
   creator: 'JRV Production',
   publisher: 'JRV Production',

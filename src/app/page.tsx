@@ -4,7 +4,7 @@ import { ReactNode, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Camera, Video, MonitorPlay, Mail, Phone, MapPin, ChevronDown, X } from 'lucide-react'
+import { Video, MonitorPlay, Mail, Phone, MapPin, ChevronDown, X } from 'lucide-react'
 import FixedVideoBackground from '@/components/FixedVideoBackground'
 
 // Helper function to extract YouTube video ID from URL
@@ -59,9 +59,9 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight drop-shadow-xl">
             Capturer <span className="gradient-text">l&apos;Instant</span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed font-light drop-shadow-md">
-            Vidéaste & Photographe professionnel en Vendée.<br/>
+            Vidéaste professionnel en Vendée.<br/>
             Mariages, Corporate, Drone FPV.
           </p>
 
@@ -79,27 +79,50 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* 2. SERVICES SECTION (Glass Cards - Non Clickable) */}
+      {/* 2. À PROPOS SECTION */}
       <section id="services" className="section-padding min-h-[80vh] flex items-center">
         <div className="container-custom">
-          <SectionHeader title="Mes Expertises" subtitle="Des solutions visuelles sur mesure" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <ServiceCard 
-              title="Vidéographie" 
-              icon={<Video size={32} className="text-orange-500" />}
-              desc="Films d'entreprise, reportages événementiels, clips promotionnels. Une image soignée pour une communication impactante."
-            />
-            <ServiceCard 
-              title="Photographie" 
-              icon={<Camera size={32} className="text-blue-500" />}
-              desc="Portraits, architecture, mariages. Des clichés haute définition qui immortalisent vos moments forts."
-            />
-            <ServiceCard 
-              title="Drone FPV" 
-              icon={<MonitorPlay size={32} className="text-green-500" />}
-              desc="Prises de vue aériennes dynamiques et immersives. Donnez de la hauteur à vos projets."
-            />
+          <div className="glass-panel p-8 md:p-12 max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Mon approche</h2>
+              <div className="h-1 w-20 bg-orange-500 mx-auto rounded-full mb-6" />
+            </div>
+
+            <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+              <p>
+                Je suis <strong>Jérémy</strong>, vidéaste professionnel passionné par l&apos;art de raconter des histoires à travers des images en mouvement.
+                Spécialisé dans le pilotage de drones FPV, je capture des perspectives uniques et des moments d&apos;exception.
+              </p>
+
+              <p>
+                Mon expertise couvre <strong>trois domaines principaux</strong> :
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div className="text-center p-6 bg-black/20 rounded-xl border border-white/5">
+                  <Video size={48} className="text-orange-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold mb-2 text-white">Vidéographie</h3>
+                  <p className="text-sm">Films d&apos;entreprise, reportages événementiels, clips promotionnels avec une qualité cinématographique professionnelle.</p>
+                </div>
+
+                <div className="text-center p-6 bg-black/20 rounded-xl border border-white/5">
+                  <MonitorPlay size={48} className="text-green-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold mb-2 text-white">Drone FPV</h3>
+                  <p className="text-sm">Prises de vue aériennes dynamiques et immersives qui apportent une dimension spectaculaire à vos projets.</p>
+                </div>
+
+                <div className="text-center p-6 bg-black/20 rounded-xl border border-white/5">
+                  <Video size={48} className="text-orange-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold mb-2 text-white">Événements</h3>
+                  <p className="text-sm">Mariages, cérémonies, concerts... Immortalisez vos moments les plus précieux avec élégance et sensibilité.</p>
+                </div>
+              </div>
+
+              <p className="mt-8">
+                Chaque projet est une opportunité de créer quelque chose d&apos;<strong>unique</strong> et d&apos;<strong>émotionnellement puissant</strong>.
+                De la préparation technique à la livraison finale, je m&apos;engage à vous offrir des vidéos qui dépassent vos attentes.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -153,12 +176,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. PORTFOLIO PREVIEW (Popup Mode) */}
+      {/* 5. PORTFOLIO PREVIEW (Popup Mode) */}
       <section id="portfolio" className="section-padding">
         <div className="container-custom">
           <SectionHeader title="Réalisations" subtitle="Aperçu de mes derniers travaux" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <PortfolioItem
               src="/ambiance.mp4"
               title="Ambiances & Saveurs"
@@ -183,17 +206,77 @@ export default function Home() {
                 ]
               })}
             />
-            <PortfolioItem
-              src="/moment.mp4"
-              title="Moments Capturés"
-              isVideo
-              onGalleryClick={() => setSelectedGallery({
-                title: "Moments Capturés",
-                videos: [
-                  { title: "Coming Soon", url: "" }
-                ]
-              })}
-            />
+          </div>
+        </div>
+      </section>
+
+      {/* 4. AVIS CLIENTS SECTION */}
+      <section className="section-padding bg-gray-900/30">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ils me font confiance</h2>
+            <div className="h-1 w-20 bg-orange-500 mx-auto rounded-full mb-6" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass-card p-6 text-center"
+            >
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-2xl">⭐</span>
+                ))}
+              </div>
+              <p className="text-gray-300 mb-4 italic">
+                &ldquo;Jérémy a réalisé une vidéo exceptionnelle pour notre mariage. La qualité des images aériennes
+                et le montage professionnel ont dépassé nos attentes. Un vrai professionnel !&rdquo;
+              </p>
+              <div className="text-orange-400 font-semibold">Marie & Thomas</div>
+              <div className="text-gray-500 text-sm">Mariage - Vendée</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="glass-card p-6 text-center"
+            >
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-2xl">⭐</span>
+                ))}
+              </div>
+              <p className="text-gray-300 mb-4 italic">
+                &ldquo;Pour notre événement corporate, Jérémy nous a offert des prises de vue aériennes spectaculaires.
+                La créativité et la réactivité font de lui un vidéaste de confiance.&rdquo;
+              </p>
+              <div className="text-orange-400 font-semibold">Sophie Martin</div>
+              <div className="text-gray-500 text-sm">Directrice Marketing - Nantes</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="glass-card p-6 text-center"
+            >
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-2xl">⭐</span>
+                ))}
+              </div>
+              <p className="text-gray-300 mb-4 italic">
+                &ldquo;Les images capturées avec le drone FPV sont d&apos;une beauté incomparable. Jérémy maîtrise parfaitement
+                son sujet et livre un travail de grande qualité. Je recommande vivement !&rdquo;
+              </p>
+              <div className="text-orange-400 font-semibold">Pierre Dubois</div>
+              <div className="text-gray-500 text-sm">Organisateur d&apos;événements - La Rochelle</div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -294,7 +377,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* 5. CONTACT SECTION */}
+      {/* 6. CONTACT SECTION */}
       <section id="contact" className="section-padding pb-32">
         <div className="container-custom">
           <div className="glass-panel p-8 md:p-12 max-w-4xl mx-auto">
@@ -332,28 +415,6 @@ function SectionHeader({ title, subtitle }: { title: string, subtitle: string })
       <h2 className="text-4xl md:text-5xl font-bold mb-4">{title}</h2>
       <div className="h-1 w-20 bg-orange-500 mx-auto rounded-full mb-4" />
       <p className="text-gray-300 text-lg">{subtitle}</p>
-    </motion.div>
-  )
-}
-
-function ServiceCard({ title, icon, desc }: { title: string, icon: ReactNode, desc: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -5 }}
-      className="block h-full cursor-default"
-    >
-      <div className="glass-card p-8 h-full flex flex-col items-start hover:border-white/10">
-        <div className="bg-white/5 p-4 rounded-2xl mb-6 backdrop-blur-sm border border-white/5">
-          {icon}
-        </div>
-        <h3 className="text-2xl font-bold mb-3">{title}</h3>
-        <p className="text-gray-400 leading-relaxed mb-6 flex-grow">
-          {desc}
-        </p>
-      </div>
     </motion.div>
   )
 }

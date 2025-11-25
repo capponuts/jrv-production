@@ -254,8 +254,8 @@ export default function Home() {
                 &ldquo;Pour notre événement corporate, Jérémy nous a offert des prises de vue aériennes spectaculaires.
                 La créativité et la réactivité font de lui un vidéaste de confiance.&rdquo;
               </p>
-              <div className="text-orange-400 font-semibold">Sophie Martin</div>
-              <div className="text-gray-500 text-sm">Directrice Marketing - Nantes</div>
+              <div className="text-orange-400 font-semibold">Isabelle Moreau</div>
+              <div className="text-gray-500 text-sm">Responsable Communication - Nantes</div>
             </motion.div>
 
             <motion.div
@@ -274,8 +274,8 @@ export default function Home() {
                 &ldquo;Les images capturées avec le drone FPV sont d&apos;une beauté incomparable. Jérémy maîtrise parfaitement
                 son sujet et livre un travail de grande qualité. Je recommande vivement !&rdquo;
               </p>
-              <div className="text-orange-400 font-semibold">Pierre Dubois</div>
-              <div className="text-gray-500 text-sm">Organisateur d&apos;événements - La Rochelle</div>
+              <div className="text-orange-400 font-semibold">Marc Leblanc</div>
+              <div className="text-gray-500 text-sm">Directeur d&apos;événements - La Rochelle</div>
             </motion.div>
           </div>
         </div>

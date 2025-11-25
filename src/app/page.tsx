@@ -158,15 +158,13 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeader title="Réalisations" subtitle="Aperçu de mes derniers travaux" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <PortfolioItem
               src="/mariage1.mp4"
-              category="Mariage"
-              title="Émotion & Authenticité"
+              title="Ambiances & Saveurs"
               isVideo
-              onVideoClick={() => setSelectedPortfolioItem({ src: "/mariage1.mp4", title: "Mariage", type: "video" })}
               onGalleryClick={() => setSelectedGallery({
-                title: "Mariage & Événements",
+                title: "Ambiances & Saveurs",
                 videos: [
                   { title: "Festival la Nuit sans fin", url: "https://www.youtube.com/watch?v=WO4Df476lqE" },
                   { title: "Fête Medievale de Commequiers", url: "https://www.youtube.com/watch?v=Ww7nbRwwbIk" },
@@ -176,14 +174,23 @@ export default function Home() {
             />
             <PortfolioItem
               src="/corporate1.mp4"
-              category="Corporate"
-              title="Dynamisme & Précision"
+              title="Architecture & Vision"
               isVideo
-              onVideoClick={() => setSelectedPortfolioItem({ src: "/corporate1.mp4", title: "Corporate", type: "video" })}
               onGalleryClick={() => setSelectedGallery({
-                title: "Vidéos Corporate",
+                title: "Architecture & Vision",
                 videos: [
                   { title: "Corporate Video", url: "https://www.youtube.com/watch?v=l5pSoNNuVHc" }
+                ]
+              })}
+            />
+            <PortfolioItem
+              src="/portfolio/wedding-drone.jpg"
+              title="Moments Capturés"
+              isVideo={false}
+              onGalleryClick={() => setSelectedGallery({
+                title: "Moments Capturés",
+                videos: [
+                  { title: "Coming Soon", url: "" }
                 ]
               })}
             />
@@ -356,14 +363,12 @@ function PortfolioItem({
   category,
   title,
   isVideo,
-  onVideoClick,
   onGalleryClick
 }: {
   src: string,
-  category: string,
+  category?: string,
   title: string,
   isVideo?: boolean,
-  onVideoClick?: () => void,
   onGalleryClick?: () => void
 }) {
   return (
@@ -392,20 +397,13 @@ function PortfolioItem({
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
       <div className="absolute bottom-0 left-0 p-6 md:p-8">
-        <span className="px-3 py-1 bg-orange-500/90 text-white text-xs font-bold rounded-full mb-3 inline-block backdrop-blur-sm">
-          {category}
-        </span>
+        {category && (
+          <span className="px-3 py-1 bg-orange-500/90 text-white text-xs font-bold rounded-full mb-3 inline-block backdrop-blur-sm">
+            {category}
+          </span>
+        )}
         <h3 className="text-2xl font-bold text-white mt-2">{title}</h3>
         <div className="flex gap-3 mt-4">
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              onVideoClick?.()
-            }}
-            className="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg text-white text-sm font-medium transition-colors"
-          >
-            Voir la vidéo
-          </button>
           <button
             onClick={(e) => {
               e.stopPropagation()

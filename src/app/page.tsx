@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
@@ -27,20 +27,29 @@ export default function Home() {
   const yHero = useTransform(scrollYProgress, [0, 0.2], ['0%', '50%'])
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
-  const playJeremySong = () => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio('/jeremy.mp3')
-      audioRef.current.volume = 0.7
+  useEffect(() => {
+    audioRef.current = new Audio('/jeremy.mp3')
+    audioRef.current.volume = 0.7
+    audioRef.current.preload = 'auto'
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
     }
-    audioRef.current.play().catch((err) => console.log('Audio play failed:', err))
+  }, [])
+
+  const playJeremySong = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0
+      audioRef.current.play().catch((err) => console.log('Audio play failed:', err))
+    }
   }
 
   return (
     <main ref={containerRef} className="relative min-h-screen text-white font-sans selection:bg-orange-500/30">
       <FixedVideoBackground />
-
-      {/* Hidden audio element for easter egg */}
-      <audio ref={audioRef} preload="none" />
 
       {/* 1. HERO SECTION */}
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-12">
@@ -217,7 +226,6 @@ export default function Home() {
               onGalleryClick={() => setSelectedGallery({
                 title: "Architecture & Vision",
                 videos: [
-                  { title: "Corporate Video", url: "https://www.youtube.com/watch?v=l5pSoNNuVHc" },
                   { title: "Chateau de commequiers vue du ciel", url: "https://www.youtube.com/watch?v=6gZ-PhBmEVw&t=5s" }
                 ]
               })}

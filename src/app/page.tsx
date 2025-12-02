@@ -238,7 +238,8 @@ export default function Home() {
                 title: "Événement & Divertissement",
                 videos: [
                   { title: "Festival la Nuit sans fin", url: "https://www.youtube.com/watch?v=WO4Df476lqE" },
-                  { title: "Fête Medievale de Commequiers", url: "https://www.youtube.com/watch?v=Ww7nbRwwbIk" }
+                  { title: "Fête Medievale de Commequiers", url: "https://www.youtube.com/watch?v=Ww7nbRwwbIk" },
+                  { title: "Événement", url: "https://www.youtube.com/watch?v=kp0QIf2E_2A" }
                 ]
               })}
             />

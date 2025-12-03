@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { DM_Sans } from 'next/font/google'
-// import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site'
 import Footer from '@/components/Footer'
@@ -91,6 +91,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   )

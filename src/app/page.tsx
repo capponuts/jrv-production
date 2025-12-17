@@ -60,12 +60,12 @@ export default function Home() {
           transition={{ duration: 1, ease: 'easeOut' }}
           className="text-center max-w-4xl mx-auto z-10"
         >
-          <motion.div
+              <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
             className="mb-8 flex justify-center"
-          >
+              >
             <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
                <Image 
                 src="/logo-jrv-production.png" 
@@ -76,7 +76,7 @@ export default function Home() {
                 priority
               />
             </div>
-          </motion.div>
+            </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight drop-shadow-xl">
             Capturer <span className="gradient-text">l&apos;Instant</span>
@@ -138,13 +138,13 @@ export default function Home() {
                   <h3 className="text-xl font-semibold mb-2 text-white">Événements</h3>
                   <p className="text-sm">Mariages, cérémonies, concerts... Immortalisez vos moments les plus précieux avec élégance et sensibilité.</p>
                 </div>
-              </div>
+          </div>
 
               <p className="mt-8">
                 Chaque projet est une opportunité de créer quelque chose d&apos;<strong>unique</strong> et d&apos;<strong>émotionnellement puissant</strong>.
                 De la préparation technique à la livraison finale, je m&apos;engage à vous offrir des vidéos qui dépassent vos attentes.
               </p>
-            </div>
+                  </div>
           </div>
         </div>
       </section>
@@ -197,7 +197,7 @@ export default function Home() {
                   Chaque projet, c&apos;est pour moi l&apos;occasion de raconter une histoire à ma façon : simple, propre, humaine, et visuellement soignée.
                 </p>
               </motion.div>
-            </div>
+              </div>
           </div>
         </div>
       </section>
@@ -215,7 +215,8 @@ export default function Home() {
               onGalleryClick={() => setSelectedGallery({
                 title: "Ambiances & Saveurs",
                 videos: [
-                  { title: "Ambiance Culinaire", url: "https://www.youtube.com/watch?v=NiNXI6SiHyM" }
+                  { title: "Ambiance Culinaire", url: "https://www.youtube.com/watch?v=NiNXI6SiHyM" },
+                  { title: "Vidéo Ambiance", url: "https://www.youtube.com/watch?v=ON_k8_j0V9M" }
                 ]
               })}
             />

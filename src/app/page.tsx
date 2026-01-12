@@ -227,7 +227,7 @@ export default function Home() {
               onGalleryClick={() => setSelectedGallery({
                 title: "Architecture & Vision",
                 videos: [
-                  { title: "Chateau de commequiers vue du ciel", url: "https://www.youtube.com/watch?v=6gZ-PhBmEVw&t=5s" }
+                  { title: "Architecture & Vision", url: "https://www.youtube.com/watch?v=Fv2i3ralRnU" }
                 ]
               })}
             />
